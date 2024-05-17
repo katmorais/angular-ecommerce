@@ -1,0 +1,57 @@
+<p>cupom-list works!</p>
+<mat-toolbar color="primary">
+    <div class="flex-container">
+      <span class="toolbar-title">Controle de Cartoes</span>
+      <button mat-fab color="accent" routerLink="/cartoes/new">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar>
+  
+  <table mat-table [dataSource]="cupom" class="mat-elevation-z8">
+  
+      <!-- Position Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> id </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+  
+      <!-- Codigo Column -->
+      <ng-container matColumnDef="codigo">
+        <th mat-header-cell *matHeaderCellDef> codigo </th>
+        <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
+      </ng-container>
+  
+      <!-- Valor Desconto Column -->
+      <ng-container matColumnDef="valorDesconto">
+        <th mat-header-cell *matHeaderCellDef> valorDesconto </th>
+        <td mat-cell *matCellDef="let element"> {{element.valorDesconto}} </td>
+      </ng-container>
+  
+      <!-- Validade Column -->
+      <ng-container matColumnDef="validade">
+        <th mat-header-cell *matHeaderCellDef> validade </th>
+        <td mat-cell *matCellDef="let element"> {{element.validade}} </td>
+      </ng-container>
+  
+       <!-- Acao Column -->
+       <ng-container matColumnDef="acao">
+        <th mat-header-cell *matHeaderCellDef> Ação </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button
+                  color="primary"
+                  routerLink="/cupons/edit/{{element.id}}">
+                  <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button
+                  color="warn">
+                  <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  
+  

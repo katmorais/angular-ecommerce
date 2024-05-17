@@ -1,0 +1,14 @@
+<div class="popup-content">
+    <h2 id="popup-title">Informações do Camiseta</h2>
+
+    <div class="userInfo">
+        <h3>Nome: <span class="data-info">{{data.nome}}</span></h3>
+        <h3>Descricao: <span class="data-info">{{data.descricao}}</span></h3>
+        <h3>Estampa: <span class="data-info">{{data.estampa}}</span></h3>
+        <h3>Tecido <span class="data-info">{{data.tecido}}</span></h3>
+       
+    <div class="popup-bnt">
+        <button class="bnt-cancelar" (click)="cancelar()">Cancelar</button>
+        <button class="bnt-editar" (click)="editar(data.id)">Editar</button>
+    </div>
+</div>

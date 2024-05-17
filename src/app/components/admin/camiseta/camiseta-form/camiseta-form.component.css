@@ -1,0 +1,36 @@
+.toolbar-title {
+  flex: 1;
+  text-align: center;
+}
+
+.full-width-input {
+  width: calc(100% - 24px); /* Subtrai a largura das margens */
+  margin-bottom: 20px;
+}
+
+mat-card {
+  max-width: 800px;
+  margin: 2rem auto;
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: space-between; /* Alinha os botões na extremidade do card */
+  margin-top: 20px; /* Adiciona espaço entre o conteúdo e os botões */
+}
+
+.form-container {
+  padding: 2rem; 
+}
+
+.button-group {
+  display: flex;
+}
+
+button[mat-raised-button] {
+  width: auto; /* Define a largura automaticamente de acordo com o conteúdo */
+}
+
+button[mat-raised-button]:not(:last-child) {
+  margin-right: 1rem;
+}

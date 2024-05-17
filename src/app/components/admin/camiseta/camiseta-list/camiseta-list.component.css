@@ -1,0 +1,85 @@
+/* Flex container para o layout principal */
+.flex-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap; /* Permitir que os elementos se ajustem a diferentes tamanhos de tela */
+  width: 100%; /* Utiliza toda a largura disponível */
+  max-width: 80%; /* Define uma largura máxima para a tabela */
+  margin: 0 auto; /* Centralizando a tabela na página */
+}
+
+/* Colunas da tabela */
+.mat-column-nome,
+.mat-column-descricao,
+.mat-column-estoque,
+.mat-column-preco,
+.mat-column-estampa,
+.mat-column-tecido,
+.mat-column-fornecedor,
+.mat-column-cor {
+  width: calc(45% / 7); /* Dividindo igualmente o espaço para todas as colunas */
+}
+
+.mat-column-id {
+  width: calc(50% - 60px); /* Ajustando a largura para deixar o ID perto do nome */
+  padding-right: 2%; /* Reduzindo o espaço entre o ID e o texto */
+  text-align: right; /* Alinhando o texto do ID à direita */
+}
+
+.mat-column-acao {
+  width: calc(100% / 7 * 2); /* Utiliza 2 colunas para a coluna de ação */
+  min-width: 10em; /* Largura mínima para a coluna "ação" */
+  text-align: center; /* Centralizando o texto na coluna "ação" */
+}
+
+/* Container dos botões */
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%; /* Utiliza toda a largura disponível */
+}
+
+.button-container button {
+  margin-left: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* Estilo para os botões na tabela */
+.mat-icon-button {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+/* Estilo para o botão de visualizar */
+.bnt-view {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.bnt-view:hover {
+  color: #4CAF50; /* Verde */
+}
+
+/* Estilo para o botão de editar */
+.mat-icon-button.edit-button {
+  color: #2196F3; /* Azul */
+}
+
+.mat-icon-button.edit-button:hover {
+  color: #0D47A1; /* Azul escuro */
+}
+
+/* Estilo para o botão de excluir */
+.mat-icon-button.delete-button {
+  color: #F44336; /* Vermelho */
+}
+
+.mat-icon-button.delete-button:hover {
+  color: #B71C1C; /* Vermelho escuro */
+}

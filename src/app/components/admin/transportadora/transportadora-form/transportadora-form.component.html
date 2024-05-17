@@ -1,0 +1,87 @@
+<app-navside></app-navside>
+
+<div class="navbar-brand">
+    <span>Cadastro de Transportadora</span>
+</div>
+    <mat-card>
+       
+        <mat-card-content>
+           
+            <form [formGroup]="formGroup" class="form-container">
+                <div class="input-container">
+                    <mat-label>Nome*</mat-label>
+                    <mat-form-field appearance="outline" class="full-width-input">
+                        <input placeholder="Nome da transportadora" matInput type="text" formControlName="nome" />
+                        <mat-error *ngIf="formGroup.get('nome')?.hasError('apiError')">
+                            {{ formGroup.get('nome')?.getError('apiError') }}
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            
+                <div class="input-container">
+                    <mat-label>Capacidade*</mat-label>
+                    <mat-form-field appearance="outline" class="full-width-input">
+                        <input placeholder="Carga" matInput type="text" formControlName="capacidade" />
+                        <span matTextSuffix>kg</span>
+                        <mat-error *ngIf="formGroup.get('capacidade')?.hasError('apiError')">
+                            {{ formGroup.get('capacidade')?.getError('apiError') }}
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            
+                <div class="input-container">
+                    <mat-label>Tarifa*</mat-label>
+                    <mat-form-field appearance="outline" class="full-width-input">
+                        <input placeholder="Informe o preço" matInput type="text" formControlName="tarifa" />
+                    <span matTextPrefix>$&nbsp;</span>
+                    <span matTextSuffix>.00</span>
+                        <mat-error *ngIf="formGroup.get('tarifa')?.hasError('apiError')">
+                            {{ formGroup.get('tarifa')?.getError('apiError') }}
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            
+                <div formArrayName="listaTelefones" class="telefones">
+                    <span>Telefones:</span>
+                    <div *ngFor="let telefone of listaTelefones.controls; let i = index" class="group-tel">
+                        <div [formGroupName]="i" class="telefone-item" class="form-itens">
+                            <div class="item">
+                                <label for="codigoArea{{i}}">Código de Área:</label>
+                                <input type="text" id="codigoArea{{i}}" formControlName="codigoArea">
+                            </div>
+                            <div class="item">
+                                <label for="numero{{i}}">Número:</label>
+                                <input type="text" id="numero{{i}}" formControlName="numero">
+                            </div>
+                            <button id="remover" type="button" (click)="removerTelefone(i)">Remover</button>
+                        </div>
+                    </div>
+                    <button id="adicionar" type="button" (click)="adicionarTelefone()">Adicionar Telefone</button>
+                </div>
+            </form>
+            
+
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button 
+                    color="primary" 
+                    (click)="salvar()"
+                    [disabled]="formGroup.invalid"> 
+                Salvar 
+            </button>
+            <button mat-raised-button 
+                    *ngIf="formGroup?.get('id')?.value"
+                    color="warn" 
+                    (click)="excluir()"
+                    [disabled]="formGroup.invalid"> 
+                Excluir 
+            </button>
+            <button mat-raised-button  
+                    routerLink="/transportadoras/list"> 
+                Cancelar 
+            </button>
+
+        </mat-card-actions>
+    </mat-card>
+  
+

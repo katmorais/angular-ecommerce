@@ -1,0 +1,37 @@
+.listagem-estados{
+  color: rgb(0, 0, 0);
+  background-color: #ffffff;
+  background-image: linear-gradient(90deg,#E5A6B3 100%,#ffffff);
+}
+
+.demo-table {
+  width: 100%;
+}
+
+.mat-column-id-column {
+  width: 32px;
+  border-right: 1px solid currentColor;
+  padding-right: 24px;
+  text-align: center;
+}
+
+.mat-column-nome-column {
+  padding-left: 16px;
+  font-size: 20px;
+}
+
+.mat-column-sigla-column {
+  font-style: italic;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.toolbar-title {
+  flex: 1;
+  text-align: center;
+}

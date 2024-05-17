@@ -1,0 +1,142 @@
+<app-navside></app-navside>
+
+<div class="navbar-brand">
+    <span>Cadastro de Camisetas</span>
+    <mat-card>
+        <mat-card-content>
+            <form [formGroup]="formGroup">
+                <mat-form-field appearance="fill" class="full-width-input">
+                    <mat-label>Nome</mat-label>
+                    <input matInput type="text" formControlName="nome">
+                    <mat-error *ngIf="formGroup.get('nome') 
+                                   && formGroup.get('nome')?.invalid
+                                   && formGroup.get('nome')?.touched">
+                        O nome é obrigatorio.
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" class="full-width-input">
+                    <mat-label>Descricao</mat-label>
+                    <input matInput type="text" formControlName="descricao">
+                    <mat-error *ngIf="formGroup.get('descricao') 
+                                   && formGroup.get('descricao')?.invalid
+                                   && formGroup.get('descricao')?.touched">
+                        A descrição é obrigatoria.
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" class="full-width-input">
+                    <mat-label>Estoque</mat-label>
+                    <input matInput type="text" formControlName="estoque">
+                    <mat-error *ngIf="formGroup.get('estoque') 
+                                   && formGroup.get('estoque')?.invalid
+                                   && formGroup.get('estoque')?.touched">
+                        O estoque é obrigatorio.
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" class="full-width-input">
+                    <mat-label>Preço</mat-label>
+                    <input matInput type="text" formControlName="preco" (keypress)="onlyNumberKey($event)">
+                    <mat-error *ngIf="formGroup.get('preco') 
+                                   && formGroup.get('preco')?.invalid
+                                   && formGroup.get('preco')?.touched">
+                        O preço é obrigatório.
+                    </mat-error>
+                </mat-form-field>
+                
+
+                <mat-form-field appearance="fill" class="full-width-input">
+                    <mat-label>Estampa</mat-label>
+                    <input matInput type="text" formControlName="estampa">
+                    <mat-error *ngIf="formGroup.get('estampa') 
+                                   && formGroup.get('estampa')?.invalid
+                                   && formGroup.get('estampa')?.touched">
+                        A estampa é obrigatorio.
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" class="full-width-input">
+                    <mat-label>Tecido</mat-label>
+                    <input matInput type="text" formControlName="tecido">
+                    <mat-error *ngIf="formGroup.get('tecido') 
+                                   && formGroup.get('tecido')?.invalid
+                                   && formGroup.get('tecido')?.touched">
+                        O tecido é obrigatorio.
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Fornecedor</mat-label>
+                    <mat-select formControlName="fornecedor">
+                        @for (fornecedor of fornecedores; track fornecedor.id) {
+                        <mat-option [value]="fornecedor">
+                            {{fornecedor.nome}}
+                        </mat-option>
+                        }
+                    </mat-select>
+
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Tipo Camiseta</mat-label>
+                    <mat-select formControlName="tipoCamiseta">
+                        @for (tipoCamiseta of tipoCamisetas; track tipoCamiseta.id) {
+                        <mat-option [value]="tipoCamiseta">
+                            {{tipoCamiseta.nome}}
+                        </mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Marca</mat-label>
+                    <mat-select formControlName="marca">
+                        @for (marca of marcas; track marca.id) {
+                        <mat-option [value]="marca">
+                            {{marca.nome}}
+                        </mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" class="full-width-input">
+                    <mat-label for="coresInput">Cores</mat-label>
+                    <input matInput type="text" id="coresInput" formControlName="cores">
+                    <!-- Se desejar, adicione validação para o campo de cores -->
+                </mat-form-field>
+                
+                <!-- Botão para adicionar cor à lista -->
+                <button mat-raised-button color="primary" (click)="adicionarCor()" type="button">
+                    Adicionar Cor
+                </button>
+                
+                <!-- Lista de cores adicionadas -->
+                <div *ngIf="coresList.length > 0">
+                    <p>Lista de Cores Adicionadas:</p>
+                    <ul>
+                        <li *ngFor="let cor of coresList; let i = index">
+                            {{ cor }}
+                            <button mat-raised-button color="warn" (click)="removerCor(i)">
+                                Remover
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+
+            </form>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" (click)="salvar()" [disabled]="formGroup.invalid">
+                Salvar
+            </button>
+            <button mat-raised-button *ngIf="formGroup?.get('id')?.value" color="warn" (click)="excluir()"
+                [disabled]="formGroup.invalid">
+                Excluir
+            </button>
+            <button mat-raised-button routerLink="/camisetas/list">
+                Cancelar
+            </button>
+
+        </mat-card-actions>
+    </mat-card>
+</div>

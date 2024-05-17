@@ -1,0 +1,14 @@
+<div class="popup-content">
+    <h2 id="popup-title">Informações do Cliente</h2>
+
+    <div class="userInfo">
+        <h3>Codigo: <span class="data-info">{{data.codigo}}</span></h3>
+        <h3>ValorDesconto: <span class="data-info">{{data.valorDesconto}}</span></h3>
+        <h3>Validade: <span class="data-info">{{data.validade}}</span></h3>
+       
+
+    <div class="popup-bnt">
+        <button class="bnt-cancelar" (click)="cancelar()">Cancelar</button>
+        <button class="bnt-editar" (click)="editar(data.id)">Editar</button>
+    </div>
+</div>

@@ -1,0 +1,64 @@
+<app-navside></app-navside>
+
+<div class="navbar-brand">
+    <span>Cadastro de Cupons</span>
+</div>
+    
+    <mat-card>
+       
+        <mat-card-content>
+           
+            <form [formGroup]="formGroup" class="form-container">
+                <div class="input-container">
+                    <mat-label>Codigo*</mat-label>
+                    <mat-form-field appearance="outline" class="full-width-input">
+                        <input placeholder="Digite o codigo" matInput type="text" formControlName="codigo" />
+                        <mat-error *ngIf="formGroup.get('codigo')?.hasError('apiError')">
+                            {{ formGroup.get('codigo')?.getError('apiError') }}
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            
+                <div class="input-container">
+                    <mat-label>Valor do Desconto*</mat-label>
+                    <mat-form-field appearance="outline" class="full-width-input">
+                        <input placeholder="Valor do Desconto" matInput type="text" formControlName="valorDesconto" />
+                        <mat-error *ngIf="formGroup.get('valorDesconto')?.hasError('apiError')">
+                            {{ formGroup.get('valorDesconto')?.getError('apiError') }}
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="input-container">
+                    <mat-label>Validade*</mat-label>
+                    <mat-form-field appearance="outline" class="full-width-input">
+                        <input placeholder="Validade" matInput type="text" formControlName="validade" />
+                        <mat-error *ngIf="formGroup.get('validade')?.hasError('apiError')">
+                            {{ formGroup.get('validade')?.getError('apiError') }}
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+  
+            </form>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button 
+                    color="primary" 
+                    (click)="salvar()"
+                    [disabled]="formGroup.invalid"> 
+                Salvar 
+            </button>
+            <button mat-raised-button 
+                    *ngIf="formGroup?.get('id')?.value"
+                    color="warn" 
+                    (click)="excluir()"
+                    [disabled]="formGroup.invalid"> 
+                Excluir 
+            </button>
+            <button mat-raised-button  
+                    routerLink="/cupons"> 
+                Cancelar 
+            </button>
+
+        </mat-card-actions>
+    </mat-card>

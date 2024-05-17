@@ -1,0 +1,26 @@
+<div class="popup-content">
+    <h2>
+        Informações da transportadora
+    </h2>
+
+    <div class="userInfo"> 
+        <h3>Nome: <span class="data-info">{{data.nome}}</span></h3>
+        <h3>Login <span class="data-info">{{data.login}}</span></h3>
+       
+        <div class="twoo">
+            <h3>Telefones:</h3>
+            <span class="telefones">
+                <ng-container *ngFor="let telefone of data.listaTelefone">
+                    <span>{{telefone.codigoArea}} {{telefone.numero}}</span>
+                </ng-container>
+            </span>
+        </div>
+       
+    </div>
+
+    <div class="popup-botao">
+        <button class="cancelar"(click)="cancelar()">Cancelar</button>
+        <button class="editar"(click)="editar(data.id)">Editar</button>
+    </div>
+
+</div>

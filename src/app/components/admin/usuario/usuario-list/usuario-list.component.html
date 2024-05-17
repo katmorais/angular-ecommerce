@@ -1,0 +1,95 @@
+<app-navside></app-navside>
+
+<div class="form-container">
+    <div class="navbar-brand2">
+        <span>Controle de Usuários</span>
+      </div>
+
+
+<mat-card>
+<table mat-table [dataSource]="usuarios" class="mat-elevation-z8">
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> Id </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <!-- Nome Column -->
+  <ng-container matColumnDef="nome">
+    <th mat-header-cell *matHeaderCellDef> Nome </th>
+    <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
+  </ng-container>
+
+  <!-- login Column -->
+  <ng-container matColumnDef="Login">
+    <th mat-header-cell *matHeaderCellDef> Login </th>
+    <td mat-cell *matCellDef="let element"> {{element.login}} </td>
+  </ng-container>
+
+  <!-- Senha Column -->
+
+  <ng-container matColumnDef="senha">
+
+    <th mat-header-cell *matHeaderCellDef> Senha </th>
+    <td mat-cell *matCellDef="let element"> {{element.senha}} </td>
+  </ng-container>
+
+  <!-- Telefone Column -->
+  <ng-container matColumnDef="listaTelefone">
+    <th mat-header-cell *matHeaderCellDef> Telefones </th>
+    <td mat-cell *matCellDef="let element">
+    <span *ngIf="element.telefones && element.telefones.length > 0; else empty">
+      <span *ngFor="let telefone of element.telefones">
+        {{telefone.codigoArea}} - {{ telefone.numero }}
+      </span>
+      </span>
+      <ng-template #empty>
+      Nenhum telefone encontrado
+      </ng-template>
+    </td>
+  </ng-container>
+
+
+  <  <!-- Endereco Column -->
+  <ng-container matColumnDef="listaEndereco">
+    <th mat-header-cell *matHeaderCellDef> listaEndereco </th>
+
+    <td mat-cell *matCellDef="let element">
+      <div *ngFor="let endereco of element.listaEndereco">
+        {{endereco.cep}} - {{ endereco.rua }} - {{ endereco.numero }} - {{ endereco.complemento }} - {{ endereco.bairro }} - {{ endereco.cidade }}
+      </div>
+    </td>
+  </ng-container>
+
+   <!-- Cartoes Column -->
+   <ng-container matColumnDef="cartoes">
+    <th mat-header-cell *matHeaderCellDef> Cartoes </th>
+
+    <td mat-cell *matCellDef="let element">
+      <div *ngFor="let cartao of element.cartoes">
+        {{cartao.nome}} - {{ cartao.numeroCartao }} - {{ cartao.dataVencimento }}
+      </div>
+    </td>
+  </ng-container>
+
+  <!-- Acao Column -->
+  <ng-container matColumnDef="acao">
+    <th mat-header-cell *matHeaderCellDef> Ação </th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button color="primary" routerLink="/usuarios/edit/{{element.id}}">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button color="warn">
+        <mat-icon>delete</mat-icon>
+      </button>
+      <button color="primary" routerLink="/usuarios/{{element.id}}/addcard">
+        <span>Adicionar Cartao</span>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+</mat-card>

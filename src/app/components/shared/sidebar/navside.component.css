@@ -1,0 +1,73 @@
+.admin-menu {
+  background-color: #372e4b;
+  width: 200px; /* Largura da barra de menu */
+  height: 100%; /* Altura total */
+  position: fixed; /* Mantém a barra de menu fixa */
+  top: 0;
+  left: 0;
+  padding-top: 20px; /* Espaçamento superior */
+}
+
+.admin-menu ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.admin-menu ul li {
+  display: block; /* Exibe os itens do menu em bloco */
+  margin-bottom: 10px; /* Espaçamento entre os itens */
+}
+
+.admin-menu ul li a {
+  display: block;
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+}
+
+.admin-menu ul li:hover {
+  background-color: #555;
+}
+
+.submenu {
+  display: none;
+  background-color: #251e33;
+  min-width: 200px;
+}
+
+.admin-menu ul li:hover .submenu {
+  display: block;
+}
+
+.submenu li {
+  display: block;
+}
+
+.submenu li a {
+  padding: 10px;
+  color: white;
+  text-decoration: none;
+}
+
+.submenu li:hover {
+  background-color: #555;
+}
+.admin-menu ul li a {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+}
+
+.admin-menu ul li a mat-icon {
+  margin-right: 10px;
+}
+.menu-title {
+  display: block;
+  padding: 10px 20px;
+  margin-bottom: 50px; /* Adicionando espaço entre o título e os outros itens do menu */
+  color: white;
+  
+}

@@ -1,0 +1,57 @@
+<mat-toolbar color="primary">
+  <div class="flex-container">
+    <span class="toolbar-title">Controle de Cartoes</span>
+    <button mat-fab color="accent" routerLink="/cartoes/new">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
+
+<table mat-table [dataSource]="cartao" class="mat-elevation-z8">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> id </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <!-- Nome do Cartao Column -->
+    <ng-container matColumnDef="nome">
+      <th mat-header-cell *matHeaderCellDef> nome </th>
+      <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
+    </ng-container>
+
+    <!-- Nome do Cartao Column -->
+    <ng-container matColumnDef="numerocartao">
+      <th mat-header-cell *matHeaderCellDef> numeroCartao </th>
+      <td mat-cell *matCellDef="let element"> {{element.numeroCartao}} </td>
+    </ng-container>
+
+
+    <!-- Vencimento do Cartao Column -->
+    <ng-container matColumnDef="dataVencimento">
+      <th mat-header-cell *matHeaderCellDef> dataVencimento </th>
+      <td mat-cell *matCellDef="let element"> {{element.dataVencimento}} </td>
+    </ng-container>
+
+
+     <!-- Acao Column -->
+     <ng-container matColumnDef="acao">
+      <th mat-header-cell *matHeaderCellDef> Ação </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button
+                color="primary"
+                routerLink="/cartoes/edit/{{element.id}}">
+                <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button
+                color="warn">
+                <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+

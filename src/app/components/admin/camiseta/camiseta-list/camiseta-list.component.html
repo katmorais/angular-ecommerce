@@ -1,0 +1,103 @@
+<app-navside></app-navside>
+
+<div class="navbar-brand">
+  <span>Cadastro de Camiseta</span>
+</div>
+
+
+<table mat-table [dataSource]="camisetas" class="mat-elevation-z8">
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> id </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <!-- Nome Column -->
+  <ng-container matColumnDef="nome">
+    <th mat-header-cell *matHeaderCellDef> nome </th>
+    <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
+  </ng-container>
+
+  <!-- Descricao Column -->
+  <ng-container matColumnDef="descricao">
+    <th mat-header-cell *matHeaderCellDef> descricao </th>
+    <td mat-cell *matCellDef="let element"> {{element.descricao}} </td>
+  </ng-container>
+
+  <!-- Preco Column -->
+  <ng-container matColumnDef="estoque">
+    <th mat-header-cell *matHeaderCellDef> estoque </th>
+    <td mat-cell *matCellDef="let element"> {{element.estoque}} </td>
+  </ng-container>
+
+  <!-- Preco Column -->
+  <ng-container matColumnDef="preco">
+    <th mat-header-cell *matHeaderCellDef> preco </th>
+    <td mat-cell *matCellDef="let element"> {{element.preco}} </td>
+  </ng-container>
+
+  <!-- Estampa Column -->
+  <ng-container matColumnDef="estampa">
+    <th mat-header-cell *matHeaderCellDef> estampa </th>
+    <td mat-cell *matCellDef="let element"> {{element.estampa}} </td>
+  </ng-container>
+
+  <!-- Estampa Column -->
+  <ng-container matColumnDef="tecido">
+    <th mat-header-cell *matHeaderCellDef> tecido </th>
+    <td mat-cell *matCellDef="let element"> {{element.tecido}}</td>
+  </ng-container>
+
+  <!-- Fornecedor Column -->
+  <ng-container matColumnDef="fornecedor">
+    <th mat-header-cell *matHeaderCellDef> fornecedor </th>
+    <td mat-cell *matCellDef="let element"> {{element.fornecedor.nome}} - {{element.fornecedor.dataContrato}} </td>
+  </ng-container>
+
+  <!-- tipoCamiseta Column -->
+  <ng-container matColumnDef="tipoCamiseta">
+    <th mat-header-cell *matHeaderCellDef> tipoCamiseta </th>
+    <td mat-cell *matCellDef="let element"> {{element.tipoCamiseta.nome}} </td>
+  </ng-container>
+
+  <!-- Marca Column -->
+  <ng-container matColumnDef="marca">
+    <th mat-header-cell *matHeaderCellDef> marca </th>
+    <td mat-cell *matCellDef="let element"> {{element.marca.nome}} - {{element.marca.descricao}} </td>
+  </ng-container>
+
+  <!-- Cor Column -->
+  <ng-container matColumnDef="cor">
+    <th mat-header-cell *matHeaderCellDef> cor </th>
+    <td mat-cell *matCellDef="let element">
+      <ng-container *ngFor="let cor of element.cor">
+        {{ cor.nome }}
+        <br>
+      </ng-container>
+    </td>
+  </ng-container>
+
+  <!-- Acao Column -->
+  <ng-container matColumnDef="acao">
+    <th mat-header-cell *matHeaderCellDef> Ação </th>
+    <td mat-cell *matCellDef="let element">
+
+      <button class="bnt-view" (click)="visualizarDados(element)">
+        <mat-icon>visibility</mat-icon>
+      </button>
+      <button mat-icon-button color="primary" [routerLink]="['/camisetas/edit/', element.id]">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" (click)="confirmDelete(element)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<mat-paginator [pageSizeOptions]="[2, 4, 8, 16]" [pageSize]="pageSize" [length]="totalRecords" (page)="paginar($event)">
+</mat-paginator>
