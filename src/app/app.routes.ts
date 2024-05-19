@@ -29,50 +29,83 @@ import { UsuarioFormComponent } from "./components/admin/usuario/usuario-form/us
 import { UsuarioListComponent } from "./components/admin/usuario/usuario-list/usuario-list.component";
 import { CupomListComponent } from "./components/admin/cupom/cupom-list/cupom-list.component";
 import { marcaResolver } from "./components/admin/marca/resolver/marca-resolver";
-
+import { LoginComponent } from "./components/login/login.component";
+import { CamisetaCardListComponent } from "./components/admin/camiseta-card-list/camiseta-card-list.component";
+import { CarrinhoComponent } from "./components/admin/carrinho/carrinho.component";
+import { UserTemplateComponent } from "./components/template/user-template/user-template.component";
+import { AdminTemplateComponent } from "./components/template/admin-template/admin-template.component";
 
 export const routes: Routes = [
-    { path: 'estados', component: EstadoListComponent, title: 'Lista de Estados'},
-    { path: 'estados/new', component: EstadoFormComponent, title: 'Novo Estado'},
-    { path: 'estados/edit/:id', component: EstadoFormComponent, resolve: {estado: estadoResolver}},
 
-    { path: 'cidades', component: CidadeListComponent, title: 'Lista de Cidades'},
-    { path: 'cidades/new', component: CidadeFormComponent, title: 'Nova Cidade'},
-    { path: 'cidades/edit/:id', component: CidadeFormComponent, resolve: {cidade: cidadeResolver}},
+  {
+    path: '',
+    component: UserTemplateComponent,
+    title: 'e-commerce',
+    children: [
+        {path: '', pathMatch: 'full', redirectTo: 'produtos'},
 
-    { path: 'transportadoras/list', component: TransportadoraListComponent, title: 'Lista de Transportadoras'},
-    { path: 'transportadoras/new', component: TransportadoraFormComponent, title: 'Nova Transportadora'},
-    { path: 'transportadoras/edit/:id', component: TransportadoraFormComponent, resolve: {transportadora: transportadoraResolver}},
+        { path: 'produtos', component: CamisetaCardListComponent, title: 'Produtos à Venda'},
+        { path: 'login', component: LoginComponent, title: 'Login'},
+        { path: 'carrinho', component: CarrinhoComponent, title: 'Carrinho de pedidos'},
+    ]
 
-    { path: 'cartoes', component: CartaoListComponent, title: 'Lista de Cartoes'},
-    { path: 'cartoes/new', component: CartaoFormComponent, title: 'Novo Cartoes'},
-    { path: 'cartoes/edit/:id', component: CartaoFormComponent, resolve: {cartao: cartaoResolver}},
+  },
 
-    { path: 'cupons/list', component: CupomListComponent, title: 'Lista de Cupons'},
-    { path: 'cupons/new', component: CupomFormComponent, title: 'Novo Cupom'},
-    { path: 'cupons/edit/:id', component: CupomFormComponent, resolve: {cupom: cupomResolver}},
+  {
+    path: 'admin',
+    component: AdminTemplateComponent,
+    title: 'e-commerce',
+    children: [
+        {path: '', pathMatch: 'full', redirectTo: 'estados'},
 
-    { path: 'camisetas/list', component: CamisetaListComponent, title: 'Lista de Camisetas'},
-    { path: 'camisetas/new', component: CamisetaFormComponent, title: 'Nova Camiseta'},
-    { path: 'camisetas/edit/:id', component: CamisetaFormComponent, resolve: {camiseta: camisetaResolver}},
+        { path: 'estados', component: EstadoListComponent, title: 'Lista de Estados'},
+        { path: 'estados/new', component: EstadoFormComponent, title: 'Novo Estado'},
+        { path: 'estados/edit/:id', component: EstadoFormComponent, resolve: {estado: estadoResolver}},
 
-    { path: 'fornecedores/list', component: FornecedorListComponent, title: 'Lista de Fornecedores'},
-    { path: 'fornecedores/new', component: FornecedorFormComponent, title: 'Novo Fornecedor'},
-    { path: 'fornecedores/edit/:id', component: FornecedorFormComponent, resolve: {fornecedor: fornecedorResolver}},
+        { path: 'cidades', component: CidadeListComponent, title: 'Lista de Cidades'},
+        { path: 'cidades/new', component: CidadeFormComponent, title: 'Nova Cidade'},
+        { path: 'cidades/edit/:id', component: CidadeFormComponent, resolve: {cidade: cidadeResolver}},
 
-    { path: 'tipocamisetas/list', component: TipoCamisetaListComponent, title: 'Lista de tipos de Camisetas'},
-    { path: 'tipocamisetas/new', component: TipoCamisetaFormComponent, title: 'Novo Tipo de Camiseta'},
-    { path: 'tipocamisetas/edit/:id', component: TipoCamisetaFormComponent, resolve: {tipoCamiseta: tipocamisetaResolver}},
+        { path: 'transportadoras/list', component: TransportadoraListComponent, title: 'Lista de Transportadoras'},
+        { path: 'transportadoras/new', component: TransportadoraFormComponent, title: 'Nova Transportadora'},
+        { path: 'transportadoras/edit/:id', component: TransportadoraFormComponent, resolve: {transportadora: transportadoraResolver}},
 
-    { path: 'marcas/list', component: MarcaListComponent, title: 'Lista de Marcas'},
-    { path: 'marcas/new', component: MarcaFormComponent, title: 'Novo Tipo de Marca'},
-    { path: 'marcas/edit/:id', component: MarcaFormComponent, resolve: {marcaCamiseta: marcaResolver}},
+        { path: 'cartoes', component: CartaoListComponent, title: 'Lista de Cartoes'},
+        { path: 'cartoes/new', component: CartaoFormComponent, title: 'Novo Cartoes'},
+        { path: 'cartoes/edit/:id', component: CartaoFormComponent, resolve: {cartao: cartaoResolver}},
 
-    { path: 'usuarios/list', component: UsuarioListComponent, title: 'Lista de Usuarios'},
-    { path: 'usuarios/new', component: UsuarioFormComponent, title: 'Novo Usuario'},
-    { path: 'usuarios/edit/:id', component: UsuarioFormComponent, resolve: {usuario: usuarioResolver}},
+        { path: 'cupons/list', component: CupomListComponent, title: 'Lista de Cupons'},
+        { path: 'cupons/new', component: CupomFormComponent, title: 'Novo Cupom'},
+        { path: 'cupons/edit/:id', component: CupomFormComponent, resolve: {cupom: cupomResolver}},
 
-    { path: 'usuarios/:id/addcard', component: CartaoFormComponent, title: 'Lista de usuarios',resolve:{usuario: usuarioResolver}},
+        { path: 'camisetas/list', component: CamisetaListComponent, title: 'Lista de Camisetas'},
+        { path: 'camisetas/new', component: CamisetaFormComponent, title: 'Nova Camiseta'},
+        { path: 'camisetas/edit/:id', component: CamisetaFormComponent, resolve: {camiseta: camisetaResolver}},
+
+        { path: 'fornecedores/list', component: FornecedorListComponent, title: 'Lista de Fornecedores'},
+        { path: 'fornecedores/new', component: FornecedorFormComponent, title: 'Novo Fornecedor'},
+        { path: 'fornecedores/edit/:id', component: FornecedorFormComponent, resolve: {fornecedor: fornecedorResolver}},
+
+        { path: 'tipocamisetas/list', component: TipoCamisetaListComponent, title: 'Lista de tipos de Camisetas'},
+        { path: 'tipocamisetas/new', component: TipoCamisetaFormComponent, title: 'Novo Tipo de Camiseta'},
+        { path: 'tipocamisetas/edit/:id', component: TipoCamisetaFormComponent, resolve: {tipoCamiseta: tipocamisetaResolver}},
+
+        { path: 'marcas/list', component: MarcaListComponent, title: 'Lista de Marcas'},
+        { path: 'marcas/new', component: MarcaFormComponent, title: 'Novo Tipo de Marca'},
+        { path: 'marcas/edit/:id', component: MarcaFormComponent, resolve: {marcaCamiseta: marcaResolver}},
+
+        { path: 'usuarios/list', component: UsuarioListComponent, title: 'Lista de Usuarios'},
+        { path: 'usuarios/new', component: UsuarioFormComponent, title: 'Novo Usuario'},
+        { path: 'usuarios/edit/:id', component: UsuarioFormComponent, resolve: {usuario: usuarioResolver}},
+
+        { path: 'usuarios/:id/addcard', component: CartaoFormComponent, title: 'Lista de usuarios',resolve:{usuario: usuarioResolver}},
+      ]
+
+    },
 
 ];
+
+
+
+
 

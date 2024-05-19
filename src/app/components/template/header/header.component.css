@@ -1,0 +1,16 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.demo-section + .demo-section {
+  margin-top: 16px;
+}
+
+.mat-toolbar {
+  background-color: black; /* Cor de fundo preta */
+  color: white; /* Cor do texto */
+}
+
+.example-icon {
+  color: white; /* Cor dos ícones */
+}

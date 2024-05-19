@@ -1,14 +1,9 @@
-<app-navside></app-navside>
-
-<div class="navbar-brand">
-    <span>Cadastro de Cupons</span>
-</div>
-    
+<mat-toolbar color="primary" class="toolbar-title">Cadastro de Cupons</mat-toolbar>
+<div class="form-container">
     <mat-card>
-       
         <mat-card-content>
-           
-            <form [formGroup]="formGroup" class="form-container">
+
+            <form [formGroup]="formGroup">
                 <div class="input-container">
                     <mat-label>Codigo*</mat-label>
                     <mat-form-field appearance="outline" class="full-width-input">
@@ -18,7 +13,7 @@
                         </mat-error>
                     </mat-form-field>
                 </div>
-            
+
                 <div class="input-container">
                     <mat-label>Valor do Desconto*</mat-label>
                     <mat-form-field appearance="outline" class="full-width-input">
@@ -38,26 +33,26 @@
                         </mat-error>
                     </mat-form-field>
                 </div>
-  
+
             </form>
         </mat-card-content>
         <mat-card-actions>
-            <button mat-raised-button 
-                    color="primary" 
+            <button mat-raised-button
+                    color="primary"
                     (click)="salvar()"
-                    [disabled]="formGroup.invalid"> 
-                Salvar 
+                    [disabled]="formGroup.invalid">
+                Salvar
             </button>
-            <button mat-raised-button 
+            <button mat-raised-button
                     *ngIf="formGroup?.get('id')?.value"
-                    color="warn" 
+                    color="warn"
                     (click)="excluir()"
-                    [disabled]="formGroup.invalid"> 
-                Excluir 
+                    [disabled]="formGroup.invalid">
+                Excluir
             </button>
-            <button mat-raised-button  
-                    routerLink="/cupons"> 
-                Cancelar 
+            <button mat-raised-button
+                    routerLink="/cupons">
+                Cancelar
             </button>
 
         </mat-card-actions>

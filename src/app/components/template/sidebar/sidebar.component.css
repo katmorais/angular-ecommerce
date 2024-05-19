@@ -1,0 +1,15 @@
+.mat-drawer-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.mat-toolbar {
+  background-color: #ffffff; /* Cor de fundo da barra de ferramentas */
+  color:  #020202
+}
+
+.content {
+  flex-grow: 1; /* Ocupa todo o espaço disponível verticalmente */
+  overflow-y: auto; /* Adiciona uma barra de rolagem vertical quando necessário */
+}

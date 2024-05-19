@@ -12,13 +12,13 @@ import { Cartao } from '../../../../models/cartao.model';
 import { CartaoService } from '../../../../services/cartao.service';
 import { UsuarioService } from '../../../../services/usuario.service';
 import { Usuario } from '../../../../models/usuario.model';
-import { NavsideComponent } from '../../../shared/sidebar/navside.component';
+import { SidebarComponent } from '../../../template/sidebar/sidebar.component';
 
 
 @Component({
   selector: 'app-cartao-form',
   standalone: true,
-  imports: [NgIf, ReactiveFormsModule, MatFormFieldModule,NavsideComponent,
+  imports: [NgIf, ReactiveFormsModule, MatFormFieldModule,SidebarComponent,
     MatInputModule, MatButtonModule, MatCardModule, MatToolbarModule, RouterModule, MatMenuModule],
   templateUrl: './cartao-form.component.html',
   styleUrl: './cartao-form.component.css'

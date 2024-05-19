@@ -16,13 +16,13 @@ import { Marca } from '../../../../models/marca.model';
 import { MarcaService } from '../../../../services/marca.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from '../../../confirmation/confirmation-dialog.component';
-import { NavsideComponent } from '../../../shared/sidebar/navside.component';
+import { SidebarComponent } from '../../../template/sidebar/sidebar.component';
 
 
 @Component({
   selector: 'app-marca-form',
   standalone: true,
-  imports: [NgIf, ReactiveFormsModule, MatFormFieldModule,NavsideComponent,
+  imports: [NgIf, ReactiveFormsModule, MatFormFieldModule, SidebarComponent,
     MatInputModule, MatButtonModule, MatCardModule, MatToolbarModule, RouterModule, MatMenuModule, MatListModule, MatDividerModule, MatSidenavContent,MatSidenavContainer,MatSidenav ],
   templateUrl: './marca-form.component.html',
   styleUrl: './marca-form.component.css'
@@ -45,7 +45,7 @@ export class MarcaFormComponent {
       id: [(marca && marca.id) ? marca.id : null],
       nome: [(marca && marca.nome) ? marca.nome : '', Validators.required],
       descricao: [(marca && marca.descricao) ? marca.descricao : '', Validators.required],
-      
+
     });
 
   }

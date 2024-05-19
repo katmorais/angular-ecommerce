@@ -16,14 +16,15 @@ import { Cupom } from '../../../../models/cupom.model';
 import { CupomService } from '../../../../services/cupom.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from '../../../confirmation/confirmation-dialog.component';
-import { NavsideComponent } from '../../../shared/sidebar/navside.component';
+import { SidebarComponent } from '../../../template/sidebar/sidebar.component';
+import { HeaderComponent } from '../../../template/header/header.component';
 
 
 @Component({
   selector: 'app-cupom-form',
   standalone: true,
-  imports: [NgIf, ReactiveFormsModule, MatFormFieldModule,NavsideComponent,
-    MatInputModule, MatButtonModule, MatCardModule, MatToolbarModule, RouterModule, MatMenuModule, MatListModule, MatDividerModule, MatSidenavContent,MatSidenavContainer,MatSidenav ],
+  imports:  [NgIf, ReactiveFormsModule, MatFormFieldModule,
+    MatInputModule, MatButtonModule, MatCardModule, MatToolbarModule, RouterModule, MatMenuModule],
   templateUrl: './cupom-form.component.html',
   styleUrl: './cupom-form.component.css'
 })
@@ -46,7 +47,7 @@ export class CupomFormComponent {
       codigo: [(cupom && cupom.codigo) ? cupom.codigo : '', Validators.required],
       valorDesconto: [(cupom && cupom.valorDesconto) ? cupom.valorDesconto : '', Validators.required],
       validade: [(cupom && cupom.validade) ? cupom.validade : '', Validators.required],
-      
+
     });
 
   }

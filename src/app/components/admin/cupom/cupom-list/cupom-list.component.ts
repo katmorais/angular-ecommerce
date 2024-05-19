@@ -13,7 +13,7 @@ import { CupomService } from '../../../../services/cupom.service';
   selector: 'app-cupom-list',
   standalone: true,
   imports: [NgFor, MatTableModule, MatToolbarModule, MatIconModule
-  , MatButtonModule, RouterModule],
+    , MatButtonModule, RouterModule],
   templateUrl: './cupom-list.component.html',
   styleUrl: './cupom-list.component.css'
 })

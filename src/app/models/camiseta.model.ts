@@ -6,12 +6,12 @@ import { TipoCamiseta } from "./tipocamiseta.model"
 
 export class Camiseta{
   id!:number
-  nome!: String
-  descricao!: String
+  nome!: string
+  descricao!: string
   estoque!: number
   preco!: number
-  estampa!: String
-  tecido!: String
+  estampa!: string
+  tecido!: string
   fornecedor!: Fornecedor
   tipoCamiseta!: TipoCamiseta
   marca!: Marca

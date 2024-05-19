@@ -14,15 +14,15 @@ import { ViewFornecedorComponent } from '../view/view.component';
 import { MatToolbar } from '@angular/material/toolbar';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatCard, MatCardContent, MatCardModule } from '@angular/material/card';
-import { NavsideComponent } from '../../../shared/sidebar/navside.component';
 import { formatDate } from '@angular/common';
+import { SidebarComponent } from '../../../template/sidebar/sidebar.component';
 
 
 @Component({
   selector: 'app-fornecedor-list',
   standalone: true,
   imports: [RouterModule, ViewFornecedorComponent, ConfirmationDialogComponent, ReactiveFormsModule, FormsModule,MatToolbar ,
-    MatInputModule, MatFormFieldModule, MatPaginator, MatCardContent, MatCard,NavsideComponent,
+    MatInputModule, MatFormFieldModule, MatPaginator, MatCardContent, MatCard, SidebarComponent,
     MatIconModule, MatTableModule],
   templateUrl: './fornecedor-list.component.html',
   styleUrl: './fornecedor-list.component.css'
@@ -31,7 +31,7 @@ export class FornecedorListComponent {
   displayedColumns: string[] = ['id','nome', 'dataContrato', 'acao'];
   fornecedores: Fornecedor[] = [];
   dataSource = new MatTableDataSource;
-  
+
 
   fornecedoresSubscription: Subscription | undefined;
   totalRecords = 0;
@@ -91,7 +91,7 @@ export class FornecedorListComponent {
     this.ngOnInit();
   }
 
-  //Caixa de dialogo para excluir 
+  //Caixa de dialogo para excluir
   confirmDelete(fornecedor: Fornecedor): void {
     const dialogRef = this.dialog.open(ConfirmationDialogComponent);
 

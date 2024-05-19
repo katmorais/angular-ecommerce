@@ -1,18 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
-
 import { NgFor } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { Router, RouterModule } from '@angular/router';
-
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-
 import { MatDialog } from '@angular/material/dialog';
 import { Transportadora } from '../../../../models/transportadora';
 import { TransportadoraService } from '../../../../services/transportadora.service';
@@ -20,12 +17,13 @@ import { ConfirmationDialogComponent } from '../../../confirmation/confirmation-
 import { Subscription } from 'rxjs';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { ViewTransportadoraComponent } from '../view/view.component';
-import { NavsideComponent } from '../../../shared/sidebar/navside.component';
+import { SidebarComponent } from '../../../template/sidebar/sidebar.component';
+
 
 @Component({
   selector: 'app-transportadora-list',
   standalone: true,
-  imports: [MatTableModule, MatToolbarModule, MatIconModule,MatPaginatorModule, NavsideComponent
+  imports: [MatTableModule, MatToolbarModule, MatIconModule,MatPaginatorModule, SidebarComponent
   , MatButtonModule, RouterModule, MatCardModule,  MatMenuModule, MatSidenavModule, MatListModule],
   templateUrl: './transportadora-list.component.html',
   styleUrl: './transportadora-list.component.css'
@@ -34,7 +32,7 @@ export class TransportadoraListComponent implements OnInit {
   displayedColumns: string[] = ['id','nome', 'capacidade', 'tarifa', 'acao'];
 
   transportadoras: Transportadora[] = [];
-  transportadoraSubscription: Subscription | undefined; 
+  transportadoraSubscription: Subscription | undefined;
 
   totalRecords = 0;
   pageSize = 2;
@@ -95,7 +93,7 @@ export class TransportadoraListComponent implements OnInit {
     );
   }
 
-  //Caixa de dialogo para excluir 
+  //Caixa de dialogo para excluir
   confirmDelete(transportadora: Transportadora): void {
     const dialogRef = this.dialog.open(ConfirmationDialogComponent);
 

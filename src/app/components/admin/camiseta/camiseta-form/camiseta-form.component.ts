@@ -18,7 +18,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ConfirmationDialogComponent } from '../../../confirmation/confirmation-dialog.component';
 import { ErrorComponent } from '../../../error/error.component';
-import { NavsideComponent } from '../../../shared/sidebar/navside.component';
 import { Fornecedor } from '../../../../models/fornecedor.model';
 import { FornecedorService } from '../../../../services/fornecedor.service';
 import { MatSelectModule } from '@angular/material/select';
@@ -28,11 +27,12 @@ import { TipoCamisetaService } from '../../../../services/tipoCamiseta.service';
 import { Marca } from '../../../../models/marca.model';
 import { MarcaService } from '../../../../services/marca.service';
 import { forkJoin } from 'rxjs';
+import { SidebarComponent } from '../../../template/sidebar/sidebar.component';
 
 @Component({
   selector: 'app-camiseta-form',
   standalone: true,
-  imports: [NgIf, NgFor, ReactiveFormsModule, MatFormFieldModule, NavsideComponent, MatSelectModule, MatIcon,
+  imports: [NgIf, NgFor, ReactiveFormsModule, MatFormFieldModule, SidebarComponent, MatSelectModule, MatIcon,
     MatInputModule, MatButtonModule, MatCardModule, MatToolbarModule, RouterModule, MatMenuModule, MatListModule, MatDividerModule, MatSidenavContent, MatSidenavContainer, MatSidenav],
   templateUrl: './camiseta-form.component.html',
   styleUrl: './camiseta-form.component.css'

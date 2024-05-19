@@ -1,4 +1,3 @@
-<app-navside></app-navside>
 
 <div class="navbar-brand">
     <span>Cadastro de Camisetas</span>
@@ -8,7 +7,7 @@
                 <mat-form-field appearance="fill" class="full-width-input">
                     <mat-label>Nome</mat-label>
                     <input matInput type="text" formControlName="nome">
-                    <mat-error *ngIf="formGroup.get('nome') 
+                    <mat-error *ngIf="formGroup.get('nome')
                                    && formGroup.get('nome')?.invalid
                                    && formGroup.get('nome')?.touched">
                         O nome é obrigatorio.
@@ -18,7 +17,7 @@
                 <mat-form-field appearance="fill" class="full-width-input">
                     <mat-label>Descricao</mat-label>
                     <input matInput type="text" formControlName="descricao">
-                    <mat-error *ngIf="formGroup.get('descricao') 
+                    <mat-error *ngIf="formGroup.get('descricao')
                                    && formGroup.get('descricao')?.invalid
                                    && formGroup.get('descricao')?.touched">
                         A descrição é obrigatoria.
@@ -28,7 +27,7 @@
                 <mat-form-field appearance="fill" class="full-width-input">
                     <mat-label>Estoque</mat-label>
                     <input matInput type="text" formControlName="estoque">
-                    <mat-error *ngIf="formGroup.get('estoque') 
+                    <mat-error *ngIf="formGroup.get('estoque')
                                    && formGroup.get('estoque')?.invalid
                                    && formGroup.get('estoque')?.touched">
                         O estoque é obrigatorio.
@@ -38,18 +37,18 @@
                 <mat-form-field appearance="fill" class="full-width-input">
                     <mat-label>Preço</mat-label>
                     <input matInput type="text" formControlName="preco" (keypress)="onlyNumberKey($event)">
-                    <mat-error *ngIf="formGroup.get('preco') 
+                    <mat-error *ngIf="formGroup.get('preco')
                                    && formGroup.get('preco')?.invalid
                                    && formGroup.get('preco')?.touched">
                         O preço é obrigatório.
                     </mat-error>
                 </mat-form-field>
-                
+
 
                 <mat-form-field appearance="fill" class="full-width-input">
                     <mat-label>Estampa</mat-label>
                     <input matInput type="text" formControlName="estampa">
-                    <mat-error *ngIf="formGroup.get('estampa') 
+                    <mat-error *ngIf="formGroup.get('estampa')
                                    && formGroup.get('estampa')?.invalid
                                    && formGroup.get('estampa')?.touched">
                         A estampa é obrigatorio.
@@ -59,7 +58,7 @@
                 <mat-form-field appearance="fill" class="full-width-input">
                     <mat-label>Tecido</mat-label>
                     <input matInput type="text" formControlName="tecido">
-                    <mat-error *ngIf="formGroup.get('tecido') 
+                    <mat-error *ngIf="formGroup.get('tecido')
                                    && formGroup.get('tecido')?.invalid
                                    && formGroup.get('tecido')?.touched">
                         O tecido é obrigatorio.
@@ -104,12 +103,12 @@
                     <input matInput type="text" id="coresInput" formControlName="cores">
                     <!-- Se desejar, adicione validação para o campo de cores -->
                 </mat-form-field>
-                
+
                 <!-- Botão para adicionar cor à lista -->
                 <button mat-raised-button color="primary" (click)="adicionarCor()" type="button">
                     Adicionar Cor
                 </button>
-                
+
                 <!-- Lista de cores adicionadas -->
                 <div *ngIf="coresList.length > 0">
                     <p>Lista de Cores Adicionadas:</p>

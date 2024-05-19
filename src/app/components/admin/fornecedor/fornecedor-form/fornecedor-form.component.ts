@@ -17,14 +17,14 @@ import { Telefone } from '../../../../models/telefone.model';
 import { ConfirmationDialogComponent } from '../../../confirmation/confirmation-dialog.component';
 import { ErrorComponent } from '../../../error/error.component';
 import { MatCard, MatCardActions, MatCardContent } from '@angular/material/card';
-import { NavsideComponent } from '../../../shared/sidebar/navside.component';
+import { SidebarComponent } from '../../../template/sidebar/sidebar.component';
 
 
 @Component({
   selector: 'app-fornecedor-form',
   standalone: true,
-  imports: [ErrorComponent, CommonModule, MatSelectModule,NavsideComponent,
-    MatOptionModule, RouterModule, NgIf, 
+  imports: [ErrorComponent, CommonModule, MatSelectModule,SidebarComponent,
+    MatOptionModule, RouterModule, NgIf,
     ReactiveFormsModule, FormsModule,MatCardContent, MatCardActions, MatCard,
     MatInputModule, MatFormFieldModule,
     MatIconModule, ConfirmationDialogComponent],
@@ -51,7 +51,7 @@ export class FornecedorFormComponent {
       dataContrato: ['', Validators.required],
       listaTelefones: this.formBuilder.array([
         this.createTelefoneFormGroup() ])
-    
+
     });
 
     const routeData = this.activatedRoute.snapshot.data;

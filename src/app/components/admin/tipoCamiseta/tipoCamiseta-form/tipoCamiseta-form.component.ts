@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { NgIf } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
@@ -12,18 +11,17 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
 import { MatSidenav, MatSidenavContainer, MatSidenavContent } from '@angular/material/sidenav';
-
 import { ConfirmationDialogComponent } from '../../../confirmation/confirmation-dialog.component';
-import { NavsideComponent } from '../../../shared/sidebar/navside.component';
 import { TipoCamiseta } from '../../../../models/tipocamiseta.model';
 import { TipoCamisetaService } from '../../../../services/tipoCamiseta.service';
 import { MatDialog } from '@angular/material/dialog';
+import { SidebarComponent } from '../../../template/sidebar/sidebar.component';
 
 
 @Component({
   selector: 'app-tipocamiseta-form',
   standalone: true,
-  imports: [NgIf, ReactiveFormsModule, MatFormFieldModule,NavsideComponent,
+  imports: [NgIf, ReactiveFormsModule, MatFormFieldModule, SidebarComponent,
     MatInputModule, MatButtonModule, MatCardModule, MatToolbarModule, RouterModule, MatMenuModule, MatListModule, MatDividerModule, MatSidenavContent,MatSidenavContainer,MatSidenav ],
   templateUrl: './tipoCamiseta-form.component.html',
   styleUrl: './tipoCamiseta-form.component.css'
@@ -45,7 +43,7 @@ export class TipoCamisetaFormComponent {
     this.formGroup = formBuilder.group({
       id: [(tipocamiseta && tipocamiseta.id) ? tipocamiseta.id : null],
       nome: [(tipocamiseta && tipocamiseta.nome) ? tipocamiseta.nome : '', Validators.required],
-      
+
     });
 
   }
