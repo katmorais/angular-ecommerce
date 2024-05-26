@@ -14,16 +14,14 @@ import { MatIcon } from '@angular/material/icon';
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css'
 })
-export class SidebarComponent implements OnInit {
-  @ViewChild('drawer') public drawer!: MatDrawer;
+export class SidebarComponent {
+  @ViewChild('drawer') drawer: MatDrawer | undefined;
 
-  constructor(private sideBarService: SidebarService) { }
-
-  ngOnInit(): void {
-    this.sideBarService.sideNavToggleSubject.subscribe(
-      () => {
-        this.drawer.toggle();
-      }
-    )
+  toggleDrawer() {
+    if (this.drawer) {
+      this.drawer.toggle();
+    } else {
+      console.error('Drawer is undefined');
+    }
   }
 }

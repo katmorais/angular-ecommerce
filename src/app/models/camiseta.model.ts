@@ -12,6 +12,7 @@ export class Camiseta{
   preco!: number
   estampa!: string
   tecido!: string
+  tamanho!: Tamanho
   fornecedor!: Fornecedor
   tipoCamiseta!: TipoCamiseta
   marca!: Marca

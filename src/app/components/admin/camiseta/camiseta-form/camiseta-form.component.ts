@@ -28,6 +28,7 @@ import { Marca } from '../../../../models/marca.model';
 import { MarcaService } from '../../../../services/marca.service';
 import { forkJoin } from 'rxjs';
 import { SidebarComponent } from '../../../template/sidebar/sidebar.component';
+import { Tamanho } from '../../../../models/tamanho.model';
 
 @Component({
   selector: 'app-camiseta-form',
@@ -38,7 +39,7 @@ import { SidebarComponent } from '../../../template/sidebar/sidebar.component';
   styleUrl: './camiseta-form.component.css'
 })
 export class CamisetaFormComponent implements OnInit {
-
+  tamanhos: Tamanho[] = [];
   coresList: string[] = [];
   tipoCamisetas: TipoCamiseta[] = [];
   camisetas: Camiseta[] = [];
@@ -46,7 +47,8 @@ export class CamisetaFormComponent implements OnInit {
   marcas: Marca[] = [];
   formGroup: FormGroup;
   camisetaForm = new FormGroup({
-  cores: new FormControl('')
+  cores: new FormControl(''),
+
   });
 
   constructor(private formBuilder: FormBuilder,
@@ -69,6 +71,7 @@ export class CamisetaFormComponent implements OnInit {
       preco: [(camiseta && camiseta.preco) ? camiseta.preco : '', Validators.required],
       estampa: [(camiseta && camiseta.estampa) ? camiseta.estampa : '', Validators.required],
       tecido: [(camiseta && camiseta.tecido) ? camiseta.tecido : '', Validators.required],
+      tamanho:[null],
       fornecedor: [null],
       tipoCamiseta: [null],
       marca: [null],
@@ -78,21 +81,32 @@ export class CamisetaFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    forkJoin([
-      this.fornecedorService.findAll(),
-      this.tipoCamisetaService.findAll(),
-      this.marcaService.findAll()
-    ]).subscribe(([fornecedores, tipoCamisetas, marcas]) => {
-      this.fornecedores = fornecedores;
-      this.tipoCamisetas = tipoCamisetas;
-      this.marcas = marcas;
+    this.fornecedorService.findAll().subscribe(data => {
+      this.fornecedores = data;
+      this.initializeForm();
+    });
+    this.tipoCamisetaService.findAll().subscribe(data => {
+      this.tipoCamisetas= data;
+      this.initializeForm();
+    });
+    this.marcaService.findAll().subscribe(data => {
+      this.marcas = data;
+      this.initializeForm();
+    });
+    this.camisetaService.getTamanho().subscribe(data => {
+      this.tamanhos = data;
       this.initializeForm();
     });
   }
 
 
+
+
+
   initializeForm() {
     const camiseta: Camiseta = this.activatedRoute.snapshot.data['camiseta'];
+
+    const tamanho = this.tamanhos.find(m => m.id === (camiseta?.tamanho?.id || null));
 
     // selecionando o fornecedor
     const fornecedor = this.fornecedores
@@ -107,6 +121,7 @@ export class CamisetaFormComponent implements OnInit {
       .find(marca => marca.id === (camiseta?.marca?.id || null));
 
 
+
     this.formGroup = this.formBuilder.group({
       id: [(camiseta && camiseta.id) ? camiseta.id : null],
       nome: [(camiseta && camiseta.nome) ? camiseta.nome : '', Validators.required],
@@ -115,6 +130,7 @@ export class CamisetaFormComponent implements OnInit {
       preco: [(camiseta && camiseta.preco) ? camiseta.preco : '', Validators.required],
       estampa: [(camiseta && camiseta.estampa) ? camiseta.estampa : '', Validators.required],
       tecido: [(camiseta && camiseta.tecido) ? camiseta.tecido : '', Validators.required],
+      tamanho: [camiseta?.tamanho?.id || null, Validators.required],
       fornecedor: [fornecedor],
       tipoCamiseta: [tipoCamiseta],
       marca: [marca],

@@ -1,24 +1,23 @@
 <mat-drawer-container class="example-container">
   <mat-drawer #drawer mode="side" opened>
-
     <mat-nav-list>
       <a mat-list-item routerLink="/">
         <mat-icon>home</mat-icon>
         <span>Home</span>
       </a>
-      <a mat-list-item routerLink="/admin/camisetas">
+      <a mat-list-item routerLink="/admin/camisetas/list">
         <mat-icon>style</mat-icon>
         <span>Controle de Camisetas</span>
       </a>
-      <a mat-list-item routerLink="/admin/cupons">
+      <a mat-list-item routerLink="/admin/cupons/list">
         <mat-icon>card_giftcard</mat-icon>
         <span>Controle de Cupons</span>
       </a>
-      <a mat-list-item routerLink="/admin/fornecedores">
+      <a mat-list-item routerLink="/admin/fornecedores/list">
         <mat-icon>store</mat-icon>
         <span>Controle de Fornecedores</span>
       </a>
-      <a mat-list-item routerLink="/admin/transportadoras">
+      <a mat-list-item routerLink="/admin/transportadoras/list">
         <mat-icon>local_shipping</mat-icon>
         <span>Controle de Transportadoras</span>
       </a>
@@ -27,6 +26,9 @@
 
   <mat-drawer-content>
     <mat-toolbar color="primary">
+      <button mat-icon-button (click)="toggleDrawer()">
+        <mat-icon>menu</mat-icon>
+      </button>
       <span>Administração</span>
     </mat-toolbar>
     <div class="content">

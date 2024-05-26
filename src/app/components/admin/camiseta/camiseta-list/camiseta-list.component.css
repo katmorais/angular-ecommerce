@@ -1,85 +1,73 @@
-/* Flex container para o layout principal */
-.flex-container {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap; /* Permitir que os elementos se ajustem a diferentes tamanhos de tela */
-  width: 100%; /* Utiliza toda a largura disponível */
-  max-width: 80%; /* Define uma largura máxima para a tabela */
-  margin: 0 auto; /* Centralizando a tabela na página */
+/* Estilizando a toolbar */
+.mat-toolbar {
+  background-color: #ffffff; /* Cor roxa para o fundo */
+  color: rgb(0, 0, 0); /* Cor do texto */
+  font-size: 20px; /* Tamanho do texto */
+  padding: 12px 24px; /* Espaçamento interno */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra */
 }
 
-/* Colunas da tabela */
-.mat-column-nome,
-.mat-column-descricao,
-.mat-column-estoque,
-.mat-column-preco,
-.mat-column-estampa,
-.mat-column-tecido,
-.mat-column-fornecedor,
-.mat-column-cor {
-  width: calc(45% / 7); /* Dividindo igualmente o espaço para todas as colunas */
+/* Estilizando o título da toolbar */
+.toolbar-title {
+  flex: 1; /* Expandir para ocupar o espaço disponível */
+  text-align: center; /* Centralizar o texto */
 }
 
+/* Estilizando os botões na toolbar */
+.mat-toolbar button {
+  color: rgb(255, 255, 255); /* Cor do texto dos botões */
+  background-color: #251e33; /* Cor de fundo roxa */
+  border: none; /* Remover borda */
+  font-size: 20px; /* Tamanho do ícone */
+  cursor: pointer; /* Cursor de ponteiro */
+  margin-left: 16px; /* Espaçamento à esquerda */
+}
+
+/* Estilizando os botões na toolbar no hover */
+.mat-toolbar button:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Cor de fundo com transparência */
+  border-radius: 100%; /* Borda arredondada */
+}
+
+
+/* Estilo para as colunas da tabela */
 .mat-column-id {
-  width: calc(50% - 60px); /* Ajustando a largura para deixar o ID perto do nome */
-  padding-right: 2%; /* Reduzindo o espaço entre o ID e o texto */
-  text-align: right; /* Alinhando o texto do ID à direita */
+  text-align: center; /* Alinhar o texto ao centro */
+  width:16%; /* Largura da coluna ID */
+}
+
+.mat-column-nome,
+.mat-column-dataContrato {
+  text-align: left; /* Alinhar o texto à esquerda */
+  width: 10%; /* Largura das colunas Nome e Data Contrato */
 }
 
 .mat-column-acao {
-  width: calc(100% / 7 * 2); /* Utiliza 2 colunas para a coluna de ação */
-  min-width: 10em; /* Largura mínima para a coluna "ação" */
-  text-align: center; /* Centralizando o texto na coluna "ação" */
+  text-align: center; /* Alinhar o texto ao centro */
+  width: 10%; /* Largura da coluna Ação */
 }
 
-/* Container dos botões */
-.button-container {
+
+/* Estilo para o container flexível */
+.flex-container {
   display: flex;
-  justify-content: flex-end;
-  width: 100%; /* Utiliza toda a largura disponível */
+  align-items: center;
+  width: 100%;
 }
 
-.button-container button {
-  margin-left: 10px;
-  font-size: 16px;
-  border: none;
-  border-radius: 5px;
-  padding: 8px 16px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+/* Estilizando os botões dentro da coluna de ação */
+.mat-column-acao button {
+  margin-right: 8px; /* Espaçamento entre os botões */
+  font-size: 16px; /* Tamanho do ícone */
+  border: none; /* Remover a borda */
 }
 
-/* Estilo para os botões na tabela */
-.mat-icon-button {
-  margin-left: 5px;
-  margin-right: 5px;
+/* Estilizando o ícone de edição */
+.mat-column-acao button[color="primary"] mat-icon {
+  color: #ecc43e; /* Cor verde para o ícone de edição */
 }
 
-/* Estilo para o botão de visualizar */
-.bnt-view {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-}
-
-.bnt-view:hover {
-  color: #4CAF50; /* Verde */
-}
-
-/* Estilo para o botão de editar */
-.mat-icon-button.edit-button {
-  color: #2196F3; /* Azul */
-}
-
-.mat-icon-button.edit-button:hover {
-  color: #0D47A1; /* Azul escuro */
-}
-
-/* Estilo para o botão de excluir */
-.mat-icon-button.delete-button {
-  color: #F44336; /* Vermelho */
-}
-
-.mat-icon-button.delete-button:hover {
-  color: #B71C1C; /* Vermelho escuro */
+/* Estilizando o ícone de exclusão */
+.mat-column-acao button[color="warn"] mat-icon {
+  color: #ce3a30; /* Cor vermelha para o ícone de exclusão */
 }

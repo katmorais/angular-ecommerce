@@ -1,12 +1,6 @@
-<mat-toolbar color="primary">
-    <div class="flex-container">
-      <span class="toolbar-title">Controle de Cupons</span>
-      <button mat-fab color="accent" routerLink="/cartoes/new">
-        <mat-icon>add</mat-icon>
-      </button>
-    </div>
-  </mat-toolbar>
-
+  <div class="navbar-brand">
+       <span>Cadastro de Cupons</span>
+  </div>
   <table mat-table [dataSource]="cupom" class="mat-elevation-z8">
 
       <!-- Position Column -->
@@ -48,7 +42,6 @@
           </button>
         </td>
       </ng-container>
-
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>

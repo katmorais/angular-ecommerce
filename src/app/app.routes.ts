@@ -1,7 +1,9 @@
 import { Routes } from "@angular/router";
+import { CamisetaCardListComponent } from "./components/admin/camiseta-card-list/camiseta-card-list.component";
 import { CamisetaFormComponent } from "./components/admin/camiseta/camiseta-form/camiseta-form.component";
 import { CamisetaListComponent } from "./components/admin/camiseta/camiseta-list/camiseta-list.component";
 import { camisetaResolver } from "./components/admin/camiseta/resolver/camiseta-resolver";
+import { CarrinhoComponent } from "./components/admin/carrinho/carrinho.component";
 import { CartaoFormComponent } from "./components/admin/cartao/cartao-form/cartao-form.component";
 import { CartaoListComponent } from "./components/admin/cartao/cartao-list/cartao-list.component";
 import { cartaoResolver } from "./components/admin/cartao/resolver/cartao-resolver";
@@ -9,6 +11,7 @@ import { CidadeFormComponent } from "./components/admin/cidade/cidade-form/cidad
 import { CidadeListComponent } from "./components/admin/cidade/cidade-list/cidade-list.component";
 import { cidadeResolver } from "./components/admin/cidade/resolver/cidade-resolver";
 import { CupomFormComponent } from "./components/admin/cupom/cupom-form/cupom-form.component";
+import { CupomListComponent } from "./components/admin/cupom/cupom-list/cupom-list.component";
 import { cupomResolver } from "./components/admin/cupom/resolver/cupom-resolver";
 import { EstadoFormComponent } from "./components/admin/estado/estado-form/estado-form.component";
 import { EstadoListComponent } from "./components/admin/estado/estado-list/estado-list.component";
@@ -18,6 +21,7 @@ import { FornecedorListComponent } from "./components/admin/fornecedor/fornecedo
 import { fornecedorResolver } from "./components/admin/fornecedor/resolver/fornecedor-resolver";
 import { MarcaFormComponent } from "./components/admin/marca/marca-form/marca-form.component";
 import { MarcaListComponent } from "./components/admin/marca/marca-list/marca-list.component";
+import { marcaResolver } from "./components/admin/marca/resolver/marca-resolver";
 import { tipocamisetaResolver } from "./components/admin/tipoCamiseta/resolver/tipoCamiseta-resolver";
 import { TipoCamisetaFormComponent } from "./components/admin/tipoCamiseta/tipoCamiseta-form/tipoCamiseta-form.component";
 import { TipoCamisetaListComponent } from "./components/admin/tipoCamiseta/tipoCamiseta-list/tipoCamiseta.list.component";
@@ -27,13 +31,9 @@ import { TransportadoraListComponent } from "./components/admin/transportadora/t
 import { usuarioResolver } from "./components/admin/usuario/resolver/usuario-resolver";
 import { UsuarioFormComponent } from "./components/admin/usuario/usuario-form/usuario-form.component";
 import { UsuarioListComponent } from "./components/admin/usuario/usuario-list/usuario-list.component";
-import { CupomListComponent } from "./components/admin/cupom/cupom-list/cupom-list.component";
-import { marcaResolver } from "./components/admin/marca/resolver/marca-resolver";
 import { LoginComponent } from "./components/login/login.component";
-import { CamisetaCardListComponent } from "./components/admin/camiseta-card-list/camiseta-card-list.component";
-import { CarrinhoComponent } from "./components/admin/carrinho/carrinho.component";
-import { UserTemplateComponent } from "./components/template/user-template/user-template.component";
 import { AdminTemplateComponent } from "./components/template/admin-template/admin-template.component";
+import { UserTemplateComponent } from "./components/template/user-template/user-template.component";
 
 export const routes: Routes = [
 

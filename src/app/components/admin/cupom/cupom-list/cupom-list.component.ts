@@ -8,17 +8,15 @@ import { RouterModule } from '@angular/router';
 import { Cupom } from '../../../../models/cupom.model';
 import { CupomService } from '../../../../services/cupom.service';
 
-
 @Component({
   selector: 'app-cupom-list',
   standalone: true,
-  imports: [NgFor, MatTableModule, MatToolbarModule, MatIconModule
-    , MatButtonModule, RouterModule],
+  imports: [NgFor, MatTableModule, MatToolbarModule, MatIconModule , MatButtonModule, RouterModule],
   templateUrl: './cupom-list.component.html',
   styleUrl: './cupom-list.component.css'
 })
 export class CupomListComponent implements OnInit {
-  displayedColumns: string[] = ['nome', 'codigo', 'valorDesconto', 'validade', 'acao'];
+  displayedColumns: string[] = ['id', 'codigo', 'valorDesconto', 'validade', 'acao'];
 
   cupom: Cupom[] = [];
 

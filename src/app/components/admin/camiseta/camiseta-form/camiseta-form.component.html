@@ -65,6 +65,19 @@
                     </mat-error>
                 </mat-form-field>
 
+                <mat-form-field appearance="outline" class="full-width-input">
+                  <mat-label for="tamanho-id">Tamanho</mat-label>
+                  <mat-select formControlName="tamanho" id="tamanho-id">
+                    <mat-option *ngFor="let tamanho of tamanhos" [value]="tamanho">
+                      {{tamanho.label}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="formGroup.get('tamanho')?.getError('apiError')">
+                    {{formGroup.get('tamanho')?.getError('apiError')}}
+                  </mat-error>
+                </mat-form-field>
+
+
                 <mat-form-field appearance="fill">
                     <mat-label>Fornecedor</mat-label>
                     <mat-select formControlName="fornecedor">
