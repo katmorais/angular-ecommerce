@@ -32,6 +32,18 @@ export class CamisetaService {
   findByNome(nome: string): Observable<Camiseta[]> {
     return this.httpClient.get<Camiseta[]>(`${this.baseUrl}/search/nome/${nome}`);
   }
+  getUrlImagem(nomeImagem: string): string {
+    return `${this.baseUrl}/image/download/${nomeImagem}`;
+  }
+
+  uploadImagem(id: number, nomeImagem: string, imagem: File): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append('id', id.toString());
+    formData.append('nomeImagem', imagem.name);
+    formData.append('imagem', imagem, imagem.name);
+
+    return this.httpClient.patch<Camiseta>(`${this.baseUrl}/image/upload`, formData);
+  }
 
   findByCamiseta(camiseta: string): Observable<Camiseta[]> {
     return this.httpClient.get<Camiseta[]>(`${this.baseUrl}/search/camiseta/${camiseta}`);
@@ -49,11 +61,11 @@ export class CamisetaService {
       preco: camiseta.preco,
       estampa: camiseta.estampa,
       tecido: camiseta.tecido,
-      idTamanho: camiseta.tamanho.id,
       idFornecedor: camiseta.fornecedor.id,
       idTipoCamiseta: camiseta.tipoCamiseta.id,
       idMarca: camiseta.marca.id,
-      cor: camiseta.cor
+      cor: camiseta.cor,
+      tamanho: camiseta.tamanho
     }
     return this.httpClient.post<Camiseta>(this.baseUrl, data);
   }
@@ -66,7 +78,6 @@ export class CamisetaService {
       preco: camiseta.preco,
       estampa: camiseta.estampa,
       tecido: camiseta.tecido,
-      idTamanho: camiseta.tamanho.id,
       idFornecedor: camiseta.fornecedor.id,
       idTipoCamiseta: camiseta.tipoCamiseta.id,
       idMarca: camiseta.marca.id,
@@ -78,10 +89,6 @@ export class CamisetaService {
 
   delete(camiseta: Camiseta): Observable<any> {
     return this.httpClient.delete<any>(`${this.baseUrl}/${camiseta.id}`);
-  }
-
-  getTamanho(): Observable<Tamanho[]> {
-    return this.httpClient.get<Tamanho[]>(`${this.baseUrl}/tamanho`);
   }
 
 }

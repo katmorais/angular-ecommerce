@@ -29,6 +29,7 @@ import { MarcaService } from '../../../../services/marca.service';
 import { forkJoin } from 'rxjs';
 import { SidebarComponent } from '../../../template/sidebar/sidebar.component';
 import { Tamanho } from '../../../../models/tamanho.model';
+import { Tamanhos } from '../../../../models/tamanho.enum';
 
 @Component({
   selector: 'app-camiseta-form',
@@ -39,7 +40,7 @@ import { Tamanho } from '../../../../models/tamanho.model';
   styleUrl: './camiseta-form.component.css'
 })
 export class CamisetaFormComponent implements OnInit {
-  tamanhos: Tamanho[] = [];
+  tamanhos = Tamanhos;
   coresList: string[] = [];
   tipoCamisetas: TipoCamiseta[] = [];
   camisetas: Camiseta[] = [];
@@ -80,6 +81,10 @@ export class CamisetaFormComponent implements OnInit {
     });
   }
 
+  print() {
+    console.log(this.formGroup.value);
+  }
+
   ngOnInit(): void {
     this.fornecedorService.findAll().subscribe(data => {
       this.fornecedores = data;
@@ -93,20 +98,10 @@ export class CamisetaFormComponent implements OnInit {
       this.marcas = data;
       this.initializeForm();
     });
-    this.camisetaService.getTamanho().subscribe(data => {
-      this.tamanhos = data;
-      this.initializeForm();
-    });
   }
-
-
-
-
 
   initializeForm() {
     const camiseta: Camiseta = this.activatedRoute.snapshot.data['camiseta'];
-
-    const tamanho = this.tamanhos.find(m => m.id === (camiseta?.tamanho?.id || null));
 
     // selecionando o fornecedor
     const fornecedor = this.fornecedores
@@ -130,7 +125,7 @@ export class CamisetaFormComponent implements OnInit {
       preco: [(camiseta && camiseta.preco) ? camiseta.preco : '', Validators.required],
       estampa: [(camiseta && camiseta.estampa) ? camiseta.estampa : '', Validators.required],
       tecido: [(camiseta && camiseta.tecido) ? camiseta.tecido : '', Validators.required],
-      tamanho: [camiseta?.tamanho?.id || null, Validators.required],
+      tamanho: [camiseta?.tamanho || null, Validators.required],
       fornecedor: [fornecedor],
       tipoCamiseta: [tipoCamiseta],
       marca: [marca],
@@ -140,12 +135,14 @@ export class CamisetaFormComponent implements OnInit {
   }
 
   salvar() {
+    console.log(this.formGroup.value);
     if (this.formGroup.valid) {
+
       const camiseta = this.formGroup.value;
       if (camiseta.id == null) {
         this.camisetaService.insert(camiseta).subscribe({
           next: (camisetaCadastrado) => {
-            this.router.navigateByUrl('/camisetas/list');
+            this.router.navigateByUrl('admin/camisetas/list');
           },
           error: (err) => {
             console.log('Erro ao Incluir' + JSON.stringify(err));
@@ -154,7 +151,7 @@ export class CamisetaFormComponent implements OnInit {
       } else {
         this.camisetaService.update(camiseta).subscribe({
           next: (camisetaAlterado) => {
-            this.router.navigateByUrl('/camisetas/list');
+            this.router.navigateByUrl('admin/camisetas/list');
           },
           error: (err) => {
             console.log('Erro ao Editar' + JSON.stringify(err));
@@ -170,7 +167,7 @@ export class CamisetaFormComponent implements OnInit {
       if (camiseta.id != null) {
         this.camisetaService.delete(camiseta).subscribe({
           next: () => {
-            this.router.navigateByUrl('/camisetas/list');
+            this.router.navigateByUrl('admin/camisetas/list');
           },
           error: (err) => {
             console.log('Erro ao Excluir' + JSON.stringify(err));
@@ -190,7 +187,7 @@ export class CamisetaFormComponent implements OnInit {
             // Atualizar lista de camisetaes após exclusão
             this.camisetas = this.camisetas.filter(adm => adm.id !== camiseta.id);
 
-            this.router.navigateByUrl('/camisetas/list');
+            this.router.navigateByUrl('admin/camisetas/list');
           },
           error => {
             console.log('Erro ao excluir camiseta:', error);

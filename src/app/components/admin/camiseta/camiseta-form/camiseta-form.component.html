@@ -68,7 +68,7 @@
                 <mat-form-field appearance="outline" class="full-width-input">
                   <mat-label for="tamanho-id">Tamanho</mat-label>
                   <mat-select formControlName="tamanho" id="tamanho-id">
-                    <mat-option *ngFor="let tamanho of tamanhos" [value]="tamanho">
+                    <mat-option *ngFor="let tamanho of tamanhos" [value]="tamanho.value">
                       {{tamanho.label}}
                     </mat-option>
                   </mat-select>
@@ -76,7 +76,6 @@
                     {{formGroup.get('tamanho')?.getError('apiError')}}
                   </mat-error>
                 </mat-form-field>
-
 
                 <mat-form-field appearance="fill">
                     <mat-label>Fornecedor</mat-label>
@@ -145,7 +144,7 @@
                 [disabled]="formGroup.invalid">
                 Excluir
             </button>
-            <button mat-raised-button routerLink="/camisetas/list">
+            <button mat-raised-button routerLink="camisetas/list">
                 Cancelar
             </button>
 

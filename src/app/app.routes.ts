@@ -1,5 +1,5 @@
 import { Routes } from "@angular/router";
-import { CamisetaCardListComponent } from "./components/admin/camiseta-card-list/camiseta-card-list.component";
+
 import { CamisetaFormComponent } from "./components/admin/camiseta/camiseta-form/camiseta-form.component";
 import { CamisetaListComponent } from "./components/admin/camiseta/camiseta-list/camiseta-list.component";
 import { camisetaResolver } from "./components/admin/camiseta/resolver/camiseta-resolver";
@@ -34,6 +34,7 @@ import { UsuarioListComponent } from "./components/admin/usuario/usuario-list/us
 import { LoginComponent } from "./components/login/login.component";
 import { AdminTemplateComponent } from "./components/template/admin-template/admin-template.component";
 import { UserTemplateComponent } from "./components/template/user-template/user-template.component";
+import { CamisetaCardListComponent } from "./components/admin/camiseta-card-list/camiseta-card-list.component";
 
 export const routes: Routes = [
 
@@ -48,7 +49,6 @@ export const routes: Routes = [
         { path: 'login', component: LoginComponent, title: 'Login'},
         { path: 'carrinho', component: CarrinhoComponent, title: 'Carrinho de pedidos'},
     ]
-
   },
 
   {
@@ -100,9 +100,7 @@ export const routes: Routes = [
 
         { path: 'usuarios/:id/addcard', component: CartaoFormComponent, title: 'Lista de usuarios',resolve:{usuario: usuarioResolver}},
       ]
-
     },
-
 ];
 
 

@@ -1,7 +1,7 @@
 import { Cor } from "./cor.model"
 import { Fornecedor } from "./fornecedor.model"
 import { Marca } from "./marca.model"
-import { Tamanho } from "./tamanho.model"
+import { TamanhoEnum } from "./tamanho.enum"
 import { TipoCamiseta } from "./tipocamiseta.model"
 
 export class Camiseta{
@@ -12,10 +12,11 @@ export class Camiseta{
   preco!: number
   estampa!: string
   tecido!: string
-  tamanho!: Tamanho
+  tamanho!: TamanhoEnum
   fornecedor!: Fornecedor
   tipoCamiseta!: TipoCamiseta
   marca!: Marca
   cor!: Cor
+  nomeImagem!: string;
 }
 

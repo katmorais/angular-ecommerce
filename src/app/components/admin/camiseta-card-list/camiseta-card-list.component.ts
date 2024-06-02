@@ -1,17 +1,19 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { MatCard, MatCardActions, MatCardContent, MatCardFooter, MatCardTitle } from '@angular/material/card';
+
 import { NgFor } from '@angular/common';
 import { MatButton } from '@angular/material/button';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Camiseta } from '../../../models/camiseta.model';
-import { CamisetaService } from '../../../services/camiseta.service';
 import { CarrinhoService } from '../../../services/carrinho.service';
+import { CamisetaService } from '../../../services/camiseta.service';
 
 // tipo personalizado de dados, como classes e interfaces, porém mais simples.
 type Card = {
   idCamiseta: number;
   titulo: string;
   preco: number;
+  urlImagem: string;
 }
 
 @Component({
@@ -48,7 +50,8 @@ export class CamisetaCardListComponent implements OnInit {
       cards.push({
         idCamiseta: camiseta.id,
         titulo: camiseta.nome,
-        preco: camiseta.preco
+        preco: camiseta.preco,
+        urlImagem: this.camisetaService.getUrlImagem(camiseta.nomeImagem)
       });
     });
     this.cards.set(cards);
