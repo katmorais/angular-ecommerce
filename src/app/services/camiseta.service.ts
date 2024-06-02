@@ -45,6 +45,14 @@ export class CamisetaService {
     return this.httpClient.patch<Camiseta>(`${this.baseUrl}/image/upload`, formData);
   }
 
+  save(camiseta: Camiseta): Observable<Camiseta> {
+    const obj = {
+      nome: camiseta.nome,
+      preco: camiseta.preco
+    }
+    return this.httpClient.post<Camiseta>(`${this.baseUrl}`, obj);
+  }
+
   findByCamiseta(camiseta: string): Observable<Camiseta[]> {
     return this.httpClient.get<Camiseta[]>(`${this.baseUrl}/search/camiseta/${camiseta}`);
   }

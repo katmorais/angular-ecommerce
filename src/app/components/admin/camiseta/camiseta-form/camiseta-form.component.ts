@@ -3,7 +3,6 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } 
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { NgFor, NgIf } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
@@ -30,6 +29,7 @@ import { forkJoin } from 'rxjs';
 import { SidebarComponent } from '../../../template/sidebar/sidebar.component';
 import { Tamanho } from '../../../../models/tamanho.model';
 import { Tamanhos } from '../../../../models/tamanho.enum';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-camiseta-form',
@@ -39,16 +39,22 @@ import { Tamanhos } from '../../../../models/tamanho.enum';
   templateUrl: './camiseta-form.component.html',
   styleUrl: './camiseta-form.component.css'
 })
-export class CamisetaFormComponent implements OnInit {
+export class CamisetaFormComponent {
+  formGroup: FormGroup;
+  apiResponse: any = null;
+
+  fileName: string = '';
+  selectedFile: File | null = null;
+  imagePreview: string | ArrayBuffer | null = null
+
   tamanhos = Tamanhos;
   coresList: string[] = [];
   tipoCamisetas: TipoCamiseta[] = [];
   camisetas: Camiseta[] = [];
   fornecedores: Fornecedor[] = [];
   marcas: Marca[] = [];
-  formGroup: FormGroup;
   camisetaForm = new FormGroup({
-  cores: new FormControl(''),
+  cores: new FormControl('')
 
   });
 
@@ -60,7 +66,8 @@ export class CamisetaFormComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private dialog: MatDialog,
-    private dialogError: MatDialog) {
+    private dialogError: MatDialog,
+    private location: Location) {
 
     const camiseta: Camiseta = activatedRoute.snapshot.data['camiseta'];
 
@@ -134,31 +141,48 @@ export class CamisetaFormComponent implements OnInit {
     });
   }
 
-  salvar() {
-    console.log(this.formGroup.value);
-    if (this.formGroup.valid) {
+  voltarPagina() {
+    this.location.back();
+  }
 
+  salvar() {
+    if (this.formGroup.valid) {
       const camiseta = this.formGroup.value;
       if (camiseta.id == null) {
-        this.camisetaService.insert(camiseta).subscribe({
-          next: (camisetaCadastrado) => {
-            this.router.navigateByUrl('admin/camisetas/list');
+        this.camisetaService.save(camiseta).subscribe({
+          next: (camisetaCadastrada) => {
+            this.uploadImage(camisetaCadastrada.id);
           },
-          error: (err) => {
-            console.log('Erro ao Incluir' + JSON.stringify(err));
+          error: (errorResponse) => {
+             // Processar erros da API
+            this.apiResponse = errorResponse.error;
+
+            // Associar erros aos campos do formulário
+            this.formGroup.get('nome')?.setErrors({ apiError: this.getErrorMessage('nome') });
+            this.formGroup.get('preco')?.setErrors({ apiError: this.getErrorMessage('preco') });
+
+            console.log('Erro ao incluir' + JSON.stringify(errorResponse));
           }
         });
       } else {
         this.camisetaService.update(camiseta).subscribe({
-          next: (camisetaAlterado) => {
-            this.router.navigateByUrl('admin/camisetas/list');
+          next: (camisetaAtualizada) => {
+            this.uploadImage(camisetaAtualizada.id);
           },
           error: (err) => {
-            console.log('Erro ao Editar' + JSON.stringify(err));
+            console.log('Erro ao alterar' + JSON.stringify(err));
           }
         });
       }
     }
+  }
+
+  getErrorMessage(fieldName: string): string {
+    if (this.apiResponse && this.apiResponse.errors && this.apiResponse.errors.length > 0) {
+      const error = this.apiResponse.errors.find((error: any) => error.fieldName === fieldName);
+      return error ? error.message : '';
+    }
+    return '';
   }
 
   excluir() {
@@ -229,8 +253,35 @@ export class CamisetaFormComponent implements OnInit {
     }
   }
 
+  carregarImagemSelecionada(event: any) {
+    this.selectedFile = event.target.files[0];
 
+    if (this.selectedFile) {
+      this.fileName = this.selectedFile.name;
+      // carregando image preview
+      const reader = new FileReader();
+      reader.onload = e => this.imagePreview = reader.result;
+      reader.readAsDataURL(this.selectedFile);
+    }
 
+  }
+
+  private uploadImage(camisetaId: number) {
+    if (this.selectedFile) {
+      this.camisetaService.uploadImagem(camisetaId, this.selectedFile.name, this.selectedFile)
+      .subscribe({
+        next: () => {
+          this.voltarPagina();
+        },
+        error: err => {
+          console.log('Erro ao fazer o upload da imagem');
+          // tratar o erro
+        }
+      })
+    } else {
+      this.voltarPagina();
+    }
+  }
 
 }
 

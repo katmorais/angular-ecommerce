@@ -1,12 +1,13 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { MatCard, MatCardActions, MatCardContent, MatCardFooter, MatCardTitle } from '@angular/material/card';
 
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 import { NgFor } from '@angular/common';
 import { MatButton } from '@angular/material/button';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Camiseta } from '../../../models/camiseta.model';
-import { CarrinhoService } from '../../../services/carrinho.service';
 import { CamisetaService } from '../../../services/camiseta.service';
+import { CarrinhoService } from '../../../services/carrinho.service';
 
 // tipo personalizado de dados, como classes e interfaces, porém mais simples.
 type Card = {
