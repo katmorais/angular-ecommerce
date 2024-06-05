@@ -35,6 +35,7 @@ import { LoginComponent } from "./components/login/login.component";
 import { AdminTemplateComponent } from "./components/template/admin-template/admin-template.component";
 import { UserTemplateComponent } from "./components/template/user-template/user-template.component";
 import { CamisetaCardListComponent } from "./components/admin/camiseta-card-list/camiseta-card-list.component";
+import { authGuard } from "./guard/auth.guard";
 
 export const routes: Routes = [
 
@@ -59,48 +60,47 @@ export const routes: Routes = [
         {path: '', pathMatch: 'full', redirectTo: 'estados'},
 
         { path: 'estados', component: EstadoListComponent, title: 'Lista de Estados'},
-        { path: 'estados/new', component: EstadoFormComponent, title: 'Novo Estado'},
+        { path: 'estados/new', component: EstadoFormComponent, title: 'Novo Estado', canActivate: [authGuard]},
         { path: 'estados/edit/:id', component: EstadoFormComponent, resolve: {estado: estadoResolver}},
 
         { path: 'cidades', component: CidadeListComponent, title: 'Lista de Cidades'},
-        { path: 'cidades/new', component: CidadeFormComponent, title: 'Nova Cidade'},
+        { path: 'cidades/new', component: CidadeFormComponent, title: 'Nova Cidade', canActivate: [authGuard]},
         { path: 'cidades/edit/:id', component: CidadeFormComponent, resolve: {cidade: cidadeResolver}},
 
         { path: 'transportadoras/list', component: TransportadoraListComponent, title: 'Lista de Transportadoras'},
-        { path: 'transportadoras/new', component: TransportadoraFormComponent, title: 'Nova Transportadora'},
+        { path: 'transportadoras/new', component: TransportadoraFormComponent, title: 'Nova Transportadora', canActivate: [authGuard]},
         { path: 'transportadoras/edit/:id', component: TransportadoraFormComponent, resolve: {transportadora: transportadoraResolver}},
 
         { path: 'cartoes', component: CartaoListComponent, title: 'Lista de Cartoes'},
-        { path: 'cartoes/new', component: CartaoFormComponent, title: 'Novo Cartoes'},
+        { path: 'cartoes/new', component: CartaoFormComponent, title: 'Novo Cartoes', canActivate: [authGuard]},
         { path: 'cartoes/edit/:id', component: CartaoFormComponent, resolve: {cartao: cartaoResolver}},
 
         { path: 'cupons/list', component: CupomListComponent, title: 'Lista de Cupons'},
-        { path: 'cupons/new', component: CupomFormComponent, title: 'Novo Cupom'},
+        { path: 'cupons/new', component: CupomFormComponent, title: 'Novo Cupom', canActivate: [authGuard]},
         { path: 'cupons/edit/:id', component: CupomFormComponent, resolve: {cupom: cupomResolver}},
 
         { path: 'camisetas/list', component: CamisetaListComponent, title: 'Lista de Camisetas'},
-        { path: 'camisetas/new', component: CamisetaFormComponent, title: 'Nova Camiseta'},
+        { path: 'camisetas/new', component: CamisetaFormComponent, title: 'Nova Camiseta',canActivate: [authGuard]},
         { path: 'camisetas/edit/:id', component: CamisetaFormComponent, resolve: {camiseta: camisetaResolver}},
 
         { path: 'fornecedores/list', component: FornecedorListComponent, title: 'Lista de Fornecedores'},
-        { path: 'fornecedores/new', component: FornecedorFormComponent, title: 'Novo Fornecedor'},
+        { path: 'fornecedores/new', component: FornecedorFormComponent, title: 'Novo Fornecedor', canActivate: [authGuard]},
         { path: 'fornecedores/edit/:id', component: FornecedorFormComponent, resolve: {fornecedor: fornecedorResolver}},
 
         { path: 'tipocamisetas/list', component: TipoCamisetaListComponent, title: 'Lista de tipos de Camisetas'},
-        { path: 'tipocamisetas/new', component: TipoCamisetaFormComponent, title: 'Novo Tipo de Camiseta'},
+        { path: 'tipocamisetas/new', component: TipoCamisetaFormComponent, title: 'Novo Tipo de Camiseta', canActivate: [authGuard]},
         { path: 'tipocamisetas/edit/:id', component: TipoCamisetaFormComponent, resolve: {tipoCamiseta: tipocamisetaResolver}},
 
         { path: 'marcas/list', component: MarcaListComponent, title: 'Lista de Marcas'},
-        { path: 'marcas/new', component: MarcaFormComponent, title: 'Novo Tipo de Marca'},
+        { path: 'marcas/new', component: MarcaFormComponent, title: 'Novo Tipo de Marca', canActivate: [authGuard]},
         { path: 'marcas/edit/:id', component: MarcaFormComponent, resolve: {marcaCamiseta: marcaResolver}},
 
         { path: 'usuarios/list', component: UsuarioListComponent, title: 'Lista de Usuarios'},
-        { path: 'usuarios/new', component: UsuarioFormComponent, title: 'Novo Usuario'},
+        { path: 'usuarios/new', component: UsuarioFormComponent, title: 'Novo Usuario', canActivate: [authGuard]},
         { path: 'usuarios/edit/:id', component: UsuarioFormComponent, resolve: {usuario: usuarioResolver}},
 
-        { path: 'usuarios/:id/addcard', component: CartaoFormComponent, title: 'Lista de usuarios',resolve:{usuario: usuarioResolver}},
-      ]
-    },
+    ]},
+
 ];
 
 

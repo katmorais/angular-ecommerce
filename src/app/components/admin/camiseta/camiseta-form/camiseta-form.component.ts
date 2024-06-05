@@ -27,7 +27,6 @@ import { Marca } from '../../../../models/marca.model';
 import { MarcaService } from '../../../../services/marca.service';
 import { forkJoin } from 'rxjs';
 import { SidebarComponent } from '../../../template/sidebar/sidebar.component';
-import { Tamanho } from '../../../../models/tamanho.model';
 import { Tamanhos } from '../../../../models/tamanho.enum';
 import { Location } from '@angular/common';
 
@@ -39,7 +38,7 @@ import { Location } from '@angular/common';
   templateUrl: './camiseta-form.component.html',
   styleUrl: './camiseta-form.component.css'
 })
-export class CamisetaFormComponent {
+export class CamisetaFormComponent implements OnInit{
   formGroup: FormGroup;
   apiResponse: any = null;
 
