@@ -1,132 +1,73 @@
-/* Estilos padrão para mat-form-field */
-.full-width-input {
-    width: 100%; /* Largura total */
-    margin-bottom: 300px; /* Espaçamento na parte inferior do campo de entrada */
-    padding: 100px 7px; /* Ajusta o padding interno do campo */
-  }
-  
-  /* Estilos para mat-card */
-  mat-card {
-    width: 90%; /* Largura total */
-    max-width: 1000px; /* Defina o máximo de largura desejado */
-    margin: 2rem auto; /* Centraliza o cartão */
-    border: 1px solid #e7e2e2; /* Adiciona uma borda sólida com cor cinza */
-    border-radius: 4px; /* Adiciona bordas arredondadas */
-    font-size: smaller; /* Define o tamanho da fonte para menor */
-  }
-  
-  /* Estilos para mat-card-actions */
-  mat-card-actions {
-    display: flex;
-    justify-content: flex-end; /* Alinha os itens à direita */
-  }
-  
-  .form-container {
-    padding: 1rem; /* Adiciona padding ao redor do formulário */
-    margin-top: 3rem; /* Adiciona margem superior para separá-lo de outros elementos */
-  }
-  
-  
-  /* Estilos para .centered-toolbar */
-  .centered-toolbar {
-    display: flex;
-    justify-content: center; /* Centraliza horizontalmente */
-    font-size: 1.5rem; /* Tamanho da fonte maior */
-  }
-  
-  /* Estilos para botão mat-raised-button */
-  button[mat-raised-button] {
-    width: auto; /* Largura automática */
-    padding: 8px 16px; /* Ajusta o padding do botão */
-    background-color:  #251e33; /* Cor de fundo azul */
-    color: #ffffff; /* Cor do texto branco */
-    border: none; /* Remove a borda */
-    border-radius: 4px; /* Adiciona bordas arredondadas */
-    cursor: pointer; /* Altera o cursor para apontador */
-    transition: background-color 0.3s; /* Adiciona uma transição suave à mudança de cor de fundo */
-  }
-  
-  button[mat-raised-button]:hover {
-    background-color: #ffffff; /* Cor de fundo alterada no hover */
-    color:  #251e33; 
-  }
-  
-  button[mat-raised-button]:not(:last-child) {
-    margin-right: 1rem; /* Adiciona margem à direita de todos os botões, exceto o último */
-  }
-  
-  
-  /* Estilos para a barra lateral */
-  .sidebar {
-    height: 100%;
-    width: 200px; /* Alterado para 200px */
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: #211a30;
-    color: #fff;
-  }
-  
-  /* Estilos para .sidebar-header */
-  .sidebar-header {
-    padding: 20px;
-    border-bottom: 1px solid #444;
-  }
-  
-  /* Estilos para .navbar-brand */
-  .navbar-brand {
-    font-size: 15px;
-    text-align: center; /* Centraliza horizontalmente */
-    line-height: 50px; /* Ajusta a altura da linha para centralizar verticalmente */
-  }
-  .navbar-brand2 {
-    font-size: 20px;
-    text-align: center; /* Centraliza horizontalmente */
-    line-height: 3px; /* Ajusta a altura da linha para centralizar verticalmente */
-  }
-  
-  
-  /* Estilos para .navbar-nav */
-  .navbar-nav {
-    padding: 20px;
-  }
-  
-  /* Estilos para .navbar-nav ul */
-  .navbar-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  /* Estilos para .navbar-nav ul li */
-  .navbar-nav ul li {
-    margin-bottom: 15px;
-  }
-  
-  /* Estilos para .navbar-nav ul li a */
-  .navbar-nav ul li a {
-    text-decoration: none;
-    color: #fff;
-    display: flex;
-    align-items: center;
-  }
-  
-  /* Estilos para .navbar-nav ul li a i */
-  .navbar-nav ul li a i {
-    margin-right: 10px;
-  }
-  .sidebar-header {
-    background-color: #251e33; /* Cor de fundo roxa */
-    padding: 30px 2px; /* Espaçamento interno */
-  }
-  
-  .navbar-brand {
-    font-size: 20px; /* Tamanho da fonte */
-    color: #251e33; /* Cor do texto branco */
-  }
-  
-  .mat-paginator {
-    font-size: x-small; /* Reduz ainda mais o tamanho da fonte */
-    margin-top: 0; /* Remove a margem superior */
-  }
-  
+/* Estilizando a toolbar */
+.mat-toolbar {
+  background-color: #ffffff; /* Cor roxa para o fundo */
+  color: rgb(0, 0, 0); /* Cor do texto */
+  font-size: 20px; /* Tamanho do texto */
+  padding: 12px 24px; /* Espaçamento interno */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+/* Estilizando o título da toolbar */
+.toolbar-title {
+  flex: 1; /* Expandir para ocupar o espaço disponível */
+  text-align: center; /* Centralizar o texto */
+}
+
+/* Estilizando os botões na toolbar */
+.mat-toolbar button {
+  color: rgb(255, 255, 255); /* Cor do texto dos botões */
+  background-color: #251e33; /* Cor de fundo roxa */
+  border: none; /* Remover borda */
+  font-size: 20px; /* Tamanho do ícone */
+  cursor: pointer; /* Cursor de ponteiro */
+  margin-left: 16px; /* Espaçamento à esquerda */
+}
+
+/* Estilizando os botões na toolbar no hover */
+.mat-toolbar button:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Cor de fundo com transparência */
+  border-radius: 100%; /* Borda arredondada */
+}
+
+
+/* Estilo para as colunas da tabela */
+.mat-column-id {
+  text-align: center; /* Alinhar o texto ao centro */
+  width:16%; /* Largura da coluna ID */
+}
+
+.mat-column-nome,
+.mat-column-dataContrato {
+  text-align: left; /* Alinhar o texto à esquerda */
+  width: 10%; /* Largura das colunas Nome e Data Contrato */
+}
+
+.mat-column-acao {
+  text-align: center; /* Alinhar o texto ao centro */
+  width: 10%; /* Largura da coluna Ação */
+}
+
+
+/* Estilo para o container flexível */
+.flex-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+/* Estilizando os botões dentro da coluna de ação */
+.mat-column-acao button {
+  margin-right: 8px; /* Espaçamento entre os botões */
+  font-size: 16px; /* Tamanho do ícone */
+  border: none; /* Remover a borda */
+}
+
+/* Estilizando o ícone de edição */
+.mat-column-acao button[color="primary"] mat-icon {
+  color: #ecc43e; /* Cor verde para o ícone de edição */
+}
+
+/* Estilizando o ícone de exclusão */
+.mat-column-acao button[color="warn"] mat-icon {
+  color: #ce3a30; /* Cor vermelha para o ícone de exclusão */
+}

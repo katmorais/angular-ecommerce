@@ -1,0 +1,96 @@
+<mat-drawer-container class="example-container">
+  <mat-drawer #drawer mode="side" opened>
+    <div class="welcome-message">
+      <h2>Olá, bem-vindo</h2>
+    </div>
+    <mat-nav-list>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-icon>dashboard</mat-icon>
+          <span>Dashboard</span>
+        </mat-expansion-panel-header>
+        <a mat-list-item routerLink="/dashboard">
+          <span>Dashboard</span>
+        </a>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-icon>style</mat-icon>
+          <span>Produtos</span>
+        </mat-expansion-panel-header>
+        <a mat-list-item routerLink="/admin/camisetas/list">
+          <span>Listar Camisetas</span>
+        </a>
+        <a mat-list-item routerLink="/admin/camisetas/add">
+          <span>Adicionar Camiseta</span>
+        </a>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-icon>card_giftcard</mat-icon>
+          <span> Cupons</span>
+        </mat-expansion-panel-header>
+        <a mat-list-item routerLink="/admin/cupons/list">
+          <span>Listar Cupons</span>
+        </a>
+        <a mat-list-item routerLink="/admin/cupons/add">
+          <span>Adicionar Cupom</span>
+        </a>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-icon>store</mat-icon>
+          <span>Fornecedores</span>
+        </mat-expansion-panel-header>
+        <a mat-list-item routerLink="/admin/fornecedores/list">
+          <span>Listar Fornecedores</span>
+        </a>
+        <a mat-list-item routerLink="/admin/fornecedores/add">
+          <span>Adicionar Fornecedor</span>
+        </a>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-icon>local_shipping</mat-icon>
+          <span>Transportadoras</span>
+        </mat-expansion-panel-header>
+        <a mat-list-item routerLink="/admin/transportadoras/list">
+          <span>Listar Transportadoras</span>
+        </a>
+        <a mat-list-item routerLink="/admin/transportadoras/add">
+          <span>Adicionar Transportadora</span>
+        </a>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-icon>people</mat-icon>
+          <span>Clientes</span>
+        </mat-expansion-panel-header>
+        <a mat-list-item routerLink="/admin/clientes/list">
+          <span>Listar Clientes</span>
+        </a>
+        <a mat-list-item routerLink="/admin/clientes/add">
+          <span>Adicionar Cliente</span>
+        </a>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-icon>shopping_cart</mat-icon>
+          <span>Pedidos</span>
+        </mat-expansion-panel-header>
+        <a mat-list-item routerLink="/admin/pedidos/list">
+          <span>Listar Pedidos</span>
+        </a>
+        <a mat-list-item routerLink="/admin/pedidos/add">
+          <span>Adicionar Pedido</span>
+        </a>
+      </mat-expansion-panel>
+    </mat-nav-list>
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

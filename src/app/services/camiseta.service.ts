@@ -1,8 +1,7 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Camiseta } from '../models/camiseta.model';
-import { TipoCamiseta } from '../models/tipocamiseta.model';
+import {HttpClient} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+import {Camiseta} from '../models/camiseta.model';
 
 
 @Injectable({
@@ -10,9 +9,9 @@ import { TipoCamiseta } from '../models/tipocamiseta.model';
 })
 export class CamisetaService {
   private baseUrl = 'http://localhost:8080/camisetas';
-  
+
   constructor(private httpClient: HttpClient) {  }
-  
+
   findAll(page?: number, pageSize?: number): Observable<Camiseta[]> {
     let params = {}
     if(page !== undefined && pageSize !== undefined){
@@ -30,6 +29,22 @@ export class CamisetaService {
 
   findByNome(nome: string): Observable<Camiseta[]> {
     return this.httpClient.get<Camiseta[]>(`${this.baseUrl}/search/nome/${nome}`);
+  }
+  getUrlImagem(nomeImagem: string): string {
+    return `${this.baseUrl}/image/download/${nomeImagem}`;
+  }
+
+  uploadImagem(id: number, nomeImagem: string, imagem: File): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append('id', id.toString());
+    formData.append('nomeImagem', imagem.name);
+    formData.append('imagem', imagem, imagem.name);
+
+    return this.httpClient.patch<Camiseta>(`${this.baseUrl}/image/upload`, formData);
+  }
+
+  save(camiseta: Camiseta): Observable<Camiseta> {
+    return this.httpClient.post<Camiseta>(`${this.baseUrl}`, camiseta);
   }
 
   findByCamiseta(camiseta: string): Observable<Camiseta[]> {
@@ -51,11 +66,12 @@ export class CamisetaService {
       idFornecedor: camiseta.fornecedor.id,
       idTipoCamiseta: camiseta.tipoCamiseta.id,
       idMarca: camiseta.marca.id,
-      cor: camiseta.cor
+      cor: camiseta.cor,
+      tamanho: camiseta.tamanho
     }
     return this.httpClient.post<Camiseta>(this.baseUrl, data);
   }
-  
+
   update(camiseta: Camiseta): Observable<Camiseta> {
     const data = {
       nome: camiseta.nome,
@@ -68,11 +84,13 @@ export class CamisetaService {
       idTipoCamiseta: camiseta.tipoCamiseta.id,
       idMarca: camiseta.marca.id,
       cor: camiseta.cor
-    }
-    return this.httpClient.put<Camiseta>(`${this.baseUrl}/${camiseta.id}`, camiseta);
+    };
+    return this.httpClient.put<Camiseta>(`${this.baseUrl}/${camiseta.id}`, data);
   }
+
 
   delete(camiseta: Camiseta): Observable<any> {
     return this.httpClient.delete<any>(`${this.baseUrl}/${camiseta.id}`);
   }
+
 }

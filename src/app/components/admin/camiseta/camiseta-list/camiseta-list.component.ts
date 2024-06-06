@@ -17,13 +17,14 @@ import { Subscription } from 'rxjs';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { ViewCamisetaComponent } from '../view/view.component';
 import { Camiseta } from '../../../../models/camiseta.model';
-import { NavsideComponent } from '../../../shared/sidebar/navside.component';
+import { SidebarComponent } from '../../../template/sidebar/sidebar.component';
+
 
 @Component({
   selector: 'app-camiseta-list',
   standalone: true,
-  imports: [NgFor, MatTableModule, MatToolbarModule, MatIconModule, MatPaginatorModule, NavsideComponent
-    , MatButtonModule, RouterModule, MatCardModule, MatMenuModule, MatSidenavModule, MatListModule],
+  imports: [NgFor, MatTableModule, MatToolbarModule, MatIconModule, MatPaginatorModule, SidebarComponent,
+    MatButtonModule, RouterModule, MatCardModule, MatMenuModule, MatSidenavModule, MatListModule],
   templateUrl: './camiseta-list.component.html',
   styleUrl: './camiseta-list.component.css'
 })
@@ -92,7 +93,7 @@ export class CamisetaListComponent implements OnInit {
     );
   }
 
-  //Caixa de dialogo para excluir 
+  //Caixa de dialogo para excluir
   confirmDelete(camiseta: Camiseta): void {
     const dialogRef = this.dialog.open(ConfirmationDialogComponent);
 

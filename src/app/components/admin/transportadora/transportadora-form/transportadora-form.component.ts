@@ -18,15 +18,14 @@ import { ConfirmationDialogComponent } from '../../../confirmation/confirmation-
 import { ErrorComponent } from '../../../error/error.component';
 import { Transportadora } from '../../../../models/transportadora';
 import { MatCard, MatCardActions, MatCardContent } from '@angular/material/card';
-import { NavsideComponent } from '../../../shared/sidebar/navside.component';
-
+import { SidebarComponent } from '../../../template/sidebar/sidebar.component';
 
 
 @Component({
   selector: 'app-form',
   standalone: true,
-  imports: [CommonModule, MatSelectModule,NavsideComponent,
-    MatOptionModule, RouterModule, NgIf, 
+  imports: [CommonModule, MatSelectModule,SidebarComponent,
+    MatOptionModule, RouterModule, NgIf,
    MatInputModule, MatFormFieldModule, MatFormField,
     MatIconModule, MatCardContent, MatCard, MatCardActions,  ReactiveFormsModule],
   templateUrl: './transportadora-form.component.html',
@@ -35,7 +34,7 @@ import { NavsideComponent } from '../../../shared/sidebar/navside.component';
 export class TransportadoraFormComponent {
   transportadoras: Transportadora[] = [];
   telefones: Telefone[] = [];
-  formGroup!: FormGroup 
+  formGroup!: FormGroup
 
   constructor(
     private formBuilder: FormBuilder,

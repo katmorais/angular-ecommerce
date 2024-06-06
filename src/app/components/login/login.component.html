@@ -1,0 +1,26 @@
+<div class="login-container">
+  <div class="login-content">
+    <div class="login-image">
+      <img src="/assets/camiseta.jpg" alt="Login Image">
+    </div>
+    <div class="login-box">
+      <h2 class="login-title">Bem-vindo</h2>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <mat-form-field class="login-input" appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Digite seu email" formControlName="email" required>
+          <mat-error *ngIf="loginForm.get('email')!.hasError('required')">O email é obrigatório</mat-error>
+          <mat-error *ngIf="loginForm.get('email')!.hasError('email')">Formato de email inválido</mat-error>
+        </mat-form-field>
+        <mat-form-field class="login-input" appearance="fill">
+          <mat-label>Senha</mat-label>
+          <input matInput type="password" placeholder="Digite sua senha" formControlName="password" required>
+          <mat-error *ngIf="loginForm.get('password')!.hasError('required')">A senha é obrigatória</mat-error>
+        </mat-form-field>
+        <button mat-raised-button class="login-button" color="primary" type="submit">Entrar</button>
+        <button mat-raised-button class="create-account-button" type="button" (click)="navigateToCreateAccount()">Criar conta</button>
+      </form>
+      <a class="forgot-password-link" href="/forgot-password">Esqueceu a senha?</a>
+    </div>
+  </div>
+</div>

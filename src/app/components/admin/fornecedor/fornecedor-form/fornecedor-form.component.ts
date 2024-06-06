@@ -17,14 +17,14 @@ import { Telefone } from '../../../../models/telefone.model';
 import { ConfirmationDialogComponent } from '../../../confirmation/confirmation-dialog.component';
 import { ErrorComponent } from '../../../error/error.component';
 import { MatCard, MatCardActions, MatCardContent } from '@angular/material/card';
-import { NavsideComponent } from '../../../shared/sidebar/navside.component';
+import { SidebarComponent } from '../../../template/sidebar/sidebar.component';
 
 
 @Component({
   selector: 'app-fornecedor-form',
   standalone: true,
-  imports: [ErrorComponent, CommonModule, MatSelectModule,NavsideComponent,
-    MatOptionModule, RouterModule, NgIf, 
+  imports: [ErrorComponent, CommonModule, MatSelectModule,SidebarComponent,
+    MatOptionModule, RouterModule, NgIf,
     ReactiveFormsModule, FormsModule,MatCardContent, MatCardActions, MatCard,
     MatInputModule, MatFormFieldModule,
     MatIconModule, ConfirmationDialogComponent],
@@ -51,7 +51,7 @@ export class FornecedorFormComponent {
       dataContrato: ['', Validators.required],
       listaTelefones: this.formBuilder.array([
         this.createTelefoneFormGroup() ])
-    
+
     });
 
     const routeData = this.activatedRoute.snapshot.data;
@@ -99,7 +99,7 @@ export class FornecedorFormComponent {
         this.fornecedorService.insert(fornecedor).subscribe({
           next: (fornecedorService) => {
             console.log('Formulário inserido ', this.formGroup.value);
-            this.router.navigateByUrl('/fornecedores/list');
+            this.router.navigateByUrl('admin/fornecedores/list');
           },
           error: (err) => {
             console.log('Erro ao Incluir' + JSON.stringify(err));
@@ -115,7 +115,7 @@ export class FornecedorFormComponent {
         // Atualizar fornecedor existente
         this.fornecedorService.update(fornecedor).subscribe({
           next: (fornecedorService) => {
-            this.router.navigateByUrl('/fornecedores/list');
+            this.router.navigateByUrl('admin/fornecedores/list');
           },
           error: (err) => {
             console.log('Erro ao Editar' + JSON.stringify(err));
@@ -136,7 +136,7 @@ export class FornecedorFormComponent {
       if (fornecedor.id != null) {
         this.fornecedorService.delete(fornecedor).subscribe({
           next: () => {
-            this.router.navigateByUrl('/fornecedores/list');
+            this.router.navigateByUrl('admin/fornecedores/list');
           },
           error: (err) => {
             console.log('Erro ao Excluir' + JSON.stringify(err));
@@ -156,7 +156,7 @@ export class FornecedorFormComponent {
             // Atualizar lista de fornecedors após exclusão
             this.fornecedores = this.fornecedores.filter(adm => adm.id !== fornecedor.id);
 
-            this.router.navigateByUrl('/fornecedores/list');
+            this.router.navigateByUrl('admin/fornecedores/list');
           },
           error => {
             console.log('Erro ao excluir fornecedor:', error);

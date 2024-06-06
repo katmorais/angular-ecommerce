@@ -12,14 +12,15 @@ import { UsuarioService } from '../../../../services/usuario.service';
 import { Usuario } from '../../../../models/usuario.model';
 import { Telefone } from '../../../../models/telefone.model';
 import { TelefoneService } from '../../../../services/telefone.service';
-import { NavsideComponent } from '../../../shared/sidebar/navside.component';
+import { SidebarComponent } from '../../../template/sidebar/sidebar.component';
+
 
 @Component({
   selector: 'app-usuario-form',
   standalone: true,
   imports: [NgIf, ReactiveFormsModule, MatFormFieldModule,
     MatInputModule, MatButtonModule, MatCardModule, MatToolbarModule,
-    RouterModule, MatSelectModule,NavsideComponent],
+    RouterModule, MatSelectModule, SidebarComponent],
   templateUrl: './usuario-form.component.html',
   styleUrl: './usuario-form.component.css'
 })
