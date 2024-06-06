@@ -1,4 +1,4 @@
-export class Cor{
+export class Cor {
   id!: number
-  nome!: String
+  nome!: string
 }

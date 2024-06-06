@@ -10,11 +10,12 @@ import {Camiseta} from '../models/camiseta.model';
 export class CamisetaService {
   private baseUrl = 'http://localhost:8080/camisetas';
 
-  constructor(private httpClient: HttpClient) {  }
+  constructor(private httpClient: HttpClient) {
+  }
 
   findAll(page?: number, pageSize?: number): Observable<Camiseta[]> {
     let params = {}
-    if(page !== undefined && pageSize !== undefined){
+    if (page !== undefined && pageSize !== undefined) {
       params = {
         page: page.toString(),
         pageSize: pageSize.toString()
@@ -23,13 +24,14 @@ export class CamisetaService {
     return this.httpClient.get<Camiseta[]>(`${this.baseUrl}`, {params});
   }
 
-  count(): Observable<number>{
+  count(): Observable<number> {
     return this.httpClient.get<number>(`${this.baseUrl}/count`);
   }
 
   findByNome(nome: string): Observable<Camiseta[]> {
     return this.httpClient.get<Camiseta[]>(`${this.baseUrl}/search/nome/${nome}`);
   }
+
   getUrlImagem(nomeImagem: string): string {
     return `${this.baseUrl}/image/download/${nomeImagem}`;
   }
@@ -66,7 +68,7 @@ export class CamisetaService {
       idFornecedor: camiseta.fornecedor.id,
       idTipoCamiseta: camiseta.tipoCamiseta.id,
       idMarca: camiseta.marca.id,
-      cor: camiseta.cor,
+      cor: camiseta.cores,
       tamanho: camiseta.tamanho
     }
     return this.httpClient.post<Camiseta>(this.baseUrl, data);
@@ -83,7 +85,7 @@ export class CamisetaService {
       idFornecedor: camiseta.fornecedor.id,
       idTipoCamiseta: camiseta.tipoCamiseta.id,
       idMarca: camiseta.marca.id,
-      cor: camiseta.cor
+      cor: camiseta.cores
     };
     return this.httpClient.put<Camiseta>(`${this.baseUrl}/${camiseta.id}`, data);
   }

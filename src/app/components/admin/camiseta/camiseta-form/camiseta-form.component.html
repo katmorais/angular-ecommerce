@@ -111,22 +111,22 @@
 
                 <mat-form-field appearance="fill" class="full-width-input">
                     <mat-label for="coresInput">Cores</mat-label>
-                    <input matInput type="text" id="coresInput" formControlName="cores">
+                    <input matInput type="text" id="coresInput" #inputCor>
                     <!-- Se desejar, adicione validação para o campo de cores -->
                 </mat-form-field>
 
                 <!-- Botão para adicionar cor à lista -->
-                <button mat-raised-button color="primary" (click)="adicionarCor()" type="button">
+                <button mat-raised-button color="primary" (click)="adicionarCor(inputCor.value); inputCor.value = ''" type="button">
                     Adicionar Cor
                 </button>
 
                 <!-- Lista de cores adicionadas -->
-                <div *ngIf="coresList.length > 0">
+                <div *ngIf="(formGroup.get('cores')?.value).length">
                     <p>Lista de Cores Adicionadas:</p>
                     <ul>
-                        <li *ngFor="let cor of coresList; let i = index">
+                        <li *ngFor="let cor of formGroup.get('cores')?.value">
                             {{ cor }}
-                            <button mat-raised-button color="warn" (click)="removerCor(i)">
+                            <button mat-raised-button color="warn" (click)="removerCor(cor)">
                                 Remover
                             </button>
                         </li>
@@ -174,7 +174,7 @@
                 [disabled]="formGroup.invalid">
                 Excluir
             </button>
-            <button mat-raised-button routerLink="camisetas/list">
+            <button mat-raised-button routerLink="admin/camisetas/list">
                 Cancelar
             </button>
 
