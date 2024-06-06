@@ -1,9 +1,7 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Camiseta } from '../models/camiseta.model';
-import { TipoCamiseta } from '../models/tipocamiseta.model';
-import { Tamanho } from '../models/tamanho.model';
+import {HttpClient} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+import {Camiseta} from '../models/camiseta.model';
 
 
 @Injectable({
@@ -46,11 +44,7 @@ export class CamisetaService {
   }
 
   save(camiseta: Camiseta): Observable<Camiseta> {
-    const obj = {
-      nome: camiseta.nome,
-      preco: camiseta.preco
-    }
-    return this.httpClient.post<Camiseta>(`${this.baseUrl}`, obj);
+    return this.httpClient.post<Camiseta>(`${this.baseUrl}`, camiseta);
   }
 
   findByCamiseta(camiseta: string): Observable<Camiseta[]> {

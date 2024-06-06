@@ -80,7 +80,7 @@
                     <mat-label>Fornecedor</mat-label>
                     <mat-select formControlName="fornecedor">
                         @for (fornecedor of fornecedores; track fornecedor.id) {
-                        <mat-option [value]="fornecedor">
+                        <mat-option [value]="fornecedor.id">
                             {{fornecedor.nome}}
                         </mat-option>
                         }
@@ -91,7 +91,7 @@
                     <mat-label>Tipo Camiseta</mat-label>
                     <mat-select formControlName="tipoCamiseta">
                         @for (tipoCamiseta of tipoCamisetas; track tipoCamiseta.id) {
-                        <mat-option [value]="tipoCamiseta">
+                        <mat-option [value]="tipoCamiseta.id">
                             {{tipoCamiseta.nome}}
                         </mat-option>
                         }
@@ -102,7 +102,7 @@
                     <mat-label>Marca</mat-label>
                     <mat-select formControlName="marca">
                         @for (marca of marcas; track marca.id) {
-                        <mat-option [value]="marca">
+                        <mat-option [value]="marca.id">
                             {{marca.nome}}
                         </mat-option>
                         }
