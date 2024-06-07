@@ -16,7 +16,7 @@ import { Marca } from '../../../../models/marca.model';
 import { MarcaService } from '../../../../services/marca.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from '../../../confirmation/confirmation-dialog.component';
-import { SidebarComponent } from '../../../template/sidebar/sidebar.component';
+import {SidebarComponent} from "../../../template/sidebar/sidebar.component";
 
 
 @Component({

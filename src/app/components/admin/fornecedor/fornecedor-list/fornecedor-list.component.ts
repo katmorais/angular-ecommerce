@@ -15,7 +15,7 @@ import { MatToolbar } from '@angular/material/toolbar';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatCard, MatCardContent, MatCardModule } from '@angular/material/card';
 import { formatDate } from '@angular/common';
-import { SidebarComponent } from '../../../template/sidebar/sidebar.component';
+import {SidebarComponent} from "../../../template/sidebar/sidebar.component";
 
 
 @Component({

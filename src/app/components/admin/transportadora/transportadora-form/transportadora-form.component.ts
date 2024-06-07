@@ -12,13 +12,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 
-import { Telefone } from '../../../../models/telefone.model';
 import { TransportadoraService } from '../../../../services/transportadora.service';
 import { ConfirmationDialogComponent } from '../../../confirmation/confirmation-dialog.component';
 import { ErrorComponent } from '../../../error/error.component';
 import { Transportadora } from '../../../../models/transportadora';
 import { MatCard, MatCardActions, MatCardContent } from '@angular/material/card';
-import { SidebarComponent } from '../../../template/sidebar/sidebar.component';
+import {SidebarComponent} from "../../../template/sidebar/sidebar.component";
+import {Telefone} from "../../../../models/telefone.model";
 
 
 @Component({

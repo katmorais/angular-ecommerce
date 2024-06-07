@@ -1,22 +1,20 @@
-import { Component } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatTableModule } from '@angular/material/table';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
-import { RouterModule } from '@angular/router';
-import { PageEvent } from '@angular/material/paginator';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatDialog } from '@angular/material/dialog';
-import { MatToolbar } from '@angular/material/toolbar';
-import { MatSidenav } from '@angular/material/sidenav';
-import { MatCard } from '@angular/material/card';
-import { TipoCamiseta } from '../../../../models/tipocamiseta.model';
-import { ConfirmationDialogComponent } from '../../../confirmation/confirmation-dialog.component';
-import { TipoCamisetaService } from '../../../../services/tipoCamiseta.service';
-import { ViewTipoCamisetaComponent } from '../view/view.component';
-import { SidebarComponent } from '../../../template/sidebar/sidebar.component';
+import {Component} from '@angular/core';
+import {Subscription} from 'rxjs';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatTableModule} from '@angular/material/table';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
+import {MatInputModule} from '@angular/material/input';
+import {RouterModule} from '@angular/router';
+import {MatPaginatorModule, PageEvent} from '@angular/material/paginator';
+import {MatDialog} from '@angular/material/dialog';
+import {MatToolbar} from '@angular/material/toolbar';
+import {MatCard} from '@angular/material/card';
+import {TipoCamiseta} from '../../../../models/tipocamiseta.model';
+import {ConfirmationDialogComponent} from '../../../confirmation/confirmation-dialog.component';
+import {TipoCamisetaService} from '../../../../services/tipoCamiseta.service';
+import {ViewTipoCamisetaComponent} from '../view/view.component';
+import {SidebarComponent} from "../../../template/sidebar/sidebar.component";
 
 @Component({
   selector: 'app-tipocamisetas-list',

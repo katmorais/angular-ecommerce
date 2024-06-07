@@ -31,6 +31,9 @@ export class CamisetaService {
   findByNome(nome: string): Observable<Camiseta[]> {
     return this.httpClient.get<Camiseta[]>(`${this.baseUrl}/search/nome/${nome}`);
   }
+  countByNome(nome: string): Observable<number> {
+    return this.httpClient.get<number>(`${this.baseUrl}/search/${nome}/count`);
+  }
 
   getUrlImagem(nomeImagem: string): string {
     return `${this.baseUrl}/image/download/${nomeImagem}`;

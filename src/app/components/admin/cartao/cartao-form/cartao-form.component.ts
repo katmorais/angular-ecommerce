@@ -1,18 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { NgIf } from '@angular/common';
-import { MatCardModule } from '@angular/material/card';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatMenuModule } from '@angular/material/menu';
-import { Cartao } from '../../../../models/cartao.model';
-import { CartaoService } from '../../../../services/cartao.service';
-import { UsuarioService } from '../../../../services/usuario.service';
-import { Usuario } from '../../../../models/usuario.model';
-import { SidebarComponent } from '../../../template/sidebar/sidebar.component';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {MatButtonModule} from '@angular/material/button';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {ActivatedRoute, Router, RouterModule} from '@angular/router';
+import {NgIf} from '@angular/common';
+import {MatCardModule} from '@angular/material/card';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatMenuModule} from '@angular/material/menu';
+import {Cartao} from '../../../../models/cartao.model';
+import {SidebarComponent} from "../../../template/sidebar/sidebar.component";
+import {UsuarioService} from "../../../../services/usuario.service";
 
 
 @Component({

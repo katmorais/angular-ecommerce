@@ -1,23 +1,18 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
+import {Component} from '@angular/core';
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {MatButtonModule} from '@angular/material/button';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { NgIf } from '@angular/common';
-import { MatCardModule } from '@angular/material/card';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import {ActivatedRoute, Router, RouterModule} from '@angular/router';
+import {NgIf} from '@angular/common';
+import {MatCardModule} from '@angular/material/card';
+import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatMenuModule} from '@angular/material/menu';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatListModule} from '@angular/material/list';
-import { MatSidenav, MatSidenavContainer, MatSidenavContent } from '@angular/material/sidenav';
-import { Cupom } from '../../../../models/cupom.model';
-import { CupomService } from '../../../../services/cupom.service';
-import { MatDialog } from '@angular/material/dialog';
-import { ConfirmationDialogComponent } from '../../../confirmation/confirmation-dialog.component';
-import { SidebarComponent } from '../../../template/sidebar/sidebar.component';
-import { HeaderComponent } from '../../../template/header/header.component';
+import {Cupom} from '../../../../models/cupom.model';
+import {CupomService} from '../../../../services/cupom.service';
+import {MatDialog} from '@angular/material/dialog';
+import {ConfirmationDialogComponent} from '../../../confirmation/confirmation-dialog.component';
 
 
 @Component({

@@ -1,23 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-
-import { NgFor } from '@angular/common';
-import { MatTableModule } from '@angular/material/table';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { Router, RouterModule } from '@angular/router';
-import { MatCardModule } from '@angular/material/card';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatListModule } from '@angular/material/list';
-import { MatDialog } from '@angular/material/dialog';
-import { Transportadora } from '../../../../models/transportadora';
-import { TransportadoraService } from '../../../../services/transportadora.service';
-import { ConfirmationDialogComponent } from '../../../confirmation/confirmation-dialog.component';
-import { Subscription } from 'rxjs';
-import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
-import { ViewTransportadoraComponent } from '../view/view.component';
-import { SidebarComponent } from '../../../template/sidebar/sidebar.component';
+import {Component, OnInit} from '@angular/core';
+import {MatTableModule} from '@angular/material/table';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import {RouterModule} from '@angular/router';
+import {MatCardModule} from '@angular/material/card';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
+import {MatDialog} from '@angular/material/dialog';
+import {Transportadora} from '../../../../models/transportadora';
+import {TransportadoraService} from '../../../../services/transportadora.service';
+import {ConfirmationDialogComponent} from '../../../confirmation/confirmation-dialog.component';
+import {Subscription} from 'rxjs';
+import {MatPaginatorModule, PageEvent} from '@angular/material/paginator';
+import {ViewTransportadoraComponent} from '../view/view.component';
+import {SidebarComponent} from "../../../template/sidebar/sidebar.component";
 
 
 @Component({

@@ -3,7 +3,7 @@ import { Router, RouterModule } from '@angular/router';
 
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
-import { Usuario } from '../../../../models/usuario.model';
+import {Usuario} from "../../../models/usuario.model";
 
 
 @Component({
@@ -24,7 +24,7 @@ export class ViewUsuarioComponent {
 
   editar(id: number): void {
     this.router.navigate(['/cupons/edit/', id]);
-    this.viewRef.close(); 
+    this.viewRef.close();
   }
 
   cancelar(): void {

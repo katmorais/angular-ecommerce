@@ -28,14 +28,14 @@ import { TipoCamisetaListComponent } from "./components/admin/tipoCamiseta/tipoC
 import { transportadoraResolver } from "./components/admin/transportadora/resolver/transportadora-resolver";
 import { TransportadoraFormComponent } from "./components/admin/transportadora/transportadora-form/transportadora-form.component";
 import { TransportadoraListComponent } from "./components/admin/transportadora/transportadora-list/transportadora-list.component";
-import { usuarioResolver } from "./components/admin/usuario/resolver/usuario-resolver";
-import { UsuarioFormComponent } from "./components/admin/usuario/usuario-form/usuario-form.component";
-import { UsuarioListComponent } from "./components/admin/usuario/usuario-list/usuario-list.component";
 import { LoginComponent } from "./components/login/login.component";
 import { AdminTemplateComponent } from "./components/template/admin-template/admin-template.component";
 import { UserTemplateComponent } from "./components/template/user-template/user-template.component";
 import { CamisetaCardListComponent } from "./components/admin/camiseta-card-list/camiseta-card-list.component";
 import { authGuard } from "./guard/auth.guard";
+import {UsuarioFormComponent} from "./components/admin/usuario/usuario-form/usuario-form.component";
+import {usuarioResolver} from "./components/admin/usuario/resolver/usuario-resolver";
+import {UsuarioListComponent} from "./components/admin/usuario/usuario-list/usuario-list.component";
 
 export const routes: Routes = [
 
@@ -49,6 +49,8 @@ export const routes: Routes = [
         { path: 'produtos', component: CamisetaCardListComponent, title: 'Produtos à Venda'},
         { path: 'login', component: LoginComponent, title: 'Login'},
         { path: 'carrinho', component: CarrinhoComponent, title: 'Carrinho de pedidos'},
+        { path: 'usuarios/new', component: UsuarioFormComponent, title: 'Novo Usuario'},
+        { path: 'usuarios/edit/:id', component: UsuarioFormComponent, resolve: {usuario: usuarioResolver}},
     ]
   },
 
@@ -96,8 +98,6 @@ export const routes: Routes = [
         { path: 'marcas/edit/:id', component: MarcaFormComponent, resolve: {marcaCamiseta: marcaResolver}},
 
         { path: 'usuarios/list', component: UsuarioListComponent, title: 'Lista de Usuarios'},
-        { path: 'usuarios/new', component: UsuarioFormComponent, title: 'Novo Usuario', canActivate: [authGuard]},
-        { path: 'usuarios/edit/:id', component: UsuarioFormComponent, resolve: {usuario: usuarioResolver}},
 
     ]},
 

@@ -5,7 +5,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { Router, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -17,14 +17,17 @@ import { Subscription } from 'rxjs';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { ViewCamisetaComponent } from '../view/view.component';
 import { Camiseta } from '../../../../models/camiseta.model';
-import { SidebarComponent } from '../../../template/sidebar/sidebar.component';
+import {SidebarComponent} from "../../../template/sidebar/sidebar.component";
+import {RelatorioService} from "../../../../services/relatorio.service";
+import {MatFormField} from "@angular/material/form-field";
+import {MatInput} from "@angular/material/input";
 
 
 @Component({
   selector: 'app-camiseta-list',
   standalone: true,
   imports: [NgFor, MatTableModule, MatToolbarModule, MatIconModule, MatPaginatorModule, SidebarComponent,
-    MatButtonModule, RouterModule, MatCardModule, MatMenuModule, MatSidenavModule, MatListModule],
+    MatButtonModule, RouterModule, MatCardModule, MatMenuModule, MatSidenavModule, MatListModule, MatFormField, MatInput],
   templateUrl: './camiseta-list.component.html',
   styleUrl: './camiseta-list.component.css'
 })
@@ -32,20 +35,22 @@ export class CamisetaListComponent implements OnInit {
   displayedColumns: string[] = ['id', 'nome', 'descricao', 'estoque', 'preco', 'estampa', 'tecido', 'fornecedor', 'tipoCamiseta', 'marca', 'cor', 'acao'];
 
   camisetas: Camiseta[] = [];
+  camisetasFiltradas: Camiseta[] = [];
   camisetaSubscription: Subscription | undefined;
 
   totalRecords = 0;
   pageSize = 2;
   page = 0;
   searchText: string = '';
-  administradoresSubscription: Subscription | undefined;
 
   constructor(private dialog: MatDialog,
-    private camisetaService: CamisetaService) { }
+    private camisetaService: CamisetaService,
+    private relatorioService: RelatorioService ) { }
 
   ngOnInit(): void {
     this.camisetaService.findAll(this.page, this.pageSize).subscribe(data => {
       this.camisetas = data;
+      this.camisetasFiltradas = this.camisetas;
       console.log(this.camisetas);
     });
 
@@ -55,10 +60,9 @@ export class CamisetaListComponent implements OnInit {
     });
   }
 
-  paginar(event: PageEvent): void {
-    this.page = event.pageIndex;
-    this.pageSize = event.pageSize;
-    this.ngOnInit();
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.camisetasFiltradas = this.camisetas.filter(camiseta => camiseta.nome.toLowerCase().includes(filterValue.trim().toLowerCase()));
   }
 
   //Verifica se this.administradoresSubscription existe e não é nulo.
@@ -114,6 +118,11 @@ export class CamisetaListComponent implements OnInit {
     this.dialog.open(ViewCamisetaComponent, {
       data: camiseta
     });
+  }
+  paginar(event: PageEvent): void {
+    this.page = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.ngOnInit();
   }
 
 }

@@ -15,7 +15,7 @@ import { ConfirmationDialogComponent } from '../../../confirmation/confirmation-
 import { TipoCamiseta } from '../../../../models/tipocamiseta.model';
 import { TipoCamisetaService } from '../../../../services/tipoCamiseta.service';
 import { MatDialog } from '@angular/material/dialog';
-import { SidebarComponent } from '../../../template/sidebar/sidebar.component';
+import {SidebarComponent} from "../../../template/sidebar/sidebar.component";
 
 
 @Component({

@@ -1,23 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import {Component} from '@angular/core';
+import {FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import {ActivatedRoute, Router, RouterModule} from '@angular/router';
 
-import { MatDialog } from '@angular/material/dialog';
-import { CommonModule, NgIf } from '@angular/common';
-import { HttpErrorResponse } from '@angular/common/http';
-import { MatOptionModule } from '@angular/material/core';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
-import { FornecedorService } from '../../../../services/fornecedor.service';
-import { Fornecedor } from '../../../../models/fornecedor.model';
-import { Telefone } from '../../../../models/telefone.model';
-import { ConfirmationDialogComponent } from '../../../confirmation/confirmation-dialog.component';
-import { ErrorComponent } from '../../../error/error.component';
-import { MatCard, MatCardActions, MatCardContent } from '@angular/material/card';
-import { SidebarComponent } from '../../../template/sidebar/sidebar.component';
+import {MatDialog} from '@angular/material/dialog';
+import {CommonModule, NgIf} from '@angular/common';
+import {HttpErrorResponse} from '@angular/common/http';
+import {MatOptionModule} from '@angular/material/core';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+import {FornecedorService} from '../../../../services/fornecedor.service';
+import {Fornecedor} from '../../../../models/fornecedor.model';
+import {ConfirmationDialogComponent} from '../../../confirmation/confirmation-dialog.component';
+import {ErrorComponent} from '../../../error/error.component';
+import {MatCard, MatCardActions, MatCardContent} from '@angular/material/card';
+import {SidebarComponent} from "../../../template/sidebar/sidebar.component";
+import {Telefone} from "../../../../models/telefone.model";
 
 
 @Component({
