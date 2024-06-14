@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { LocalStorageService } from './local-storage.service';
 import { ItemCarrinho } from '../models/itemcarrinho.model';
+import {Cupom} from "../models/cupom.model";
 
 @Injectable({
   providedIn: 'root',
@@ -31,7 +32,7 @@ export class CarrinhoService {
 
   removerTudo(): void {
     this.localStorageService.removeItem('carrinho');
-    window.location.reload(); // reload na página
+    this.carrinhoSubject.next([]);
   }
 
   remover(item: ItemCarrinho): void {
@@ -48,10 +49,32 @@ export class CarrinhoService {
     return this.carrinhoSubject.value;
   }
 
+  obterCupom(): Cupom {
+    return this.localStorageService.getItem('cupom');
+  }
+
   private atualizarArmazenamentoLocal(): void {
     localStorage.setItem(
       'carrinho',
       JSON.stringify(this.carrinhoSubject.value)
     );
+  }
+
+  obterValorTotal() {
+    if (this.obterCupom()) {
+      return this.obter().reduce((acc, item) => acc + item.preco, 0) - this.obterCupom().valorDesconto;
+    }
+    return this.obter().reduce((acc, item) => acc + item.preco, 0);
+  }
+
+  aplicarCupom(cupom: Cupom) {
+    localStorage.setItem(
+      'cupom',
+      JSON.stringify(cupom)
+    );
+  }
+
+  removerCupom() {
+    localStorage.removeItem('cupom');
   }
 }

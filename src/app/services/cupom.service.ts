@@ -32,7 +32,7 @@ export class CupomService {
 
   findByCupom(cupom: string): Observable<Cupom[]> {
     return this.httpClient.get<Cupom[]>(
-      `${this.baseUrl}/search/cupom/${cupom}`
+      `${this.baseUrl}/search/${cupom}`
     );
   }
 

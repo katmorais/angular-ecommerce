@@ -1,0 +1,46 @@
+/* carrinho.component.css */
+.carrinho-item {
+  border: 1px solid #ccc;
+  border-radius: 10px; /* Adiciona bordas arredondadas */
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #f8f9fa; /* Cor de fundo mais amigável */
+}
+
+.item-title {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #6c757d; /* Cor de texto mais amigável */
+}
+
+.item-price,
+.item-quantity,
+.item-total {
+  font-size: 1em;
+  color: #6c757d; /* Cor de texto mais amigável */
+}
+
+.item-remove-btn {
+  background-color: #dc3545; /* Cor de botão mais amigável */
+  color: white;
+  border-radius: 5px; /* Adiciona bordas arredondadas ao botão */
+}
+
+.cart-total {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-top: 10px;
+  color: #6c757d; /* Cor de texto mais amigável */
+}
+
+.checkout-btn {
+  background-color: #28a745; /* Cor de botão mais amigável */
+  color: white;
+  margin-top: 10px;
+  border-radius: 5px; /* Adiciona bordas arredondadas ao botão */
+}
+
+.empty-cart {
+  font-size: 1.2em;
+  color: #6c757d; /* Cor de texto mais amigável */
+}

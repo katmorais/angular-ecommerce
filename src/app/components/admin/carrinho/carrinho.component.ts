@@ -1,7 +1,8 @@
-import { NgFor, NgIf } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { ItemCarrinho } from '../../../models/itemcarrinho.model';
-import { CarrinhoService } from '../../../services/carrinho.service';
+import {NgFor, NgIf} from '@angular/common';
+import {Component, OnInit} from '@angular/core';
+import {ItemCarrinho} from '../../../models/itemcarrinho.model';
+import {CarrinhoService} from '../../../services/carrinho.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-carrinho',
@@ -13,7 +14,9 @@ import { CarrinhoService } from '../../../services/carrinho.service';
 export class CarrinhoComponent implements OnInit {
   carrinhoItens: ItemCarrinho[] = [];
 
-  constructor(private carrinhoService: CarrinhoService) {}
+  constructor(private carrinhoService: CarrinhoService,
+              private router: Router) {
+  }
 
   ngOnInit(): void {
     this.carrinhoService.carrinho$.subscribe((itens) => {
@@ -25,7 +28,9 @@ export class CarrinhoComponent implements OnInit {
     this.carrinhoService.remover(item);
   }
 
-  finalizarCompra(): void {}
+  finalizarCompra(): void {
+    this.router.navigate(['/checkout']);
+  }
 
   calcularTotal(): number {
     return 1;
