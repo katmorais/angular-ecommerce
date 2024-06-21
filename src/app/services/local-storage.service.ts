@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core';
+import {Subject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class LocalStorageService {
+
+  sexoSubject = new Subject<number>();
+  sexoObservable = this.sexoSubject.asObservable();
 
   constructor() { }
 
@@ -20,4 +24,13 @@ export class LocalStorageService {
     localStorage.removeItem(key);
   }
 
+  setFiltroSexo(sexo: number) {
+    if (sexo) {
+      localStorage.setItem("sexo", sexo.toString());
+    } else {
+      localStorage.removeItem("sexo");
+    }
+
+    this.sexoSubject.next(sexo);
+  }
 }

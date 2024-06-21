@@ -1,79 +1,87 @@
-import { NgIf } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { UsuarioService } from '../../../../services/usuario.service';
-import { Usuario } from '../../../../models/usuario.model';
-import { Telefone } from '../../../../models/telefone.model';
-import { TelefoneService } from '../../../../services/telefone.service';
-import { SidebarComponent } from '../../../template/sidebar/sidebar.component';
+import {JsonPipe, NgIf} from '@angular/common';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectChange, MatSelectModule} from '@angular/material/select';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {ActivatedRoute, Router, RouterModule} from '@angular/router';
+import {UsuarioService} from '../../../../services/usuario.service';
+import {ClienteModel} from '../../../../models/clienteModel';
+import {SidebarComponent} from '../../../template/sidebar/sidebar.component';
+import {MatDatepicker, MatDatepickerInput, MatDatepickerToggle} from "@angular/material/datepicker";
+import {MAT_DATE_LOCALE, provideNativeDateAdapter} from '@angular/material/core';
+import {Cidade} from "../../../../models/cidade.model";
+import {CidadeService} from "../../../../services/cidade.service";
 
 
 @Component({
   selector: 'app-usuario-form',
   standalone: true,
+  providers: [{provide: MAT_DATE_LOCALE, useValue: 'pt-BR'}, provideNativeDateAdapter()],
   imports: [NgIf, ReactiveFormsModule, MatFormFieldModule,
     MatInputModule, MatButtonModule, MatCardModule, MatToolbarModule,
-    RouterModule, MatSelectModule, SidebarComponent],
+    RouterModule, MatSelectModule, SidebarComponent, MatDatepickerInput, MatDatepickerToggle, MatDatepicker, JsonPipe],
   templateUrl: './usuario-form.component.html',
   styleUrl: './usuario-form.component.css'
 })
 export class UsuarioFormComponent implements OnInit {
 
   formGroup: FormGroup;
-  telefones: Telefone[] = [];
+  cidades: Cidade[] = [];
 
   constructor(private formBuilder: FormBuilder,
-    private usuarioService: UsuarioService,
-    private telefoneService: TelefoneService,
-    private router: Router,
-    private activatedRoute: ActivatedRoute) {
+              private usuarioService: UsuarioService,
+              private cidadeService: CidadeService,
+              private router: Router,
+              private activatedRoute: ActivatedRoute) {
 
     this.formGroup = formBuilder.group({
       id: [null],
-      nome: ['', Validators.required],
-      senha: ['', Validators.required],
-      login: ['', Validators.required],
-      telefone: [null]
+      nome: ['', [Validators.required, Validators.maxLength(100)]],
+      username: ['', [Validators.required, Validators.maxLength(20)]],
+      senha: ['', [Validators.required, Validators.minLength(6)]],
+      cpf: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(11)]],
+      dataNascimento: [null, Validators.required],
+      cidadeId: [null, Validators.required],
+      estadoId: [null, Validators.required]
     });
   }
+
   ngOnInit(): void {
-    this.telefoneService.findAll().subscribe(data => {
-      this.telefones = data;
-      this.initializeForm();
+    this.cidadeService.findAll().subscribe({
+      next: (cidades) => {
+        this.cidades = cidades;
+        this.initializeForm();
+      }, error: () => console.log('Erro ao carregar cidades')
     });
   }
 
   initializeForm() {
 
-    const usuario: Usuario = this.activatedRoute.snapshot.data['usuario'];
-
-    // selecionando o telefone
-   /*  const telefone = this.telefones
-    .find(telefone => telefone.id === (usuario?.listaTelefone?.id || null)); */
+    const usuario: ClienteModel = this.activatedRoute.snapshot.data['usuario'];
 
     this.formGroup = this.formBuilder.group({
-      id: [(usuario && usuario.id) ? usuario.id : null],
-      nome: [(usuario && usuario.nome) ? usuario.nome : '', Validators.required],
-      senha: [(usuario && usuario.senha) ? usuario.senha : '', Validators.required],
-      login: [(usuario && usuario.login) ? usuario.login : '', Validators.required],
-      /* telefone: [telefone] */
+      id: [usuario?.id || null],
+      nome: [usuario?.pessoa.username || '', [Validators.required, Validators.maxLength(100)]],
+      username: [usuario?.pessoa.usuario.username || '', [Validators.required, Validators.maxLength(20)]],
+      senha: [usuario?.pessoa.usuario.senha || '', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]],
+      cpf: [usuario?.pessoa.cpf || '', [Validators.required, Validators.minLength(11), Validators.maxLength(11)]],
+      dataNascimento: [usuario?.pessoa.dataNascimento || null, Validators.required],
+      cidadeId: [null, Validators.required],
+      estadoId: [null, Validators.required]
     });
   }
 
   salvar() {
     if (this.formGroup.valid) {
       const usuario = this.formGroup.value;
-      if (usuario.id ==null) {
+      if (usuario.id == null) {
         this.usuarioService.insert(usuario).subscribe({
-          next: (usuarioCadastrado) => {
-            this.router.navigateByUrl('/usuarios/list');
+          next: () => {
+            this.router.navigate(['/login']);
           },
           error: (err) => {
             console.log('Erro ao Incluir' + JSON.stringify(err));
@@ -81,8 +89,8 @@ export class UsuarioFormComponent implements OnInit {
         });
       } else {
         this.usuarioService.update(usuario).subscribe({
-          next: (usuarioAlterado) => {
-            this.router.navigateByUrl('/usuarios');
+          next: () => {
+            this.router.navigate(['/login']);
           },
           error: (err) => {
             console.log('Erro ao Editar' + JSON.stringify(err));
@@ -108,4 +116,9 @@ export class UsuarioFormComponent implements OnInit {
     }
   }
 
+  onCidadeSelecionada($event: MatSelectChange): void {
+    const cidade = $event.value;
+    this.formGroup.get('cidadeId')?.setValue(cidade?.id);
+    this.formGroup.get('estadoId')?.setValue(cidade?.estado?.id);
+  }
 }

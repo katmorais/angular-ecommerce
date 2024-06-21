@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { Usuario } from '../models/usuario.model';
+import { ClienteModel } from '../models/clienteModel';
 import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
@@ -12,9 +12,10 @@ import { LocalStorageService } from './local-storage.service';
 export class AuthService {
 
   private baseURL: string = 'http://localhost:8080/auth';
+  private baseClienteURL: string = 'http://localhost:8080/cliente';
   private tokenKey = 'jwt_token';
   private usuarioLogadoKey = 'usuario_logado';
-  private usuarioLogadoSubject = new BehaviorSubject<Usuario | null>(null);
+  private usuarioLogadoSubject = new BehaviorSubject<ClienteModel | null>(null);
 
   constructor(private http: HttpClient,
               private localStorageService: LocalStorageService,
@@ -59,7 +60,7 @@ export class AuthService {
     );
   }
 
-  setUsuarioLogado(usuario: Usuario): void {
+  setUsuarioLogado(usuario: ClienteModel): void {
     this.localStorageService.setItem(this.usuarioLogadoKey, usuario);
   }
 
@@ -91,4 +92,7 @@ export class AuthService {
     // npm install @auth0/angular-jwt
   }
 
+  alterarSenha(form: {}): Observable<void> {
+    return this.http.put<void>(`${this.baseClienteURL}/alterar-senha`, form);
+  }
 }

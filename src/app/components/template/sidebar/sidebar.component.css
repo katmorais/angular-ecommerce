@@ -1,74 +1,37 @@
 .example-container {
-  height: 100%;
-  display: flex;
-  flex-direction: row;
+  height: 200vh; /* Altura total da viewport */
+  background-color: #ffffff; /* Fundo branco */
+  color: #000000; /* Cor do texto */
 }
 
-.mat-drawer {
-  width: 250px;
-}
-
-.mat-drawer-content {
-  flex: 1;
-  transition: margin-left 0.3s ease, padding-left 0.3s ease;
-}
-
-.mat-drawer-opened .mat-drawer-content {
-  margin-left: 250px; /* Ajuste conforme a largura da sua barra lateral */
-}
-
-.mat-toolbar {
-  position: fixed;
-  width: calc(100% - 250px); /* Ajuste conforme a largura da sua barra lateral */
-  transition: width 0.3s ease;
-}
-
-.mat-drawer-closed .mat-toolbar {
-  width: 100%;
-}
-
-.mat-icon-button {
-  margin-right: 16px;
-}
-
-.mat-nav-list {
-  padding: 0;
-}
-
-.mat-list-item {
-  padding-left: 16px;
-}
-
-.mat-toolbar .mat-toolbar-row,
-.mat-toolbar {
-  height: 64px;
-}
-
-.content {
-  padding: 80px 24px 24px; /* Ajuste o valor de padding conforme necessário */
-  flex: 1;
-}
-
-.mat-nav-list a {
-  text-decoration: none;
-  color: inherit;
+.drawer-panel {
+  background-color: #010925; /* Cor de fundo do menu lateral */
 }
 
 .welcome-message {
   padding: 16px;
-  background-color: #f5f5f5;
-  text-align: center;
+  background-color: #010925; /* Cor de fundo do cabeçalho de boas-vindas */
+  color: #ffffff; /* Cor do texto */
 }
 
-.welcome-message h2 {
-  margin: 0;
-  font-size: 18px;
-  font-weight: 400;
-  color: #333;
+.menu-list {
+  padding-top: 8px; /* Espaçamento superior */
 }
 
-/* Adicionando espaço entre os ícones e o texto */
+.mat-expansion-panel-header {
+  background-color: #010925; /* Cor de fundo do cabeçalho dos itens do menu */
+  color: #ffffff; /* Cor do texto */
+  box-shadow: none; /* Remove sombra */
+}
+
 .mat-expansion-panel-header mat-icon {
-  margin-right: 8px; /* Ajuste o valor conforme necessário */
+  margin-right: 12px; /* Espaçamento entre ícone e texto */
 }
 
+.mat-expansion-panel-header span {
+  font-weight: normal; /* Remove negrito */
+}
+
+.mat-expansion-panel-header:hover {
+  background-color: #002d69; /* Cor de fundo ao passar o mouse */
+}

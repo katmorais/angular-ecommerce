@@ -6,20 +6,19 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { AuthService } from '../../services/auth.service';
 import { NgIf } from '@angular/common';
+import {AuthService} from "../../../services/auth.service";
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-esqueceu-senha',
   standalone: true,
   imports: [NgIf, ReactiveFormsModule, MatFormFieldModule,
     MatInputModule, MatButtonModule, MatCardModule,
     RouterModule],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  templateUrl: './esqueceu-senha.component.html',
+  styleUrl: './esqueceu-senha.component.css'
 })
-export class LoginComponent implements OnInit {
+export class EsqueceuSenhaComponent implements OnInit {
   loginForm!: FormGroup;
 
   constructor(
@@ -31,19 +30,17 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.minLength(3)]],
-      password: ['', [Validators.required, Validators.minLength(3)]]
+      username: ['', [Validators.required, Validators.minLength(3)]],
+      cpf: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(11)]],
+      senha: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
 
   onSubmit() {
     if (this.loginForm.valid) {
-      const email = this.loginForm.get('email')!.value;
-      const password = this.loginForm.get('password')!.value;
-      this.authService.login(email, password).subscribe({
+      this.authService.alterarSenha(this.loginForm.value).subscribe({
         next: (resp) => {
-          // redirecionar para a página principal
-          this.router.navigateByUrl('/');
+          this.router.navigateByUrl('/login');
         },
         error: (err) => {
           console.log(err);
@@ -69,10 +66,6 @@ export class LoginComponent implements OnInit {
 
   navigateToCreateAccount() {
     this.router.navigate(['/usuarios/new']);
-  }
-
-  onEsqueceuSenha() {
-    this.router.navigate(['/esqueceu-senha']);
   }
 }
 

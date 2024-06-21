@@ -2,7 +2,6 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {MatIcon} from '@angular/material/icon';
 import {MatToolbar} from '@angular/material/toolbar';
 import {MatBadge} from '@angular/material/badge';
-import {Usuario} from '../../../models/usuario.model';
 import {AuthService} from '../../../services/auth.service';
 import {LocalStorageService} from '../../../services/local-storage.service';
 
@@ -11,18 +10,24 @@ import {Subscription} from 'rxjs';
 import {MatButton, MatIconButton} from '@angular/material/button';
 import {Router, RouterModule} from '@angular/router';
 import {SidebarService} from '../../../services/sidebar.service';
-import {NgIf} from "@angular/common";
+import {AsyncPipe, JsonPipe, NgFor, NgIf} from "@angular/common";
+import {MatListItem, MatNavList} from "@angular/material/list";
+import {SexoEnum} from "../../../models/sexo.enum";
+import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
+import {TipoCamiseta} from "../../../models/tipocamiseta.model";
+import {TipoCamisetaService} from "../../../services/tipoCamiseta.service";
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [NgIf, MatToolbar, MatIcon, MatBadge, MatButton, MatIconButton, RouterModule],
+  imports: [NgIf, NgFor, MatToolbar, MatIcon, MatBadge, MatButton, MatIconButton, RouterModule, JsonPipe, MatNavList, MatListItem, MatMenuTrigger, MatMenu, MatMenuItem, AsyncPipe],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
 export class HeaderComponent implements OnInit, OnDestroy {
 
-  usuarioLogado: Usuario | null = null;
+  usuarioLogado: any = null;
+  categorias: TipoCamiseta[] = []
   private subscription = new Subscription();
 
   qtdItensCarrinho: number = 0;
@@ -31,17 +36,22 @@ export class HeaderComponent implements OnInit, OnDestroy {
               private carrinhoService: CarrinhoService,
               private authService: AuthService,
               private router: Router,
-              private localStorageService: LocalStorageService) {
+              private tipoCamisetaService: TipoCamisetaService) {
 
   }
 
   ngOnInit(): void {
     this.obterQtdItensCarrinho();
     this.obterUsuarioLogado();
+    this.obterTipoCamisetas();
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  private obterTipoCamisetas() {
+    this.tipoCamisetaService.findAll().subscribe(tiposCamiseta => this.categorias = tiposCamiseta);
   }
 
   clickMenu() {
@@ -68,5 +78,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   logar() {
     this.router.navigate(['/login']);
+  }
+
+  filtrarCategoria(categoria: string) {
+    this.router.navigate(['/produtos'], {queryParams: {categoria}});
   }
 }

@@ -1,4 +1,4 @@
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {Camiseta} from '../models/camiseta.model';
@@ -13,12 +13,13 @@ export class CamisetaService {
   constructor(private httpClient: HttpClient) {
   }
 
-  findAll(page?: number, pageSize?: number): Observable<Camiseta[]> {
+  findAll(page?: number, pageSize?: number, categoria?: string): Observable<Camiseta[]> {
     let params = {}
     if (page !== undefined && pageSize !== undefined) {
       params = {
         page: page.toString(),
-        pageSize: pageSize.toString()
+        pageSize: pageSize.toString(),
+        categoria: categoria?.toString() ?? ''
       }
     }
     return this.httpClient.get<Camiseta[]>(`${this.baseUrl}`, {params});
@@ -97,5 +98,17 @@ export class CamisetaService {
   delete(camiseta: Camiseta): Observable<any> {
     return this.httpClient.delete<any>(`${this.baseUrl}/${camiseta.id}`);
   }
+  generatePdfReports(filter: string): Observable<Blob> {
+    const url = `${this.baseUrl}/relatorios?filter=${filter}`;
+    const headers = new HttpHeaders({
+      'Content-Disposition': 'application/pdf',
+    });
 
+    return this.httpClient.get(url, { responseType: 'blob', headers });
+  }
+
+  findByNomeContaining(filtro: string) {
+    return this.httpClient.get<Camiseta[]>(`${this.baseUrl}/search/nome/${filtro}`);
+
+  }
 }

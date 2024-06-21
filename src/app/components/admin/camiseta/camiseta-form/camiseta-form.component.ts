@@ -26,6 +26,7 @@ import {Marca} from '../../../../models/marca.model';
 import {MarcaService} from '../../../../services/marca.service';
 import {SidebarComponent} from '../../../template/sidebar/sidebar.component';
 import {Tamanhos} from '../../../../models/tamanho.enum';
+import {Sexos} from "../../../../models/sexo.enum";
 
 @Component({
   selector: 'app-camiseta-form',
@@ -44,6 +45,7 @@ export class CamisetaFormComponent implements OnInit {
   imagePreview: string | ArrayBuffer | null = null
 
   tamanhos = Tamanhos;
+  sexos = Sexos;
   coresList: string[] = [];
   tipoCamisetas: TipoCamiseta[] = [];
   camisetas: Camiseta[] = [];
@@ -73,11 +75,12 @@ export class CamisetaFormComponent implements OnInit {
       preco: [(camiseta && camiseta.preco) ? camiseta.preco : '', Validators.required],
       estampa: [(camiseta && camiseta.estampa) ? camiseta.estampa : '', Validators.required],
       tecido: [(camiseta && camiseta.tecido) ? camiseta.tecido : '', Validators.required],
-      tamanho: [null],
-      fornecedor: [null],
-      tipoCamiseta: [null],
-      marca: [null],
-      cores: [camiseta?.cores.map(cor => cor.nome) || []]
+      tamanho: [null, Validators.required],
+      sexo: [null, Validators.required],
+      fornecedor: [null, Validators.required],
+      tipoCamiseta: [null, Validators.required],
+      marca: [null, Validators.required],
+      cores: [camiseta?.cores.map(cor => cor.nome) || [], Validators.required]
     });
   }
 
@@ -121,6 +124,7 @@ export class CamisetaFormComponent implements OnInit {
       estampa: [(camiseta && camiseta.estampa) ? camiseta.estampa : '', Validators.required],
       tecido: [(camiseta && camiseta.tecido) ? camiseta.tecido : '', Validators.required],
       tamanho: [camiseta?.tamanho.id || null, Validators.required],
+      sexo: [camiseta?.sexo, Validators.required],
       fornecedor: [fornecedor?.id],
       tipoCamiseta: [tipoCamiseta?.id],
       marca: [marca?.id],

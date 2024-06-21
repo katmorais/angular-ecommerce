@@ -20,7 +20,7 @@
         <button mat-raised-button class="login-button" color="primary" type="submit">Entrar</button>
         <button mat-raised-button class="create-account-button" type="button" (click)="navigateToCreateAccount()">Criar conta</button>
       </form>
-      <a class="forgot-password-link" href="/forgot-password">Esqueceu a senha?</a>
+      <a class="forgot-password-link" (click)="onEsqueceuSenha()">Esqueceu a senha?</a>
     </div>
   </div>
 </div>

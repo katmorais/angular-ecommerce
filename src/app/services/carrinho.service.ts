@@ -77,4 +77,40 @@ export class CarrinhoService {
   removerCupom() {
     localStorage.removeItem('cupom');
   }
+
+  calcularTotal() {
+    return this.obter().reduce((acc, item) => acc + item.preco, 0);
+  }
+
+  atualizar(itemCarrinho: ItemCarrinho) {
+    const carrinhoAtual = this.carrinhoSubject.value;
+    const index = carrinhoAtual.findIndex((item) => item.id === itemCarrinho.id);
+    carrinhoAtual[index] = itemCarrinho;
+    this.carrinhoSubject.next(carrinhoAtual);
+    this.atualizarArmazenamentoLocal();
+
+  }
+
+  diminuirQuantidade(item: ItemCarrinho) {
+    if (item.quantidade > 0) {
+      item.quantidade--;
+      this.atualizar(item);
+    }
+  }
+
+  aumentarQuantidade(item: ItemCarrinho) {
+    item.quantidade++;
+    this.atualizar(item);
+  }
+
+  removerItem(item: ItemCarrinho) {
+    const carrinhoAtual = this.carrinhoSubject.value;
+    const carrinhoAtualizado = carrinhoAtual.filter(
+      (itemCarrinho) => itemCarrinho !== item
+    );
+
+    this.carrinhoSubject.next(carrinhoAtualizado);
+    this.atualizarArmazenamentoLocal();
+
+  }
 }

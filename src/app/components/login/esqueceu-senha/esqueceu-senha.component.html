@@ -1,0 +1,28 @@
+<div class="login-container">
+  <div class="login-box div-elevada">
+    <h2 class="login-title">Mudar Senha</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+      <mat-form-field class="login-input" appearance="fill">
+        <mat-label>Login</mat-label>
+        <input matInput placeholder="Digite seu login" formControlName="username" required>
+        <mat-error *ngIf="loginForm.get('username')!.hasError('required')">O login é obrigatório</mat-error>
+        <mat-error *ngIf="loginForm.get('username')!.hasError('username')">Formato de login inválido</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="login-input" appearance="fill">
+        <mat-label>Seu CPF</mat-label>
+        <input matInput placeholder="Digite seu CPF" formControlName="cpf" required maxlength="11">
+        <mat-error *ngIf="loginForm.get('cpf')!.hasError('required')">O cpf é obrigatória</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="login-input" appearance="fill">
+        <mat-label>Nova Senha</mat-label>
+        <input matInput type="password" placeholder="Digite sua senha" formControlName="senha" required>
+        <mat-error *ngIf="loginForm.get('senha')!.hasError('required')">A senha é obrigatória</mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button class="login-button" color="primary" type="submit">Alterar senha</button>
+    </form>
+  </div>
+</div>

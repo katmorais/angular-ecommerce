@@ -14,3 +14,11 @@
 .example-icon {
   color: white; /* Cor dos ícones */
 }
+
+a {
+  cursor: pointer;
+}
+
+img {
+  width: 88px;
+}

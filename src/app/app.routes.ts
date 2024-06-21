@@ -26,12 +26,8 @@ import {tipocamisetaResolver} from "./components/admin/tipoCamiseta/resolver/tip
 import {TipoCamisetaFormComponent} from "./components/admin/tipoCamiseta/tipoCamiseta-form/tipoCamiseta-form.component";
 import {TipoCamisetaListComponent} from "./components/admin/tipoCamiseta/tipoCamiseta-list/tipoCamiseta.list.component";
 import {transportadoraResolver} from "./components/admin/transportadora/resolver/transportadora-resolver";
-import {
-  TransportadoraFormComponent
-} from "./components/admin/transportadora/transportadora-form/transportadora-form.component";
-import {
-  TransportadoraListComponent
-} from "./components/admin/transportadora/transportadora-list/transportadora-list.component";
+import {TransportadoraFormComponent} from "./components/admin/transportadora/transportadora-form/transportadora-form.component";
+import {TransportadoraListComponent} from "./components/admin/transportadora/transportadora-list/transportadora-list.component";
 import {LoginComponent} from "./components/login/login.component";
 import {AdminTemplateComponent} from "./components/template/admin-template/admin-template.component";
 import {UserTemplateComponent} from "./components/template/user-template/user-template.component";
@@ -41,6 +37,7 @@ import {UsuarioFormComponent} from "./components/admin/usuario/usuario-form/usua
 import {usuarioResolver} from "./components/admin/usuario/resolver/usuario-resolver";
 import {UsuarioListComponent} from "./components/admin/usuario/usuario-list/usuario-list.component";
 import {CheckoutComponent} from "./components/usuario/checkout/checkout.component";
+import {EsqueceuSenhaComponent} from "./components/login/esqueceu-senha/esqueceu-senha.component";
 
 export const routes: Routes = [
 
@@ -54,6 +51,7 @@ export const routes: Routes = [
 
       {path: 'produtos', component: CamisetaCardListComponent, title: 'Produtos à Venda'},
       {path: 'login', component: LoginComponent, title: 'Login'},
+      {path: 'esqueceu-senha', component: EsqueceuSenhaComponent, title: 'Esqueceu a senha'},
       {path: 'carrinho', component: CarrinhoComponent, title: 'Carrinho de pedidos'},
       {path: 'usuarios/new', component: UsuarioFormComponent, title: 'Novo Usuario'},
       {path: 'usuarios/edit/:id', component: UsuarioFormComponent, resolve: {usuario: usuarioResolver}},

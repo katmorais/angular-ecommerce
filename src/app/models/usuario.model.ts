@@ -1,12 +1,5 @@
-import { Endereco } from "./endereco.model";
-import { Telefone } from "./telefone.model";
-
-export class Usuario{
-
+export class UsuarioModel {
   id!: number;
-  nome!: string;
-  login!: string;
+  username!: string;
   senha!: string;
-  listaTelefone!: Telefone[];
-  listaEndereco!: Endereco[];
 }

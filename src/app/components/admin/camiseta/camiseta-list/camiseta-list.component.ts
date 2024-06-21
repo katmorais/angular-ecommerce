@@ -22,7 +22,6 @@ import {RelatorioService} from "../../../../services/relatorio.service";
 import {MatFormField} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
 
-
 @Component({
   selector: 'app-camiseta-list',
   standalone: true,
@@ -42,6 +41,8 @@ export class CamisetaListComponent implements OnInit {
   pageSize = 2;
   page = 0;
   searchText: string = '';
+  filter: string = '';
+  pdfData: any;
 
   constructor(private dialog: MatDialog,
     private camisetaService: CamisetaService,
@@ -71,6 +72,7 @@ export class CamisetaListComponent implements OnInit {
       this.camisetaSubscription.unsubscribe();
     }
   }
+
 
   search() {
     // Se o texto de busca estiver vazio, busque todos os administradores
@@ -124,5 +126,13 @@ export class CamisetaListComponent implements OnInit {
     this.pageSize = event.pageSize;
     this.ngOnInit();
   }
+  abrirRelatorioPDF(): void {
+    const filter = this.filter;
 
+    this.camisetaService.generatePdfReports(filter).subscribe((data: Blob) => {
+      const file = new Blob([data], { type: 'application/pdf' });
+      const fileURL = URL.createObjectURL(file);
+      window.open(fileURL, '_blank');
+    });
+  }
 }

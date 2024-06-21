@@ -3,6 +3,7 @@ import {Fornecedor} from "./fornecedor.model"
 import {Marca} from "./marca.model"
 import {TipoCamiseta} from "./tipocamiseta.model"
 import {Tamanho} from "./tamanho.model";
+import {SexoModel} from "./sexo.model";
 
 export class Camiseta {
   id!: number
@@ -13,6 +14,7 @@ export class Camiseta {
   estampa!: string
   tecido!: string
   tamanho!: Tamanho
+  sexo!: SexoModel
   fornecedor!: Fornecedor
   tipoCamiseta!: TipoCamiseta
   marca!: Marca

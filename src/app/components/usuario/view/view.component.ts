@@ -3,7 +3,7 @@ import { Router, RouterModule } from '@angular/router';
 
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
-import {Usuario} from "../../../models/usuario.model";
+import {ClienteModel} from "../../../models/clienteModel";
 
 
 @Component({
@@ -16,7 +16,7 @@ import {Usuario} from "../../../models/usuario.model";
 export class ViewUsuarioComponent {
   constructor(
     public viewRef: MatDialogRef<ViewUsuarioComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Usuario,
+    @Inject(MAT_DIALOG_DATA) public data: ClienteModel,
     private router: Router,
     private elementRef: ElementRef
   ) { }

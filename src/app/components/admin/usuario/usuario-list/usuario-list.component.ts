@@ -6,7 +6,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
-import { Usuario } from '../../../../models/usuario.model';
+import { ClienteModel } from '../../../../models/clienteModel';
 import { MatCard } from '@angular/material/card';
 import { PageEvent } from '@angular/material/paginator';
 import { SidebarComponent } from '../../../template/sidebar/sidebar.component';
@@ -22,7 +22,7 @@ import { Subscription } from 'rxjs';
 })
 export class UsuarioListComponent implements OnInit {
   displayedColumns: string[] = ['id', 'nome', 'senha', 'listaTelefone','listaEndereco','cartoes','acao'];
-  usuarios: Usuario[] = [];
+  usuarios: ClienteModel[] = [];
 
   constructor(private usuarioService: UsuarioService) {
 
