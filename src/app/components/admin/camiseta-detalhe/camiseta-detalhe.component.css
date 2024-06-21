@@ -1,0 +1,43 @@
+/* camiseta-detalhe.component.css */
+.camiseta-detalhe {
+  display: flex;
+  margin: auto; /* center the card horizontally */
+  width: 60%;
+  justify-content: center; /* center the card content */
+}
+
+.card-content {
+  display: flex;
+}
+
+.image-container {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.details-container {
+  flex: 2;
+}
+
+.add-to-cart-button {
+  width: 100%;
+  padding: 16px;
+  background-color: black;
+  color: white;
+}
+
+button.login-button {
+  width: 100%; /* Largura ocupando 100% */
+  padding: 10px 20px; /* Ajusta o padding do botão */
+  background-color: #000000; /* Cor de fundo preta */
+  color: #ffffff; /* Cor do texto branco */
+  border: none; /* Remove a borda */
+  border-radius: 4px; /* Adiciona bordas arredondadas */
+  cursor: pointer; /* Altera o cursor para apontador */
+  transition: background-color 0.3s; /* Adiciona uma transição suave à mudança de cor de fundo */
+  margin-bottom: 10px; /* Adiciona margem inferior para espaçamento */
+}
+
+button.login-button:hover {
+  background-color: #333333; /* Cor de fundo alterada no hover */
+}

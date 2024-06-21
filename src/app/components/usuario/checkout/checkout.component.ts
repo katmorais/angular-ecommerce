@@ -20,7 +20,7 @@ export class CheckoutComponent {
     address: new FormControl(''),
     cardNumber: new FormControl(''),
     expiryDate: new FormControl(''),
-    cvv: new FormControl(''),
+    cvv: new FormControl('')
   });
 
   constructor(private service: CheckoutService,
@@ -35,7 +35,7 @@ export class CheckoutComponent {
   }
 
   onSubmit(): void {
-    this.service.insert(this.checkoutForm.value)
+    this.service.insert(this.checkoutForm.value, this.carrinhoService.obter(), JSON.parse(localStorage.getItem("usuario_logado")??"").id)
       .subscribe({
         next: () => {
           this.showSnackbarTopPosition('Compra realizada com sucesso!', 'Fechar');

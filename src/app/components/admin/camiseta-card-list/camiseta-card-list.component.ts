@@ -15,7 +15,7 @@ import {MatOption} from "@angular/material/autocomplete";
 import {MatSelect} from "@angular/material/select";
 import {MatPaginator} from "@angular/material/paginator";
 import {LocalStorageService} from "../../../services/local-storage.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 // tipo personalizado de dados, como classes e interfaces, porém mais simples.
 type Card = {
@@ -41,7 +41,7 @@ export class CamisetaCardListComponent implements OnInit {
               private carrinhoService: CarrinhoService,
               private snackBar: MatSnackBar,
               private route: ActivatedRoute,
-              private localStorageService: LocalStorageService) {
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -87,4 +87,7 @@ export class CamisetaCardListComponent implements OnInit {
     });
   }
 
+  onClickVerMais(idCamiseta: any) {
+    this.router.navigateByUrl(`/camiseta/${idCamiseta}`);
+  }
 }

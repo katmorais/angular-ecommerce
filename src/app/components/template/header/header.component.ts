@@ -16,6 +16,7 @@ import {SexoEnum} from "../../../models/sexo.enum";
 import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
 import {TipoCamiseta} from "../../../models/tipocamiseta.model";
 import {TipoCamisetaService} from "../../../services/tipoCamiseta.service";
+import {getRoleFromToken} from "./role";
 
 @Component({
   selector: 'app-header',
@@ -36,7 +37,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
               private carrinhoService: CarrinhoService,
               private authService: AuthService,
               private router: Router,
-              private tipoCamisetaService: TipoCamisetaService) {
+              private tipoCamisetaService: TipoCamisetaService,
+              private localStorageService: LocalStorageService) {
 
   }
 
@@ -82,5 +84,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   filtrarCategoria(categoria: string) {
     this.router.navigate(['/produtos'], {queryParams: {categoria}});
+  }
+
+  onClickUsuario() {
+    const token = this.localStorageService.getToken();
+    if (token && getRoleFromToken(token) === 'Administrador') {
+      this.router.navigateByUrl('admin/camisetas/list');
+    } else {
+      this.router.navigate([`/usuario/${this.usuarioLogado.id}`]);
+    }
   }
 }

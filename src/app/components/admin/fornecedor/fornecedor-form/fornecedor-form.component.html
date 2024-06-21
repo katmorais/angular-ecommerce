@@ -22,7 +22,7 @@
                     <mat-label>Data Contrato*</mat-label>
                     <mat-form-field appearance="outline" class="full-width-input">
                         <input placeholder="Data de Contrato" matInput type="text" formControlName="dataContrato" />
-                        <mat-error *ngf="formGroup.get('dataContrato')?.hasError('apiError')">
+                        <mat-error *ngIf="formGroup.get('dataContrato')?.hasError('apiError')">
                             {{ formGroup.get('dataContrato')?.getError('apiError') }}
                         </mat-error>
                     </mat-form-field>

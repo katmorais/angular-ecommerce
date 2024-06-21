@@ -1,8 +1,8 @@
 export enum TamanhoEnum {
-    P = 1,
-    M = 2,
-    G = 3,
-    GG = 4
+    P = 1 as number,
+    M = 2 as number,
+    G = 3 as number,
+    GG = 4 as number
 }
 
 export const Tamanhos = [

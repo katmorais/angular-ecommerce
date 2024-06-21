@@ -27,6 +27,6 @@
     <mat-icon [fontIcon]="'person'"></mat-icon>
   </button>
 
-  <span>{{ usuarioLogado?.username }}</span>
+  <button *ngIf="usuarioLogado?.username" (click)="onClickUsuario()" class="user-detail-button">{{ usuarioLogado?.username }}</button>
 
 </mat-toolbar>

@@ -33,4 +33,8 @@ export class LocalStorageService {
 
     this.sexoSubject.next(sexo);
   }
+
+  getToken() {
+    return localStorage.getItem('jwt_token');
+  }
 }

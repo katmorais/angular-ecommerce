@@ -18,6 +18,14 @@ mat-card-actions {
   justify-content: space-between; /* Alinha os botões na extremidade do card */
   margin-top: 20px; /* Adiciona espaço entre o conteúdo e os botões */
 }
+.navbar-brand {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 2em; /* Aumenta o tamanho da fonte */
+  margin-top: 30px; /* Move a div para baixo */
+}
 
 .form-container {
   padding: 2rem;

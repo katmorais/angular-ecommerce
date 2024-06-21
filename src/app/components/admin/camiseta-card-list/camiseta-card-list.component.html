@@ -8,7 +8,7 @@
       <mat-card-title class="centered-text">{{card.titulo}}</mat-card-title>
       <mat-card-content class="centered-text">{{card.preco}}</mat-card-content>
       <mat-card-actions class="centered-text">
-        <button mat-button color="primary">Ver mais ...</button>
+        <button mat-button color="primary" (click)="onClickVerMais(card.idCamiseta)">Ver mais ...</button>
       </mat-card-actions>
       <mat-card-footer>
         <button mat-flat-button (click)="adicionarAoCarrinho(card)"

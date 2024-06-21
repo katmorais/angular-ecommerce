@@ -1,0 +1,23 @@
+<!-- camiseta-detalhe.component.html -->
+<mat-card *ngIf="camiseta" class="camiseta-detalhe mat-elevation-z8">
+  <div class="card-content" style="margin: 20px">
+    <div class="image-container">
+      <img mat-card-image [src]="imagemUrl" alt="{{ camiseta.nome }}">
+    </div>
+    <div class="details-container">
+      <mat-card-header>
+        <mat-card-title>{{ camiseta.nome }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{ camiseta.descricao }}</p>
+        <p>Marca: {{ camiseta.marca.nome }}</p>
+        <p>Tamanho: {{ camiseta.tamanho.label }}</p>
+        <p>Preço: {{ camiseta.preco }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-flat-button (click)="adicionarAoCarrinho()"
+                class="login-button" color="primary">Adicionar ao carrinho</button>
+      </mat-card-actions>
+    </div>
+  </div>
+</mat-card>

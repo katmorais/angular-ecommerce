@@ -38,6 +38,8 @@ import {usuarioResolver} from "./components/admin/usuario/resolver/usuario-resol
 import {UsuarioListComponent} from "./components/admin/usuario/usuario-list/usuario-list.component";
 import {CheckoutComponent} from "./components/usuario/checkout/checkout.component";
 import {EsqueceuSenhaComponent} from "./components/login/esqueceu-senha/esqueceu-senha.component";
+import {CamisetaDetalheComponent} from "./components/admin/camiseta-detalhe/camiseta-detalhe.component";
+import {UsuarioDetalheComponent} from "./components/admin/usuario/usuario-detalhe/usuario-detalhe.component";
 
 export const routes: Routes = [
 
@@ -50,6 +52,8 @@ export const routes: Routes = [
       {path: 'checkout', component: CheckoutComponent, title: 'Checkout', canActivate: [authGuard]},
 
       {path: 'produtos', component: CamisetaCardListComponent, title: 'Produtos à Venda'},
+      {path: 'camiseta/:id', component: CamisetaDetalheComponent, title: 'Detalhes da Camiseta'},
+      {path: 'usuario/:id', component: UsuarioDetalheComponent, title: 'Detalhes do Usuario'},
       {path: 'login', component: LoginComponent, title: 'Login'},
       {path: 'esqueceu-senha', component: EsqueceuSenhaComponent, title: 'Esqueceu a senha'},
       {path: 'carrinho', component: CarrinhoComponent, title: 'Carrinho de pedidos'},

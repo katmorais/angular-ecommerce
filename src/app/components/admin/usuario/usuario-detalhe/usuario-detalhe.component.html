@@ -1,0 +1,28 @@
+<div *ngIf="cliente">
+  <h2>{{ cliente.pessoa.username }}</h2>
+  <p><strong>CPF:</strong> {{ cliente.pessoa.cpf }}</p>
+  <p><strong>Data de Nascimento:</strong> {{ cliente.pessoa.dataNascimento }}</p>
+  <p><strong>Username:</strong> {{ cliente.pessoa.usuario.username }}</p>
+<!--  <p><strong>Cidade:</strong> {{ cliente.cidade }}</p>-->
+<!--  <p><strong>Estado:</strong> {{ cliente.estado }}</p>-->
+
+  <h3>Histórico de Compras</h3>
+  <table>
+    <thead>
+    <tr>
+      <th>Cartão</th>
+      <th>Valor</th>
+      <th>Endereço</th>
+      <th>Camiseta</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let compra of compras">
+      <td>{{ compra.cardNumber }}</td>
+      <td>{{ getValor(compra.itens) }}</td>
+      <td>{{ compra.address }}</td>
+      <td>{{ getCamisa(compra.itens) }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
