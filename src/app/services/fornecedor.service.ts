@@ -8,9 +8,9 @@ import { Fornecedor } from '../models/fornecedor.model';
 })
 export class FornecedorService {
   private baseUrl = 'http://localhost:8080/fornecedores';
-  
+
   constructor(private httpClient: HttpClient) {  }
-  
+
   findAll(page?: number, pageSize?: number): Observable<Fornecedor[]> {
     let params = {}
 
@@ -42,11 +42,12 @@ export class FornecedorService {
   insert(fornecedor: Fornecedor): Observable<Fornecedor> {
     const data = {
       nome: fornecedor.nome,
-      
+      dataContrato: fornecedor.dataContrato,
+
     }
     return this.httpClient.post<Fornecedor>(this.baseUrl, fornecedor);
   }
-  
+
   update(fornecedor: Fornecedor): Observable<Fornecedor> {
     return this.httpClient.put<Fornecedor>(`${this.baseUrl}/${fornecedor.id}`, fornecedor);
   }

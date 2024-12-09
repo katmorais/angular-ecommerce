@@ -1,0 +1,25 @@
+/* Estilos para o carrossel */
+.carousel {
+  max-width: 100%; /* Largura máxima do carrossel */
+  overflow: hidden; /* Oculta conteúdo fora do carrossel */
+  margin-top: 0px; /* Espaçamento acima do carrossel */
+}
+
+.carousel-inner {
+  position: relative;
+  width: 100%;
+}
+
+.carousel-item {
+  display: none; /* Inicialmente escondido */
+}
+
+.carousel-item.active {
+  display: block; /* Mostra o slide ativo */
+}
+
+.carousel-item img {
+  width: 100%; /* Imagem ocupa toda a largura do slide */
+  height: auto; /* Altura automática para manter a proporção */
+  object-fit: cover; /* Garante que a imagem cubra todo o espaço do slide */
+}

@@ -1,6 +1,4 @@
-export enum Tamanho {
-  P = 'P',
-  M = 'M',
-  G = 'G',
-  GG = 'GG'
+export class Tamanho {
+  id!: number;
+  label!: string;
 }

@@ -1,24 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { NgIf } from '@angular/common';
-import { MatCardModule } from '@angular/material/card';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatMenuModule } from '@angular/material/menu';
-import { Cartao } from '../../../../models/cartao.model';
-import { CartaoService } from '../../../../services/cartao.service';
-import { UsuarioService } from '../../../../services/usuario.service';
-import { Usuario } from '../../../../models/usuario.model';
-import { NavsideComponent } from '../../../shared/sidebar/navside.component';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {MatButtonModule} from '@angular/material/button';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {ActivatedRoute, Router, RouterModule} from '@angular/router';
+import {NgIf} from '@angular/common';
+import {MatCardModule} from '@angular/material/card';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatMenuModule} from '@angular/material/menu';
+import {Cartao} from '../../../../models/cartao.model';
+import {SidebarComponent} from "../../../template/sidebar/sidebar.component";
+import {UsuarioService} from "../../../../services/usuario.service";
 
 
 @Component({
   selector: 'app-cartao-form',
   standalone: true,
-  imports: [NgIf, ReactiveFormsModule, MatFormFieldModule,NavsideComponent,
+  imports: [NgIf, ReactiveFormsModule, MatFormFieldModule,SidebarComponent,
     MatInputModule, MatButtonModule, MatCardModule, MatToolbarModule, RouterModule, MatMenuModule],
   templateUrl: './cartao-form.component.html',
   styleUrl: './cartao-form.component.css'

@@ -1,30 +1,30 @@
-import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import {Component} from '@angular/core';
+import {FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import {ActivatedRoute, Router, RouterModule} from '@angular/router';
 
-import { MatDialog } from '@angular/material/dialog';
-import { CommonModule, NgIf } from '@angular/common';
-import { HttpErrorResponse } from '@angular/common/http';
-import { MatOptionModule } from '@angular/material/core';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
-import { FornecedorService } from '../../../../services/fornecedor.service';
-import { Fornecedor } from '../../../../models/fornecedor.model';
-import { Telefone } from '../../../../models/telefone.model';
-import { ConfirmationDialogComponent } from '../../../confirmation/confirmation-dialog.component';
-import { ErrorComponent } from '../../../error/error.component';
-import { MatCard, MatCardActions, MatCardContent } from '@angular/material/card';
-import { NavsideComponent } from '../../../shared/sidebar/navside.component';
+import {MatDialog} from '@angular/material/dialog';
+import {CommonModule, NgIf} from '@angular/common';
+import {HttpErrorResponse} from '@angular/common/http';
+import {MatOptionModule} from '@angular/material/core';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+import {FornecedorService} from '../../../../services/fornecedor.service';
+import {Fornecedor} from '../../../../models/fornecedor.model';
+import {ConfirmationDialogComponent} from '../../../confirmation/confirmation-dialog.component';
+import {ErrorComponent} from '../../../error/error.component';
+import {MatCard, MatCardActions, MatCardContent} from '@angular/material/card';
+import {SidebarComponent} from "../../../template/sidebar/sidebar.component";
+import {Telefone} from "../../../../models/telefone.model";
 
 
 @Component({
   selector: 'app-fornecedor-form',
   standalone: true,
-  imports: [ErrorComponent, CommonModule, MatSelectModule,NavsideComponent,
-    MatOptionModule, RouterModule, NgIf, 
+  imports: [ErrorComponent, CommonModule, MatSelectModule,SidebarComponent,
+    MatOptionModule, RouterModule, NgIf,
     ReactiveFormsModule, FormsModule,MatCardContent, MatCardActions, MatCard,
     MatInputModule, MatFormFieldModule,
     MatIconModule, ConfirmationDialogComponent],
@@ -51,7 +51,7 @@ export class FornecedorFormComponent {
       dataContrato: ['', Validators.required],
       listaTelefones: this.formBuilder.array([
         this.createTelefoneFormGroup() ])
-    
+
     });
 
     const routeData = this.activatedRoute.snapshot.data;
@@ -99,7 +99,7 @@ export class FornecedorFormComponent {
         this.fornecedorService.insert(fornecedor).subscribe({
           next: (fornecedorService) => {
             console.log('Formulário inserido ', this.formGroup.value);
-            this.router.navigateByUrl('/fornecedores/list');
+            this.router.navigateByUrl('admin/fornecedores/list');
           },
           error: (err) => {
             console.log('Erro ao Incluir' + JSON.stringify(err));
@@ -115,7 +115,7 @@ export class FornecedorFormComponent {
         // Atualizar fornecedor existente
         this.fornecedorService.update(fornecedor).subscribe({
           next: (fornecedorService) => {
-            this.router.navigateByUrl('/fornecedores/list');
+            this.router.navigateByUrl('admin/fornecedores/list');
           },
           error: (err) => {
             console.log('Erro ao Editar' + JSON.stringify(err));
@@ -136,7 +136,7 @@ export class FornecedorFormComponent {
       if (fornecedor.id != null) {
         this.fornecedorService.delete(fornecedor).subscribe({
           next: () => {
-            this.router.navigateByUrl('/fornecedores/list');
+            this.router.navigateByUrl('admin/fornecedores/list');
           },
           error: (err) => {
             console.log('Erro ao Excluir' + JSON.stringify(err));
@@ -156,7 +156,7 @@ export class FornecedorFormComponent {
             // Atualizar lista de fornecedors após exclusão
             this.fornecedores = this.fornecedores.filter(adm => adm.id !== fornecedor.id);
 
-            this.router.navigateByUrl('/fornecedores/list');
+            this.router.navigateByUrl('admin/fornecedores/list');
           },
           error => {
             console.log('Erro ao excluir fornecedor:', error);

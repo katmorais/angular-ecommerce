@@ -1,0 +1,32 @@
+<mat-toolbar color="primary" style="display: flex; padding-left: 120px; padding-right: 120px;">
+  <img src="assets/logo.png" alt="logo"/>
+
+  <a (click)="filtrarCategoria('masculino')" mat-list-item style="margin-left: 280px">Masculino</a>
+  <a (click)="filtrarCategoria('feminino')" mat-list-item style="margin-left: 50px">Feminino</a>
+  <a mat-list-item [matMenuTriggerFor]="menu" style="margin-left: 42px">Categorias</a>
+  <mat-menu #menu="matMenu">
+    <button *ngFor="let categoria of categorias" mat-menu-item (click)="filtrarCategoria(categoria.nome)">
+      {{categoria.nome}}
+    </button>
+  </mat-menu>
+
+
+  <span class="example-spacer"></span>
+  <button routerLink="/carrinho" mat-icon-button class="demo-section example-icon favorite-icon"
+          aria-label="Example icon-button with heart icon">
+    <mat-icon [matBadge]="qtdItensCarrinho" matBadgeColor="warn" matBadgePosition="after" matBadgeOverlap="false">
+      shopping_cart
+    </mat-icon>
+  </button>
+
+  <button *ngIf="usuarioLogado?.username" mat-icon-button (click)="deslogar()">
+    <mat-icon>exit_to_app</mat-icon>
+  </button>
+
+  <button *ngIf="!usuarioLogado?.username" mat-icon-button (click)="logar()">
+    <mat-icon [fontIcon]="'person'"></mat-icon>
+  </button>
+
+  <button *ngIf="usuarioLogado?.username" (click)="onClickUsuario()" class="user-detail-button">{{ usuarioLogado?.username }}</button>
+
+</mat-toolbar>

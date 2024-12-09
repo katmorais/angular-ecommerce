@@ -1,0 +1,32 @@
+<div class="grid">
+  <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="address">Endereço:</label>
+      <input id="address" formControlName="address" type="text">
+    </div>
+
+    <div>
+      <label for="cardNumber">Número do cartão:</label>
+      <input id="cardNumber" formControlName="cardNumber" type="text">
+    </div>
+
+    <div>
+      <label for="expiryDate">Validade:</label>
+      <input id="expiryDate" formControlName="expiryDate" type="text">
+    </div>
+
+    <div>
+      <label for="cvv">Código de segurança:</label>
+      <input id="cvv" formControlName="cvv" type="text">
+    </div>
+
+    <div>
+      <label for="cupom">Cupom:</label>
+      <input id="cupom" (blur)="onBlurCupom($event)" type="text">
+    </div>
+
+    <span>Total: {{ obterValorTotal() }}</span>
+
+    <button type="submit" style="margin-bottom: 12px">Finalizar</button>
+  </form>
+</div>

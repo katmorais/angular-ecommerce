@@ -1,29 +1,25 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
+import {Component} from '@angular/core';
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {MatButtonModule} from '@angular/material/button';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { NgIf } from '@angular/common';
-import { MatCardModule } from '@angular/material/card';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import {ActivatedRoute, Router, RouterModule} from '@angular/router';
+import {NgIf} from '@angular/common';
+import {MatCardModule} from '@angular/material/card';
+import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatMenuModule} from '@angular/material/menu';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatListModule} from '@angular/material/list';
-import { MatSidenav, MatSidenavContainer, MatSidenavContent } from '@angular/material/sidenav';
-import { Cupom } from '../../../../models/cupom.model';
-import { CupomService } from '../../../../services/cupom.service';
-import { MatDialog } from '@angular/material/dialog';
-import { ConfirmationDialogComponent } from '../../../confirmation/confirmation-dialog.component';
-import { NavsideComponent } from '../../../shared/sidebar/navside.component';
+import {Cupom} from '../../../../models/cupom.model';
+import {CupomService} from '../../../../services/cupom.service';
+import {MatDialog} from '@angular/material/dialog';
+import {ConfirmationDialogComponent} from '../../../confirmation/confirmation-dialog.component';
 
 
 @Component({
   selector: 'app-cupom-form',
   standalone: true,
-  imports: [NgIf, ReactiveFormsModule, MatFormFieldModule,NavsideComponent,
-    MatInputModule, MatButtonModule, MatCardModule, MatToolbarModule, RouterModule, MatMenuModule, MatListModule, MatDividerModule, MatSidenavContent,MatSidenavContainer,MatSidenav ],
+  imports:  [NgIf, ReactiveFormsModule, MatFormFieldModule,
+    MatInputModule, MatButtonModule, MatCardModule, MatToolbarModule, RouterModule, MatMenuModule],
   templateUrl: './cupom-form.component.html',
   styleUrl: './cupom-form.component.css'
 })
@@ -46,7 +42,7 @@ export class CupomFormComponent {
       codigo: [(cupom && cupom.codigo) ? cupom.codigo : '', Validators.required],
       valorDesconto: [(cupom && cupom.valorDesconto) ? cupom.valorDesconto : '', Validators.required],
       validade: [(cupom && cupom.validade) ? cupom.validade : '', Validators.required],
-      
+
     });
 
   }
@@ -57,7 +53,7 @@ export class CupomFormComponent {
       if (cupom.id ==null) {
         this.cupomService.insert(cupom).subscribe({
           next: (cupomCadastrado) => {
-            this.router.navigateByUrl('/cupons/list');
+            this.router.navigateByUrl('admin/cupons/list');
           },
           error: (err) => {
             console.log('Erro ao Incluir' + JSON.stringify(err));
@@ -66,7 +62,7 @@ export class CupomFormComponent {
       } else {
         this.cupomService.update(cupom).subscribe({
           next: (cupomAlterado) => {
-            this.router.navigateByUrl('/cupons/list');
+            this.router.navigateByUrl('admin/cupons/list');
           },
           error: (err) => {
             console.log('Erro ao Editar' + JSON.stringify(err));
@@ -82,7 +78,7 @@ export class CupomFormComponent {
       if (cupom.id != null) {
         this.cupomService.delete(cupom).subscribe({
           next: () => {
-            this.router.navigateByUrl('/cupons/list');
+            this.router.navigateByUrl('admin/cupons/list');
           },
           error: (err) => {
             console.log('Erro ao Excluir' + JSON.stringify(err));
@@ -102,7 +98,7 @@ export class CupomFormComponent {
             this.cupom = this.cupom.filter(adm => adm.id !== cupom.id);
 
             // Redirecionar para '/adm/list'
-            this.router.navigateByUrl('/cupons/list');
+            this.router.navigateByUrl('admin/cupons/list');
           },
           error => {
             console.log('Erro ao excluir Cupom:', error);
@@ -111,6 +107,4 @@ export class CupomFormComponent {
       }
     });
   }
-
-
 }

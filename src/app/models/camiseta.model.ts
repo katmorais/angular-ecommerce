@@ -1,20 +1,24 @@
-import { Cor } from "./cor.model"
-import { Fornecedor } from "./fornecedor.model"
-import { Marca } from "./marca.model"
-import { Tamanho } from "./tamanho.model"
-import { TipoCamiseta } from "./tipocamiseta.model"
+import {Cor} from "./cor.model"
+import {Fornecedor} from "./fornecedor.model"
+import {Marca} from "./marca.model"
+import {TipoCamiseta} from "./tipocamiseta.model"
+import {Tamanho} from "./tamanho.model";
+import {SexoModel} from "./sexo.model";
 
-export class Camiseta{
-  id!:number
-  nome!: String
-  descricao!: String
+export class Camiseta {
+  id!: number
+  nome!: string
+  descricao!: string
   estoque!: number
   preco!: number
-  estampa!: String
-  tecido!: String
+  estampa!: string
+  tecido!: string
+  tamanho!: Tamanho
+  sexo!: SexoModel
   fornecedor!: Fornecedor
   tipoCamiseta!: TipoCamiseta
   marca!: Marca
-  cor!: Cor
+  cores!: Cor[]
+  nomeImagem!: string;
 }
 

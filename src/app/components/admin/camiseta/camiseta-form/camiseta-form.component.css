@@ -9,8 +9,8 @@
 }
 
 mat-card {
-  max-width: 800px;
-  margin: 2rem auto;
+  max-width: 700px;
+  margin: 8rem auto;
 }
 
 mat-card-actions {
@@ -18,9 +18,17 @@ mat-card-actions {
   justify-content: space-between; /* Alinha os botões na extremidade do card */
   margin-top: 20px; /* Adiciona espaço entre o conteúdo e os botões */
 }
+.navbar-brand {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 2em; /* Aumenta o tamanho da fonte */
+  margin-top: 30px; /* Move a div para baixo */
+}
 
 .form-container {
-  padding: 2rem; 
+  padding: 2rem;
 }
 
 .button-group {
@@ -33,4 +41,27 @@ button[mat-raised-button] {
 
 button[mat-raised-button]:not(:last-child) {
   margin-right: 1rem;
+}
+
+img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+}
+
+.centered-text {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  padding: 20px;
+}
+
+.responsive-grid {
+  display: grid;
+  /* grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); */
+  gap: 20px;
 }

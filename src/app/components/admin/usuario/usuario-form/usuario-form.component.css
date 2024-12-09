@@ -5,6 +5,12 @@
   padding: 5px 1px; /* Ajusta o padding interno do campo */
 }
 
+.mid-width-input {
+  width: 50%; /* Largura total */
+  margin-bottom: 3px; /* Espaçamento na parte inferior do campo de entrada */
+  padding: 5px 1px; /* Ajusta o padding interno do campo */
+}
+
 /* Estilos para mat-card */
 mat-card {
   width: 90%; /* Largura total */
@@ -48,7 +54,7 @@ button[mat-raised-button] {
 
 button[mat-raised-button]:hover {
   background-color: #ffffff; /* Cor de fundo alterada no hover */
-  color:  #251e33; 
+  color:  #251e33;
 }
 
 button[mat-raised-button]:not(:last-child) {

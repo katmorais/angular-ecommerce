@@ -1,0 +1,128 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #ffffff; /* Fundo branco */
+}
+
+.login-content {
+  display: flex;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  width: 100%;
+  max-width: 800px;
+  overflow: hidden;
+}
+
+.login-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0f0f0; /* Fundo cinza claro para a imagem */
+  width: 50%; /* Definindo a largura da imagem */
+}
+
+.login-image img {
+  max-width: 200%;
+  max-height: 100%;
+}
+
+.login-box {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #ffffff; /* Fundo branco para o formulário de login */
+  color: #000000; /* Texto preto */
+  width: 45%; /* Definindo a largura do formulário de login */
+  max-width: 400px;
+  text-align: center;
+}
+
+.login-icon {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 20px;
+}
+
+.login-title {
+  margin-bottom: 20px;
+  color: #000000; /* Texto preto */
+}
+
+.login-input {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.login-input .mat-form-field-label {
+  color: #000000 !important; /* Label preto */
+}
+
+.login-input .mat-input-element {
+  color: #000000; /* Texto preto */
+}
+
+.login-input .mat-form-field-underline {
+  background-color: #000000; /* Linha de underline preta */
+}
+
+.login-input .mat-form-field-underline .mat-form-field-ripple {
+  background-color: #000000; /* Ripple preta */
+}
+
+.forgot-password-link {
+  text-decoration: none;
+}
+
+.forgot-password-link:hover {
+  text-decoration: underline;
+  color: #2a6ccf; /* Variante mais escura da cor primária no hover */
+}
+
+.mat-error {
+  color: #ff4081; /* Cor de erro */
+}
+
+/* Estilo para o botão "Entrar" */
+button.login-button {
+  width: 100%; /* Largura ocupando 100% */
+  padding: 10px 20px; /* Ajusta o padding do botão */
+  background-color: #000000; /* Cor de fundo preta */
+  color: #ffffff; /* Cor do texto branco */
+  border: none; /* Remove a borda */
+  border-radius: 4px; /* Adiciona bordas arredondadas */
+  cursor: pointer; /* Altera o cursor para apontador */
+  transition: background-color 0.3s; /* Adiciona uma transição suave à mudança de cor de fundo */
+  margin-bottom: 10px; /* Adiciona margem inferior para espaçamento */
+}
+
+button.login-button:hover {
+  background-color: #333333; /* Cor de fundo alterada no hover */
+}
+
+/* Estilo para o botão "Criar conta" */
+button.create-account-button {
+  width: 100%; /* Largura ocupando 100% */
+  padding: 10px 20px; /* Ajusta o padding do botão */
+  background-color: #ffffff; /* Cor de fundo branca */
+  color: #000000; /* Cor do texto preto */
+  border: 1px solid #000000; /* Borda preta de 2px */
+  border-radius: 4px; /* Adiciona bordas arredondadas */
+  cursor: pointer; /* Altera o cursor para apontador */
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Adiciona uma transição suave */
+  margin-bottom: 10px; /* Adiciona margem inferior para espaçamento */
+}
+
+button.create-account-button:hover {
+  background-color: #592a97; /* Cor de fundo alterada no hover */
+  color: #ffffff; /* Cor do texto alterada no hover */
+}
+
+.div-elevada {
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}

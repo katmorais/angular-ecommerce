@@ -1,38 +1,73 @@
-.listagem-estados{
-    color: rgb(0, 0, 0);
-    background-color: #ffffff;
-    background-image: linear-gradient(90deg,#E5A6B3 100%,#ffffff);
-  }
-  
-  .demo-table {
-    width: 100%;
-  }
-  
-  .mat-column-id-column {
-    width: 32px;
-    border-right: 1px solid currentColor;
-    padding-right: 24px;
-    text-align: center;
-  }
-  
-  .mat-column-nome-column {
-    padding-left: 16px;
-    font-size: 20px;
-  }
-  
-  .mat-column-sigla-column {
-    font-style: italic;
-  }
-  
-  .flex-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-  }
-  
-  .toolbar-title {
-    flex: 1;
-    text-align: center;
-  }
-  
+/* Estilizando a toolbar */
+.mat-toolbar {
+  background-color: #ffffff; /* Cor roxa para o fundo */
+  color: rgb(0, 0, 0); /* Cor do texto */
+  font-size: 20px; /* Tamanho do texto */
+  padding: 12px 24px; /* Espaçamento interno */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+/* Estilizando o título da toolbar */
+.toolbar-title {
+  flex: 1; /* Expandir para ocupar o espaço disponível */
+  text-align: center; /* Centralizar o texto */
+}
+
+/* Estilizando os botões na toolbar */
+.mat-toolbar button {
+  color: rgb(255, 255, 255); /* Cor do texto dos botões */
+  background-color: #251e33; /* Cor de fundo roxa */
+  border: none; /* Remover borda */
+  font-size: 20px; /* Tamanho do ícone */
+  cursor: pointer; /* Cursor de ponteiro */
+  margin-left: 16px; /* Espaçamento à esquerda */
+}
+
+/* Estilizando os botões na toolbar no hover */
+.mat-toolbar button:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Cor de fundo com transparência */
+  border-radius: 100%; /* Borda arredondada */
+}
+
+
+/* Estilo para as colunas da tabela */
+.mat-column-id {
+  text-align: center; /* Alinhar o texto ao centro */
+  width:16%; /* Largura da coluna ID */
+}
+
+.mat-column-nome,
+.mat-column-dataContrato {
+  text-align: left; /* Alinhar o texto à esquerda */
+  width: 10%; /* Largura das colunas Nome e Data Contrato */
+}
+
+.mat-column-acao {
+  text-align: center; /* Alinhar o texto ao centro */
+  width: 10%; /* Largura da coluna Ação */
+}
+
+
+/* Estilo para o container flexível */
+.flex-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+/* Estilizando os botões dentro da coluna de ação */
+.mat-column-acao button {
+  margin-right: 8px; /* Espaçamento entre os botões */
+  font-size: 16px; /* Tamanho do ícone */
+  border: none; /* Remover a borda */
+}
+
+/* Estilizando o ícone de edição */
+.mat-column-acao button[color="primary"] mat-icon {
+  color: #ecc43e; /* Cor verde para o ícone de edição */
+}
+
+/* Estilizando o ícone de exclusão */
+.mat-column-acao button[color="warn"] mat-icon {
+  color: #ce3a30; /* Cor vermelha para o ícone de exclusão */
+}

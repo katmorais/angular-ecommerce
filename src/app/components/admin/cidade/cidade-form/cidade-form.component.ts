@@ -17,7 +17,7 @@ import { EstadoService } from '../../../../services/estado.service';
   selector: 'app-cidade-form',
   standalone: true,
   imports: [NgIf, ReactiveFormsModule, MatFormFieldModule,
-    MatInputModule, MatButtonModule, MatCardModule, MatToolbarModule, 
+    MatInputModule, MatButtonModule, MatCardModule, MatToolbarModule,
     RouterModule, MatSelectModule],
   templateUrl: './cidade-form.component.html',
   styleUrl: './cidade-form.component.css'
@@ -52,7 +52,7 @@ export class CidadeFormComponent implements OnInit {
 
     // selecionando o estado
     const estado = this.estados
-      .find(estado => estado.id === (cidade?.estado?.id || null)); 
+      .find(estado => estado.id === (cidade?.estado?.id || null));
 
     this.formGroup = this.formBuilder.group({
       id: [(cidade && cidade.id) ? cidade.id : null],

@@ -1,0 +1,37 @@
+.example-container {
+  height: 200vh; /* Altura total da viewport */
+  background-color: #ffffff; /* Fundo branco */
+  color: #000000; /* Cor do texto */
+}
+
+.drawer-panel {
+  background-color: #010925; /* Cor de fundo do menu lateral */
+}
+
+.welcome-message {
+  padding: 16px;
+  background-color: #010925; /* Cor de fundo do cabeçalho de boas-vindas */
+  color: #ffffff; /* Cor do texto */
+}
+
+.menu-list {
+  padding-top: 8px; /* Espaçamento superior */
+}
+
+.mat-expansion-panel-header {
+  background-color: #010925; /* Cor de fundo do cabeçalho dos itens do menu */
+  color: #ffffff; /* Cor do texto */
+  box-shadow: none; /* Remove sombra */
+}
+
+.mat-expansion-panel-header mat-icon {
+  margin-right: 12px; /* Espaçamento entre ícone e texto */
+}
+
+.mat-expansion-panel-header span {
+  font-weight: normal; /* Remove negrito */
+}
+
+.mat-expansion-panel-header:hover {
+  background-color: #002d69; /* Cor de fundo ao passar o mouse */
+}

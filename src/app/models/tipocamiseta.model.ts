@@ -1,4 +1,4 @@
-export class TipoCamiseta{
+export class TipoCamiseta {
 
   id!: number;
   nome!: string;
